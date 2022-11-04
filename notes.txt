@@ -3,3 +3,27 @@
 -There will be Team Model that consists of Character Model
 
 -There will be Character Model that consists of name and image
+
+-Player can only play game ONLY if they are logged in and have a team of 20
+
+-If no other players have already logged on, a randomly generated team will be created
+
+
+Tasks:
+
+- Setup
+	- Set up everything
+
+- Account 
+	- Easy just copy over Domo Account maker
+
+- Create Character
+	- I think I could use a character Domo for something like this
+
+
+- Create Team
+	- Generate Characters
+	- Click on character to add them to team
+	- Disable Save Button until 20 characters are filled
+	- Click on delete button above characters to delete them
+
