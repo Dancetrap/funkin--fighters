@@ -1,0 +1,5 @@
+-Copy Account functions from DomoMaker to use in here
+
+-There will be Team Model that consists of Character Model
+
+-There will be Character Model that consists of name and image
