@@ -1,11 +1,37 @@
-// const models = require('../models');
+const models = require('../models');
 
 // // mongoose version of readSyncFile
 const makerPage = (req, res) => res.render('app');
 // const e = require('express');
-// const { Character } = models;
+const { Character } = models;
 
 const characters = require('../../hosted/characters.json');
+const CharacterModel = require('../models/Character');
+
+const createCharacterModels = async (req, res) => {
+  console.log('testing');
+  Object.keys(characters).forEach(async (k) => {
+    const character = {
+      name: characters[k].name,
+      // origin: characters[k].origin,
+      // mod: characters[k].mod,
+      image: characters[k].imageURL,
+      flip: characters[k].flip,
+    };
+    try {
+      const addCharacter = new Character(character);
+      await addCharacter.save();
+      return res.status(201).json(
+        { name: addCharacter.name, image: addCharacter.image, flip: addCharacter.flip },
+      );
+    } catch (err) {
+      if (err.code === 11000) {
+        return res.status(400).json({ error: 'Character already exists!' });
+      }
+      return res.status(400).json({ error: 'An error occured' });
+    }
+  });
+};
 
 const findCharacters = async (req, res) => {
   const search = [];
@@ -27,47 +53,39 @@ const findCharacters = async (req, res) => {
       }
     }
     if (exist) {
-      const character = {
-        name: characters[k].name,
-        origin: characters[k].origin,
-        mod: characters[k].mod,
-        img: characters[k].imageURL,
-        flipX: characters[k].flip,
-      };
-      search.push(character);
-      // return k;
-      // const character = {
-      //   name: req.body.name,
-      //   image: req.body.image,
-      // };
-      // try {
-      //   const addCharacter = new Character(character);
-      //   await addCharacter.save();
-      // } catch (err) {
-      //   if (err.code === 11000) {
-      //     return res.status(400).json({ error: 'Character already exists!' });
-      //   }
-      //   return res.status(400).json({ error: 'An error occured' });
-      // }
+      search.push(k);
     }
     return undefined;
     // return res.status(400).json({ error: 'No characters found' });
   });
+  console.log(search);
   if (search.length !== 0) {
-    // console.log(search);
-    return res.status(200).json({ list: search });
+    search.forEach((c) => {
+      // CharacterModel.findByName(c, (err, doc) => {
+      //   if (err) {
+      //     console.log(err);
+      //     return res.status(400).json({ error: 'An error occurred!' });
+      //   }
+      //   console.log(doc);
+      //   return doc;
+      // });
+      CharacterModel.findOne({ name: c }).exec((err, doc) => {
+        if (err) {
+          console.log(err);
+          return res.status(400).json({ error: 'An error occurred!' });
+        }
+        console.log(doc);
+        return doc;
+      });
+    });
+
+    // return res.status(200).json({ list: search });
   }
   return res.status(404).json({ list: [], error: 'No characters found' });
-};
-
-const searchTest = async (req, res) => {
-  // I need to use req.query
-  console.log(req.query);
-  return res.status(200).json({ message: 'Success' });
 };
 
 module.exports = {
   makerPage,
   findCharacters,
-  searchTest,
+  createCharacterModels,
 };

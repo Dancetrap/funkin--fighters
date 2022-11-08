@@ -13,6 +13,11 @@ const CharacterSearch = (props) => {
 const init = async () => {
     const response = await fetch('/getToken');
     const data = await response.json();
+
+    // const load = await fetch('/load');
+    // const onLoad = await load.json();
+    // console.log(onLoad);
+
     csrfToken = data.csrfToken;
     ReactDOM.render(
         <CharacterSearch csrf={csrfToken} />,
@@ -25,6 +30,17 @@ const init = async () => {
         const obj = await response.json();
         console.log(obj);
     });
+
+    // const load = await fetch('/load', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(csrfToken),
+    //   });
+    
+    // const onLoad = await load.json();
+    // console.log(onLoad);
 }
 
 // const CharacterList = (props) => {

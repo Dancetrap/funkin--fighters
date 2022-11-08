@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const Character = require('./Character.js');
+// const Character = require('./Character.js');
 
 let TeamModel = {};
 
 const TeamSchema = new mongoose.Schema({
   team: {
     // type: Array,
-    type: [Character],
+    type: [mongoose.Schema.ObjectId],
   },
   limit: {
     type: Number,

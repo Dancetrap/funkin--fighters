@@ -23,12 +23,7 @@ CharacterSchema.statics.toAPI = (doc) => ({
   image: doc.image,
 });
 
-CharacterSchema.statics.findByName = (charName, callback) => {
-  const search = {
-    name: charName,
-  };
-  return CharacterSchema.find(search).select('name image').lean().exec(callback);
-};
+CharacterSchema.statics.findByName = (n, call) => CharacterModel.findOne({ name: n }).exec(call);
 
 CharacterModel = mongoose.model('Character', CharacterSchema);
 module.exports = CharacterModel;
