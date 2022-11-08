@@ -60,10 +60,17 @@ const signup = async (req, res) => {
 
 const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });
 
+const findAllUsers = (req, res) => {
+  Account.find({}, (err, users) => {
+    res.send(users);
+  });
+};
+
 module.exports = {
   loginPage,
   login,
   logout,
   signup,
   getToken,
+  findAllUsers,
 };
