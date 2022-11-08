@@ -31,16 +31,16 @@ const init = async () => {
         console.log(obj);
     });
 
-    // const load = await fetch('/load', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(csrfToken),
-    //   });
+    const load = await fetch('/load', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(csrfToken),
+      });
     
-    // const onLoad = await load.json();
-    // console.log(onLoad);
+    const onLoad = await load.json();
+    console.log(onLoad);
 }
 
 // const CharacterList = (props) => {
