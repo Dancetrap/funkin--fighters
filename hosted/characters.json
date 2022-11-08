@@ -1,0 +1,969 @@
+{
+    "boyfriend":{
+        "name": "boyfriend",
+        "origin": "Friday Night Funkin'",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/5/5b/Boyfriend.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/5/5b/BoyfriendIcons.png",
+        "flip": true
+    },
+    "girlfriend":{
+        "name": "girlfriend",
+        "origin": "Friday Night Funkin'",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/e/e9/Gfboombox.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/8/81/GirlfriendIcon.png",
+        "flip": true
+    },
+    "spooky kids":{
+        "name": "spooky kids",
+        "origin": "Spooky Month",
+        "mod": "Base Game",
+        "quote": "IT IS A SPOOKY MONTH! - Spooky Kids (It's spooky month)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/2/27/ITSSPOOKYMONTH.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/6/6b/Skid_and_Pump_character_Icons.png",
+        "flip": false
+    },
+    "pico":{
+        "name": "pico",
+        "origin": "Pico's School",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/0/02/Pico_Newgrounds.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/e/e1/PicoIcons.png",
+        "flip": true
+    },
+    "tankman":{
+        "name": "tankman",
+        "origin": "TANKMEN",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/d/d0/NEWGROUNDS_DOT_COM.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/4/45/TankmanIcons.png",
+        "flip": true
+    },
+    "whitty":{
+        "name": "whitty",
+        "origin": "Vs. Whitty",
+        "mod": "Vs. Whitty",
+        "quote": "You're REALLY pushing my limits here, dude - Whitty",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4b/Whitty_Normal.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/IconSet_Whitty.png",
+        "flip": false
+    },
+    "tricky":{
+        "name": "tricky",
+        "origin": "Madness Combat",
+        "mod": "Vs. Tricky",
+        "quote": "YOU DO NOT KILL CLOWN, CLOWN KILLS YOU! - Tricky (Madness Combat 11)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9d/TrickyMaskAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a6/TrickyMaskIcons.png",
+        "flip": false
+    },
+    "hank":{
+        "name": "hank",
+        "origin": "Madness Combat",
+        "mod": "FNF Online",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7f/HankOnlineIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ea/AccelerantHankIcons.png",
+        "flip": true
+    },
+    "edd":{
+        "name": "edd",
+        "origin": "Eddsworld",
+        "mod": "FNF Online",
+        "quote": "Edd may be gone, but his world will keep on spinning - Thomas (TomSka) Ridgewell (RIP Edd Gould)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ef/EddChallengeIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b0/IconSet_VsOnlineEdd.png",
+        "flip": false
+    },
+    "tord":{
+        "name": "tord",
+        "origin": "Eddsworld",
+        "mod": "FNF Online",
+        "quote": "Hello...old friend - Tord (Eddsworld - The End P1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cb/TordPlayableIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/70/TordOnlineVSIcons.png",
+        "flip": false
+    },
+    "shaggy":{
+        "name": "shaggy",
+        "origin": "Scooby-Doo",
+        "mod": "Vs. Shaggy",
+        "quote": "Zoinks!",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0f/SimShaggyIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b8/Red_Shaggy.png",
+        "flip": false
+    },
+    "sonic.exe":{
+        "name": "sonic.exe",
+        "origin": "Sonic.exe",
+        "mod": "Vs. Sonic.exe",
+        "quote": "I AM GOD! - Sonic.exe's iconic line",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/SonicExeIdle2.5.gif.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d2/SlowBoi.png",
+        "flip": false
+    },
+    "lord x":{
+        "name": "lord x",
+        "origin": "Sonic PC Port",
+        "mod": "Vs. Sonic.exe",
+        "quote": "HOW ABOUT A GAME? FOR OLD TIME'S SAKE! - Lord X (Sonic PC Port)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fb/LordX3.0OnlyIdleAnimThing.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f0/Sonicexex.png",
+        "flip": false
+    },
+    "majin sonic":{
+        "name": "majin sonic",
+        "origin": "Sonic CD",
+        "mod": "Vs. Sonic.exe",
+        "quote": "Fun Is Infinite - Line found by putting FM46, PCM12, DA25 in the Sonic CD Sound Test",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/MajinSonic3.0IdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/Icon-Majin-OG.png",
+        "flip": false
+    },
+    "fleetway":{
+        "name": "fleetway",
+        "origin": "Sonic The Comic Issue 7",
+        "mod": "Vs. Sonic.exe",
+        "quote": "Let's see how fast you can really go! - Fleetway (FNF Vs. Sonic.exe)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d5/FleetwayIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a1/SuperSonicDoesWhatExeDoesntDo.png",
+        "flip": false
+    },
+    "sunky":{
+        "name": "sunky",
+        "origin": "Sunky The Game",
+        "mod": "Vs. Sonic.exe",
+        "quote": "I occasionally sunk - Sunky (Sunky.MPEG)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2f/SunkyNormal3.0IdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c0/Ioccasionallysunk.png",
+        "flip": false
+    },
+    "mx":{
+        "name": "mx",
+        "origin": "Mario PC Port",
+        "mod": "Mario's Madness",
+        "quote": "Innocence doesn't get you far - MX's iconic line",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/89/PowerDownIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c5/Icon_MXMadness.png",
+        "flip": false
+    },
+    "suicide mouse":{
+        "name": "suicide mouse",
+        "origin": "Suicide Mouse Creepypasta",
+        "mod": "Wednesday's Infidelity",
+        "quote": "Have you ever considered that without happiness, you'll know peace? - Suicide Mouse",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/98/WIMouse4Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/DejectedSuicideMouseIcons.png",
+        "flip": false
+    },
+    "red mist squidward":{
+        "name": "red mist squidward",
+        "origin": "Red Mist Creepypasta",
+        "mod": "Mistful Crimson Morning",
+        "quote": "I just can't seem to get happy - Squidward (Spongebob Squarepants S8E169a 'Are You Happy Now?')",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/65/SquidwardPhase3NewMCM.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/23/Icon-darkward.png",
+        "flip": false
+    },
+    "gold":{
+        "name": "gold",
+        "origin": "Lost Silver Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "I'M...DEAD - Gold (FNF Lullaby)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/90/Gold-idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8a/GoldIcon.png",
+        "flip": false
+    },
+    "missingno":{
+        "name": "missingno",
+        "origin": "Pokémon Red and Blue",
+        "mod": "Friday Night Funkin' Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ed/MissingnoIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cf/MissingnoIcons.png",
+        "flip": false
+    },
+    "taeyai":{
+        "name": "taeyai",
+        "origin": "Cyber Sensation",
+        "mod": "Cyber Sensation",
+        "quote": "I can't do anything right! - Taeyai (FNF Cyber Sensation)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3f/Taeyai_Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/00/TaeyaiIcons.png",
+        "flip": false
+    },
+    "agoti":{
+        "name": "agoti",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "quote": "I'm surprised someone as small as you didn't break anything! - Agoti",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b3/AGOTIMiclessAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/15/AGOTI_Icons.png",
+        "flip": false
+    },
+    "aldryx":{
+        "name": "aldryx",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/36/Thebestcharacterinentity.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/17/Icon-aldryx.png",
+        "flip": false
+    },
+    "solazar":{
+        "name": "solazar",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "quote": "I WILL NOT LET THIS HAPPEN! - Solazar",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8d/SolAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/ab/Icon-sol.png",
+        "flip": false
+    },
+    "nikusa":{
+        "name": "nikusa",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "quote": "The fact that you struck me... must mean you want to befriend me? - Nikusa",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/NikusaIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a9/NikusaIcons.png",
+        "flip": false
+    },
+    "tabi":{
+        "name": "tabi",
+        "origin": "Vs Ex",
+        "mod": "Vs Ex",
+        "quote": "Stop getting in my way you little freak! Let me end this all! Now! - Tabi",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fe/TabiNewIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/55/TabiIconsNew.png",
+        "flip": false
+    },
+    "nikku":{
+        "name": "nikku",
+        "origin": "Hotline 024",
+        "mod": "Hotline 024",
+        "quote": "Look, it's reallyyy hard to explain, but please, just leave. This is where I hide. - Nikku",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3b/NikkuAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/69/Icon-nikku.png",
+        "flip": false
+    },
+    "annie":{
+        "name": "annie",
+        "origin": "Vs. Annie",
+        "mod": "Vs. Annie",
+        "quote": "T H E L I Q U I D ! - Annie",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/AnnieHRIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c2/NewAnnieIcon.png",
+        "flip": false
+    },
+    "garcello":{
+        "name": "garcello",
+        "origin": "Smoke Em Out Struggle",
+        "mod": "Smoke Em Out Struggle",
+        "quote": "Tight bars, little man - Garcello (Voiceline in Release in Smoke Em Out Struggle)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/da/GarcelloIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b0/GarcelloIconsA.png",
+        "flip": false
+    },
+    "julian":{
+        "name": "julian",
+        "origin": "Vs. Whitty",
+        "mod": "Vs. Whitty",
+        "quote": "I have no money - Julian",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/af/Julian_T._Whitmore.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8f/Icon-white.png",
+        "flip": false
+    },
+    "sky":{
+        "name": "sky",
+        "origin": "Vs. Sky",
+        "mod": "Vs. Sky",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d1/OGSkyAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/02/OGSkyIcons.png",
+        "flip": false
+    },
+    "ski":{
+        "name": "ski",
+        "origin": "Ski Sings for You!",
+        "mod": "Ski Sings for You!",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f7/SkiForwardAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/96/Icon-ski_New.png",
+        "flip": false
+    },
+    "nusky":{
+        "name": "nusky",
+        "origin": "NuSky + Skyverse",
+        "mod": "NuSky + Skyverse",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/NuSkyIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a7/Nuskyicons.png",
+        "flip": false
+    },
+    "skyblue":{
+        "name": "skyblue",
+        "origin": "Vs. SkyBlue",
+        "mod": "Vs. SkyBlue",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e4/SkyBlueIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b5/SkyBlueIcons.png",
+        "flip": false
+    },
+    "cuphead":{
+        "name": "cuphead",
+        "origin": "Cuphead",
+        "mod": "Indie Cross",
+        "quote": "You know what I'd do when I'm not sure? I double down! - Cuphead (The Cuphead Show S1E1 - Carn-evil)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/68/CupheadAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f7/CupheadNewIcons.png",
+        "flip": false
+    },
+    "sans":{
+        "name": "sans",
+        "origin": "Undertale",
+        "mod": "Indie Cross",
+        "quote": "It's a beautiful day outside. Birds are singing. Flowers are blooming. On days like these, kids like you...should be burning in hell. - Sans' line before his fight",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/53/IndieSansBoneIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d4/SansIcons.png",
+        "flip": false
+    },
+    "papyrus":{
+        "name": "papyrus",
+        "origin": "Undertale",
+        "mod": "Indie Cross",
+        "quote": "NYEH HEH HEH HEH!! IT IS I! THE GREAT PAPYRUS! - Papyrus' iconic line in Undertale",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/IndiePapyrusIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e0/PapyrusIndieIcons.png",
+        "flip": false
+    },
+    "bendy":{
+        "name": "bendy",
+        "origin": "Bendy And The Ink Machine",
+        "mod": "Indie Cross",
+        "quote": "The creator lied to us - (Wall Message found in Bendy and the Ink Machine)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/40/IndieBendyIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/dc/BendyIconIC.png",
+        "flip": false
+    },
+    "imposter":{
+        "name": "imposter",
+        "origin": "Among Us",
+        "mod": "Indie Cross",
+        "quote": "There is an imposer among us - Among Us everytime a game has been started",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d9/Red_Impostor_V3.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e0/ImpostorNewIcons.png",
+        "flip": false
+    },
+    "monika":{
+        "name": "monika",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "quote": "Just monika - Doki Doki Literature Club",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f6/ReconcileMonikaIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4c/MonikaNotPixelIconSet.png",
+        "flip": false
+    },
+    "sayori":{
+        "name": "sayori",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "quote": "I like happy the most, but sometimes when you have a little raincloud in your head... a sad poem can help give the raincloud a little hug... And make a nice happy rainbow! - Sayori (Doki Doki Literature Club)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1b/DDSayoriIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/29/SayoriIconSet.png",
+        "flip": false
+    },
+    "yuri":{
+        "name": "yuri",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "quote": "When horrible things happen not just because someone wants to be evil...But because the world is full of horrible people, and we're all worthless anyway - Yuri (Doki Doki Literature Club)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c8/DDYuriIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a2/YuriIconSet.png",
+        "flip": false
+    },
+    "natsuki":{
+        "name": "natsuki",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "quote": "Manga is literature!! - Natsuki (Doki Doki Literature Club)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c7/DDNatsukiIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/NatsukiIconSet.png",
+        "flip": false
+    },
+    "purple guy":{
+        "name": "purple guy",
+        "origin": "Five Nights At Freddy's",
+        "mod": "Funkin' at Freddy's + Afton",
+        "quote": "I always come back - William Afton/Purple Guy (deathline in Freddy Fazbear's Pizzeria Simulator)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2c/AftonIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/76/Aftonnormalicons.png",
+        "flip": false
+    },
+    "ourple guy":{
+        "name": "ourple guy",
+        "origin": "Five Nights At Freddy's",
+        "mod": "Vs. OURPLE GUY",
+        "quote": "Why he ourple though?",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/16/OurpleNewIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/13/OURPLEIconsAnimated.gif",
+        "flip": false
+    },
+    "dave":{
+        "name": "dave",
+        "origin": "Dave's Fun Algebra Class",
+        "mod": "Vs. Dave and Bambi",
+        "quote": "Hey Bambi, they're not trespassing. I invited them over as an apology for nearly turning the world 3D. - Dave, Corn Theft",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d3/DaveNew3.0.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/29/NewDaveIcons.png",
+        "flip": false
+    },
+    "bambi":{
+        "name": "bambi",
+        "origin": "Vs. Dave and Bambi",
+        "mod": "Vs. Dave and Bambi",
+        "quote": "I GONNA BLOCK YOU OUT OF MY FARM! You never coming back ever again you dirty ole' rodeo trash. - Bambi, Blocked",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ee/BambiRemake.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e3/BambiIcons.png",
+        "flip": false
+    },
+    "matpat":{
+        "name": "matpat",
+        "origin": "Youtuber: Game Theory",
+        "mod": "Vs. OURPLE GUY",
+        "quote": "That's just a theory. A GAME THEORY! - Matpat at the end of every Game Theory video",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/75/MatPatNewIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/81/Icon-mat2.png",
+        "flip": false
+    },
+    "markiplier":{
+        "name": "markiplier",
+        "origin": "Youtuber: Markiplier",
+        "mod": "Vs. OURPLE GUY",
+        "quote": "Hello everybody! My name is Markiplier! - Markiplier at the beginning of every video",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a6/Idlemark.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7f/OurpleguyIcon-mark.png",
+        "flip": true
+    },
+    "solid chris":{
+        "name": "solid chris",
+        "origin": "Youtuber: Sonichu",
+        "mod": "SingStar Challenge",
+        "quote": "Oh no you don't, Chris! - Solid (voiceline in Virgin Rage in SingStar Challenge)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e7/Solidchrisidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a5/Icon-solid.png",
+        "flip": false
+    },
+    "liquid chris":{
+        "name": "liquid chris",
+        "origin": "Youtuber: Liquid saga",
+        "mod": "SingStar Challenge",
+        "quote": "You're a freak! HA HA HA HAA! - Liquid Chris",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/33/Liquididle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f5/Icon-liquid.png",
+        "flip": false
+    },
+    "jellybean":{
+        "name": "jellybean",
+        "origin": "PNGtuber",
+        "mod": "Atrocity",
+        "quote": "Reading my awful hate comments! - JellyBean (Reading my AWFUL hate comments)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e0/TossAtroJellyBeanIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/74/Icon-jellybean2.png",
+        "flip": true
+    },
+    "berserk skeleton":{
+        "name": "berserk skeleton",
+        "origin": "Berserk",
+        "mod": "Atrocity",
+        "quote": "We're funnier than you, that's for sure! - Skeleton (Atrocity)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/71/TossAtroSkeletonIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/30/Icon-skeleton.png",
+        "flip": false
+    },
+    "sticky":{
+        "name": "sticky",
+        "origin": "Youtuber",
+        "mod": "StickyBM Mod Pack",
+        "quote": "EPIC FURRY FLIPNOTE COMPILATION 2012 - StickyBM (Funkin Expo 2)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/96/StickyNewAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/54/NewStickyIcons.png",
+        "flip": true
+    },
+    "dorkly sonic":{
+        "name": "dorkly sonic",
+        "origin": "Sonic For Hire",
+        "mod": "Vs. Dorkly Sonic",
+        "quote": "Why did you say that like it was a completely normal sentence? - Sonic (Sonic Meets Original Fan Characters)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/27/DorklySonicIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9a/Icon-dorkly.png",
+        "flip": false
+    },
+    "huggy wuggy":{
+        "name": "huggy wuggy",
+        "origin": "Poppy Playtime",
+        "mod": "Vs. Huggy Wuggy",
+        "quote": "His name is Huggy! Huggy Wuggy! When he hugs you, he'll never stop! Your friend Huggy! Huggy Wuggy! He'll squeeze you until you pop! - Huggy Wuggy Jingle in Poppy Playtime",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/67/Huggy_Wuggy.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/ff/Icon-huggy.png",
+        "flip": false
+    },
+    "mark heathcliff":{
+        "name": "mark heathcliff",
+        "origin": "Mandela Catalogue",
+        "mod": "Funkdela Catalogue",
+        "quote": "YOU FUCKING BASTARD! - Mark Healthcliff (Mandela Catalogue Vol 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/14/Markanimated.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d8/MarkNewIcons.png",
+        "flip": false
+    },
+    "cesar torres":{
+        "name": "cesar torres",
+        "origin": "Mandela Catalogue",
+        "mod": "Funkdela Catalogue",
+        "quote": "One more thing, try to get a good view of the back-- - Cesar Torres (Mandela Catalogue Vol 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4c/CesarAnimated.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3e/CesarNewIcons.png",
+        "flip": true
+    },
+    "n":{
+        "name": "n",
+        "origin": "Mandela Catalogue",
+        "mod": "Funkdela Catalogue",
+        "quote": "NOTHING IS WORTH THE RISK - Reoccuring line in Mandela Catalogue",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e2/NIdleFunkdela.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/af/NFunkdelaIcons.png",
+        "flip": true
+    },
+    "needlemouse":{
+        "name": "needlemouse",
+        "origin": "Needlemouse",
+        "mod": "Vs. Sonic.exe",
+        "quote": "There is no god. Only me. - Needlemouse/Sarah (NeedleM0use n0way)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/NeedlemouseIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/27/NeedleM0use_Official_icons.png",
+        "flip": false
+    },
+    "starved":{
+        "name": "starved",
+        "origin": "Starved Creepypasta",
+        "mod": "Vs. Sonic.exe",
+        "quote": "I love that hedgehod - Starved after killing and eating Sonic",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/StarvedIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/91/StarvedIcons.png",
+        "flip": false
+    },
+    "eduardo":{
+        "name": "eduardo",
+        "origin": "Eddsworld",
+        "mod": "FNF Online",
+        "quote": "Well Well Well! - Eduardo (Eddsworld, Hammer and Fail Pt 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/72/EduardoChallengeIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c8/IconSet_Eduardo.png",
+        "flip": false
+    },
+    "cassette girl":{
+        "name": "cassette girl",
+        "origin": "Cassette Girl",
+        "mod": "Vs. Cassette Girl",
+        "quote": "",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4d/CGIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/83/CassetteGirlIcons.png",
+        "flip": false
+    },
+    "zardy":{
+        "name": "zardy",
+        "origin": "Zardy's Maze",
+        "mod": "Vs. Zardy",
+        "quote": "You should know it's dangerous to wander in the dark... But if you want a show... I'll give you a show! - Zardy (Line in Foolhardy in Vs. Zardy)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0e/Zardy_Idle_Anim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/93/Zardyicons.png",
+        "flip": false
+    },
+    "hatsune miku":{
+        "name": "hatsune miku",
+        "origin": "Hatsune Miku",
+        "mod": "Vs. Hatsune Miku",
+        "quote": "Pretty good little bro, I had no idea you were so good at performing! - Hastune Miku (Vs. Hatsune Miku)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f6/MikuNewIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/92/NewIconsSet.png",
+        "flip": false
+    },
+    "mami":{
+        "name": "mami",
+        "origin": "Madoka Magica",
+        "mod": "Vs. Mami",
+        "quote": "I'm Mami Tomoe. I’m a ninth grader at Mitakihara Middle School. And… once I made a contract with Kyubey, I became a Magical Girl. - Mami (Madoka Magica E2)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/MamiSalvationIdle1.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0e/SalvationFormerIcons.png",
+        "flip": false
+    },
+    "sonic the hedgehog":{
+        "name": "sonic the hedgehog",
+        "origin": "Sonic The Hedgehog",
+        "mod": "Friday Night Funkin' HD",
+        "quote": "Gotta go fast! - Iconic Sonic Line",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/38/Sonic.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/74/HDSonicIconset.png",
+        "flip": false
+    },
+    "mario":{
+        "name": "mario",
+        "origin": "Super Mario Bros",
+        "mod": "Vs. Mario Rebooted",
+        "quote": "Its a me! Mario! - Iconic Mario line",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/39/VSMarioRebootMarioIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/58/Icon-marioreboot.png",
+        "flip": false
+    },
+    "luigi":{
+        "name": "luigi",
+        "origin": "Super Mario Bros",
+        "mod": "Vs. Mario Rebooted",
+        "quote": "Luigi number one! - Luigi",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0e/Luigi_reboot.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c8/Icon-luigi.png",
+        "flip": false
+    },
+    "psychic":{
+        "name": "psychic",
+        "origin": "FNF Mind Games",
+        "mod": "FNF Mind Games",
+        "quote": "I have a couple of questions I want to ask you, and you WILL answer them - The Psychic",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fd/Psychic_Idle_Animation.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d3/Icon-psychic.png",
+        "flip": false
+    },
+    "blue":{
+        "name": "blue",
+        "origin": "Rainbow Friends",
+        "mod": "Vs. Rainbow Friends",
+        "quote": "",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/37/FriendsToYourEndBlueIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/37/FriendsToYourEndBlueIcons.png",
+        "flip": false
+    },
+    "green":{
+        "name": "green",
+        "origin": "Rainbow Friends",
+        "mod": "Vs. Rainbow Friends",
+        "quote": "",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e3/FriendsToYourEndGreenIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4c/Icon-green_monster.png",
+        "flip": false
+    },
+    "orange":{
+        "name": "orange",
+        "origin": "Rainbow Friends",
+        "mod": "Vs. Rainbow Friends",
+        "quote": "",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/63/FriendsToYourEndOrangeIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/55/Icon-orange.png",
+        "flip": false
+    },
+    "purple":{
+        "name": "purple",
+        "origin": "Rainbow Friends",
+        "mod": "Vs. Rainbow Friends",
+        "quote": "",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1f/FriendsToYourEndOurpleIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7a/Icon-purplemonster.png",
+        "flip": false
+    },
+    "scott cawthon":{
+        "name": "scott cawthon",
+        "origin": "Creator of Five Nights At Freddys",
+        "mod": "Funkin' at Freddy's + Afton",
+        "quote": "Now let me show you how this game ends - Scott Cawthon/Animdude (Line before his Boss Fight in FNAF World)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/ScootUnused.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e6/ScottCawthonIcons.png",
+        "flip": false
+    },
+    "nonsense":{
+        "name": "nonsense",
+        "origin": "Vs. Nonsense",
+        "mod": "Vs. Nonsense",
+        "quote": "Did you just dab? In 2021? - Nonsense",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/19/NewSense.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b4/IconsNonsense.png",
+        "flip": false
+    },
+    "boy":{
+        "name": "boy",
+        "origin": "Twinsomnia",
+        "mod": "Twinsomnia",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b1/Lilboyidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e9/BoyRealIcons.png",
+        "flip": false
+    },
+    "girl":{
+        "name": "girl",
+        "origin": "Twinsomnia",
+        "mod": "Twinsomnia",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/78/Lilgirlidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/40/GirlRealIcons.png",
+        "flip": false
+    },
+    "sportsman":{
+        "name": "sportsman",
+        "origin": "TANKMEN 2",
+        "mod": "FNF Online",
+        "quote": "You're just jealous we have spikes and style and you don't. - Thugmen (TANKMEN 2)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/71/OVBGPlaySportIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/dc/Sportsmanicons.png",
+        "flip": true
+    },
+    "steve":{
+        "name": "steve",
+        "origin": "TANKMEN",
+        "mod": "FNF Online",
+        "quote": "You should've used the Pythagorean Theorem, bitch. - Steve (TANKMEN 2)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9e/Steveidletankman.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/54/SteveOnlineVSIcons.png",
+        "flip": true
+    },
+    "alien hominid":{
+        "name": "alien hominid",
+        "origin": "Alien Hominid",
+        "mod": "FNF Online",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/72/VSONLINEAlienHominidIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/83/VSONLINEAlienIcon.png",
+        "flip": false
+    },
+    "hypno":{
+        "name": "hypno",
+        "origin": "Hypno's Lullaby",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "Come little children, come with me. Safe and happy you will be. Away from home, now let us run. With Hypno, you'll have lots of fun - Lyrics from Hypno's Lullaby Creepypasta",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/31/Hypno_Phase_1.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/5a/Icon-hypno.png",
+        "flip": false
+    },
+    "gengar":{
+        "name": "gengar",
+        "origin": "Pokémon Series",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "Lurking in the shadowy corners of rooms, it awaits chances to steal its prey's life force. - Gengar's Pearl Pokédex entry",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fe/FNFLGengarIdle.gif",
+        "flip": true
+    },
+    "muk":{
+        "name": "muk",
+        "origin": "Pokémon Series",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "There are over a hundred kinds of poison inside its body. Chemical reactions between different poisons are the source of its vitality. - Muk's Ultra Sun Pokédex entry",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/63/FNFLMukIdle.gif",
+        "flip": true
+    },
+    "disabled":{
+        "name": "disabled",
+        "origin": "DISABLED Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "You’re lying. You... can Sing. Give me your Sing. - DISABLED (DISABLED Creepypasta)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/FNFLWiggly4Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a7/Icon-wigglytuff.png",
+        "flip": false
+    },
+    "ponyta":{
+        "name": "ponyta",
+        "origin": "Pokémon Red/Green",
+        "mod": "Friday Night Funkin' Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e8/Ponyta_Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/78/Icon-ponyta.png",
+        "flip": true
+    },
+    "purin":{
+        "name": "purin",
+        "origin": "Purin Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "This unknown form of Jigglypuff appears to have a far deadlier Sing ability than usual, be cautious. - Purin Pokedex entry from Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/62/FNFLJigglyIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/6c/Icon-jigglypuff.png",
+        "flip": false
+    },
+    "hell bell":{
+        "name": "hell bell",
+        "origin": "Hell Bell Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9a/Hell_bell_idle.gif",
+        "flip": false
+    },
+    "shitno":{
+        "name": "shitno",
+        "origin": "Friday Night Funkin' Lullaby",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "Her name is actually Shinto, but due to the fact that it's not possible to beat her in the game she's from, players nicknamed her 'Shintno.' The only way to capture her would be to use a hacked copy and go beyond the glitched difficulty cap. But you don't want to do that... - Shitno Pokedex Entry from Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/87/Shitno_Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0a/Icon-shitno.png",
+        "flip": false
+    },
+    "buried alive":{
+        "name": "buried alive",
+        "origin": "Buried Alive Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "You're...here...I'm trapped...And I'm lonely...So very lonely...Won't you join me? - Buried Alive",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/90/FNFLBuriedIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/03/BuriedAliveIcon.png",
+        "flip": true
+    },
+    "glitchy red":{
+        "name": "glitchy red",
+        "origin": "Glitch Red Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "They took everything from me. My voice, my freedom, my legacy. And they replaced me with some-brown eyed kid. - Red in Glitchy Red Creepypasta",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/61/FNFLRedIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0d/Icon-glitchy-red.png",
+        "flip": true
+    },
+    "steven":{
+        "name": "steven",
+        "origin": "Strangled Red Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "In a world that cheated me… why should I play fair? - Steven in Strangled Red Creepypasta",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c5/FNFLSteven2HesJustStandingThere.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/ab/Icon-steven-evil.png",
+        "flip": false
+    },
+    "beezle":{
+        "name": "beezle",
+        "origin": "Hell Bell Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "Lmao are you scared of an old dude? - Botplay message in Death Toll in FNF Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/Beelzebub_anim._idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/39/Icon-beelze.png",
+        "flip": true
+    },
+    "silver":{
+        "name": "silver",
+        "origin": "Lost Silver Creepypasta",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "Certain Pokemon have been able to hear the muffled screams and wails this trainer does. When they hear it, their faces are filled with fear. - Silver's Podedex entry in Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/50/SilverIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/80/Icon-silver.png",
+        "flip": false
+    },
+    "red":{
+        "name": "red",
+        "origin": "Pokémon Series",
+        "mod": "Friday Night Funkin' Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e6/FNFLMTRedIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/75/FrostyRedIcon.png",
+        "flip": true
+    },
+    "grey":{
+        "name": "grey",
+        "origin": "Friday Night Funkin' Lullaby",
+        "mod": "Friday Night Funkin' Lullaby",
+        "quote": "So cold. Why is it so cold? - Grey (voiceline in Shitno in FNF Lullaby)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/dd/ShitnoGreyIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c9/Icon-grey.png",
+        "flip": true
+    },
+    "dawn":{
+        "name": "dawn",
+        "origin": "Pokémon Series",
+        "mod": "Friday Night Funkin' Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/01/Dawn_Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/14/Icon-dawn.png",
+        "flip": true
+    },
+    "secret histories tails":{
+        "name": "secret histories tails",
+        "origin": "Secret Histories of Sonic and Tails",
+        "mod": "Friday Night Funkin' Secret Histories",
+        "quote": "WHY? THEY WERE IMPOSTERS, SONIC! THEY DIDN'T LOVE YOU, I LOVED YOU! YOU THINK THEY WERE YOUR FRIENDS? I WAS YOUR BEST FRIEND SONIC! DON'T YOU GET IT? SONIC'S BEST FRIEND IS TAILS! ME! - Tails in Secret Histories of Sonic and Tails",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/27/T.ails_FNF_SH.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4f/Icon-mashedtails.png",
+        "flip": false
+    },
+    "secret histories sonic":{
+        "name": "secret histories sonic",
+        "origin": "Secret Histories of Sonic and Tails",
+        "mod": "Friday Night Funkin' Secret Histories",
+        "quote": "You have never once, ever could be, or ever will be my friend, ever, you SAD TWISTED FUCK! - Sonic in Secret Histories of Sonic and Tails",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/07/Sonic_be_bopping_2.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8f/Icon-mashedsonic.png",
+        "flip": true
+    },
+    "secret histories mario":{
+        "name": "secret histories mario",
+        "origin": "Secret Histories of Mario",
+        "mod": "Mario's Monday Night Massacre",
+        "quote": "You don't think I knew about the Shenmue? You tried to fuck me! - Mario in Secret Histories of Sonic and Tails",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/S.C_Mario_idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/34/Icon-shmMM.png",
+        "flip": false
+    },
+    "meatcanyon spongebob":{
+        "name": "meatcanyon spongebob",
+        "origin": "Secret Formula",
+        "mod": "Mistful Crimson Morning",
+        "quote": "Another beautiful day at the Krusty Krab. Another day servicing the masses - Spongebob at the beginning of Meatcanyon's Secret Formula",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/27/MeatcanyonSpongebob.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/88/MCSpongebobV2Icons.png",
+        "flip": true
+    },
+    "served plankton":{
+        "name": "served plankton",
+        "origin": "Plankton Gets Served Creepypasta",
+        "mod": "Mistful Crimson Morning",
+        "quote": "That's it, I'm done. The 4:15 bus should be along any time now. - Plankton (Spongebob Squarepants S7E137a 'One Coarse Meal')",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e4/Plenkton.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/59/Icon-plankton.png",
+        "flip": false
+    },
+    "faceless spongebob":{
+        "name": "faceless spongebob",
+        "origin": "Faceless Creepypasta",
+        "mod": "Mistful Crimson Morning",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/6c/Facelesspongidle.png",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/26/Icon-facelessSet.png",
+        "flip": false
+    },
+    "faceless patrick":{
+        "name": "faceless patrick",
+        "origin": "Faceless Creepypasta",
+        "mod": "Mistful Crimson Morning",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/78/Facelesspatrickidle.png",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/26/Icon-facelessSet.png",
+        "flip": false
+    },
+    "bootleg spongebob":{
+        "name": "bootleg spongebob",
+        "origin": "Spongebob Bootleg Episode Creepypasta",
+        "mod": "Mistful Crimson Morning",
+        "quote": "Many who stare at this image for a long enough period of time claim to see Spongebob blink - Spongebob Bootleg Episode creepypasta",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/da/BootlegSpongeBob.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c9/Icon-bootlegSet.png",
+        "flip": false
+    },
+    "teuthida":{
+        "name": "teuthida",
+        "origin": "Mistful Crimson Morning",
+        "mod": "Mistful Crimson Morning",
+        "quote": "Tonight we rehearse for the greatest concert to ever be held, crustacean. A symphony unmatched by even Neptune himself. And you've got the leading role. Won't you join me? - ",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/18/StarvedSquedward.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/31/StarvedSquidwardIcons.png",
+        "flip": false
+    },
+    "horrortales patrick":{
+        "name": "horrortales patrick",
+        "origin": "Spongebob Horror Tales",
+        "mod": "Mistful Crimson Morning",
+        "quote": "He's just standing there, MENACINGLY! - Patrick (Spongbob Squarepants S1E7a 'Hall Monitor')",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/HorrorTalesPatrick.png",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/82/HorrorTalesPatrickIcons.png",
+        "flip": false
+    },
+    "i hate you luigi":{
+        "name": "i hate you luigi",
+        "origin": "I Hate You.exe",
+        "mod": "Mario's Madness",
+        "quote": "You thought Koopa worked alone? - Luigi in I Hate You creepypasta",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/46/IHateYouIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8d/IHULuigiIcons.png",
+        "flip": false
+    },
+    "wario apparation":{
+        "name": "wario apparation",
+        "origin": "Super Mario 64",
+        "mod": "Mario's Madness",
+        "quote": "You want fun? Wario show you fun! - Wario (E3 1996)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/75/Warioheadidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e9/WarioApparitionIcons.png",
+        "flip": false
+    }
+}
