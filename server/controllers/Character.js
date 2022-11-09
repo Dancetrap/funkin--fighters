@@ -7,10 +7,11 @@ const { Character } = models;
 
 const characters = require('../../hosted/characters.json');
 const CharacterModel = require('../models/Character');
+// const { values } = require('underscore');
 
 const createCharacterModels = async (req, res) => {
-  console.log('testing');
-  Object.keys(characters).forEach(async (k) => {
+  const search = [];
+  for (let k = 0; k < characters.length; k++) {
     const character = {
       name: characters[k].name,
       // origin: characters[k].origin,
@@ -18,18 +19,22 @@ const createCharacterModels = async (req, res) => {
       image: characters[k].imageURL,
       flip: characters[k].flip,
     };
-    try {
-      const addCharacter = new Character(character);
-      await addCharacter.save();
-      return res.status(201).json(
-        { name: addCharacter.name, image: addCharacter.image, flip: addCharacter.flip },
-      );
-    } catch (err) {
-      if (err.code === 11000) {
-        return res.status(400).json({ error: 'Character already exists!' });
-      }
-      return res.status(400).json({ error: 'An error occured' });
-    }
+    const addCharacter = new Character(character);
+    search.push(addCharacter.save());
+  }
+
+  return Promise.all(search).then(async (val) => {
+    console.log(val);
+    // try {
+    //   return res.status(201).json(
+    //     { name: addCharacter.name, image: addCharacter.image, flip: addCharacter.flip },
+    //   );
+    // } catch (err) {
+    //   if (err.code === 11000) {
+    //     return res.status(400).json({ error: 'Character already exists!' });
+    //   }
+    //   return res.status(400).json({ error: 'An error occured' });
+    // }
   });
 };
 

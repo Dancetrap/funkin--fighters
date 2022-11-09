@@ -19,6 +19,7 @@ const router = (app) => {
 
   app.get('/searchCharacters', mid.requiresLogin, controllers.Character.findCharacters);
   app.post('/load', mid.requiresLogin, controllers.Character.createCharacterModels);
+  // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 
   // app.get('/searchCharacters', mid.requiresLogin, controllers.Character.searchTest);
 

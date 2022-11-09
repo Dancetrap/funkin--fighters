@@ -36,10 +36,11 @@ const init = async () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(csrfToken),
+        body: JSON.stringify({ _csrf: csrfToken }),
       });
     
     const onLoad = await load.json();
+    console.log("Character List: " + onLoad);
     console.log(onLoad);
 }
 
