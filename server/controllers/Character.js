@@ -23,18 +23,11 @@ const createCharacterModels = async (req, res) => {
     search.push(addCharacter.save());
   }
 
-  return Promise.all(search).then(async (val) => {
-    console.log(val);
-    // try {
-    //   return res.status(201).json(
-    //     { name: addCharacter.name, image: addCharacter.image, flip: addCharacter.flip },
-    //   );
-    // } catch (err) {
-    //   if (err.code === 11000) {
-    //     return res.status(400).json({ error: 'Character already exists!' });
-    //   }
-    //   return res.status(400).json({ error: 'An error occured' });
-    // }
+  return Promise.all(search).then(() =>  {
+    console.log(search);
+    return res.status(200).json({message: 'success'});
+  }).catch(err => {
+    return res.status(500).json({error: 'Something went wrong'});
   });
 };
 
