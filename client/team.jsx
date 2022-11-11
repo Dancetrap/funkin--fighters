@@ -26,24 +26,15 @@ const init = async () => {
 
     const searchBox = document.querySelector('#characterField');
     searchBox.addEventListener('input', async ()=>{
+        // document.getElementById('results').innerHTML = '';
         const response = await fetch(`/searchCharacters?name=${searchBox.value}`);
         const obj = await response.json();
         console.log(response.status);
         console.log(obj);
-        if(searchBox.value == null || searchBox.value == '')
-        {
-            ReactDOM.render(
-                <Nothing />,
-                document.getElementById('content')
-            );
-        }
-        else
-        {
             ReactDOM.render(
                 <CharacterList character={obj} />,
-                document.getElementById('content')
+                document.getElementById('results')
             );
-        }
     });
 
     const load = await fetch('/load', {

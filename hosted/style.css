@@ -265,10 +265,8 @@ h3.domoAge {
 }
 
 
-#content {
-    /* margin-top: 10px; */
-    /* margin: 5px; */
-    font-size: 20px;
+#results {
+    font-size: 15px;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -279,7 +277,7 @@ h3.domoAge {
 }
 
 #search{
-    font-size: 20px;
+    font-size: 10px;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -289,8 +287,8 @@ h3.domoAge {
 #characterField{
     border: 1px solid #ccc;
     width: 300px;
-    height: 50px;
-    font-size: 32px;
+    height: 30px;
+    font-size: 20px;
     padding: 5px;
     margin: 10px;
 }
@@ -312,9 +310,29 @@ h3.domoAge {
     flex-direction: column;
     width: auto;
     padding: 10px;
-    /* height: auto; */
 }
 
 #addToTeam input[type=image]{
     align-self: center;
+}
+
+#yourTeam{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+#yourTeam h2{
+    height: auto;
+    text-align: center;
+    font-size: 32px;
+}
+
+#team{
+    width: 500px;
+    height: 250px;
+    border: 1px solid #000;
 }
