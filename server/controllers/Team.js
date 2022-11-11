@@ -31,7 +31,7 @@ const createNewTeam = async (req, res) => {
 const addCharacterToTeam = async (req, res) => {
   const addteam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   console.log(addteam);
-  // let exist = false;
+  let exist = false;
   console.log(req.body._id);
   if (addteam.team.length !== 0) {
     const teamMember = await CharacterModel.findById(req.body._id).exec();
@@ -43,7 +43,6 @@ const addCharacterToTeam = async (req, res) => {
       console.log(teamMember.name === others.name);
       if (teamMember.name === others.name) {
         exist = true;
-        return res.status(400).json({ error: 'Character already exists' });
       }
       return undefined;
     });
@@ -52,12 +51,13 @@ const addCharacterToTeam = async (req, res) => {
     //   return res.status(400).json({ error: 'Character already exists' });
     // }
 
-    if (addteam.team.length <= 20) {
+    if (addteam.team.length <= 20 && !exist) {
       addteam.team.push(req.body._id);
       addteam.save();
       // console.log(addteam);
       return res.status(201).json({ team: addteam });
     }
+    return res.status(400).json({ error: 'Character already exists' });
   } else {
     const teamMember = await CharacterModel.findById(req.body._id).exec();
     console.log('My old team member');
@@ -68,8 +68,6 @@ const addCharacterToTeam = async (req, res) => {
     // console.log(addteam);
     return res.status(201).json({ team: addteam });
   }
-
-  return res.status(500).json({ error: 'An error has occured' });
 };
 
 const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
