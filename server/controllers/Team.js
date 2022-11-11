@@ -26,48 +26,21 @@ const createNewTeam = async (req, res) => {
   }
 };
 
-
 // Cannot set headers after they are sent to the client error
 const addCharacterToTeam = async (req, res) => {
-  const addteam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
-  console.log(addteam);
-  let exist = false;
-  console.log(req.body._id);
-  if (addteam.team.length !== 0) {
-    const teamMember = await CharacterModel.findById(req.body._id).exec();
-    console.log('My old team member');
-    console.log(teamMember.name);
-    addteam.team.forEach(async (c) => {
-      const others = await CharacterModel.findById(c).exec();
-      console.log(others.name);
-      console.log(teamMember.name === others.name);
-      if (teamMember.name === others.name) {
-        exist = true;
-      }
-      return undefined;
-    });
+  const addTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+  const teamMember = await CharacterModel.findById(req.body._id).exec();
 
-    // if (exist) {
-    //   return res.status(400).json({ error: 'Character already exists' });
-    // }
+  const existsInTeam = addTeam.team.filter((c) => c.name === teamMember.name).length !== 0;
 
-    if (addteam.team.length <= 20 && !exist) {
-      addteam.team.push(req.body._id);
-      addteam.save();
-      // console.log(addteam);
-      return res.status(201).json({ team: addteam });
-    }
-    return res.status(400).json({ error: 'Character already exists' });
-  } else {
-    const teamMember = await CharacterModel.findById(req.body._id).exec();
-    console.log('My old team member');
-    console.log(teamMember.name);
-
-    addteam.team.push(req.body._id);
-    addteam.save();
-    // console.log(addteam);
-    return res.status(201).json({ team: addteam });
+  console.log(existsInTeam);
+  if (existsInTeam) {
+    return res.status(400).json({ error: 'Character is already in team!' });
   }
+
+  addTeam.team.push(req.body._id);
+  addTeam.save();
+  return res.status(201).json({ team: addTeam });
 };
 
 const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
