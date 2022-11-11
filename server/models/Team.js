@@ -18,6 +18,9 @@ const TeamSchema = new mongoose.Schema({
     unique: true,
     ref: 'Account',
   },
+  isAccepted: {
+    type: Boolean,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
@@ -28,7 +31,7 @@ TeamSchema.statics.toAPI = (doc) => ({
   team: doc.team,
 });
 
-TeamSchema.statics.findByOwner = (ownerId, callback) => {
+TeamSchema.statics.findUsingOwner = (ownerId, callback) => {
   const search = {
     owner: mongoose.Types.ObjectId(ownerId),
   };

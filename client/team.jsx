@@ -49,9 +49,33 @@ const init = async () => {
         },
         body: JSON.stringify({ _csrf: csrfToken }),
     });
+
+
+    const getTeam = await fetch('/getTeam');
+    const theTeam = await getTeam.json();
+    console.log(theTeam);
+}
+
+const addTeamMember = async (e) => 
+{
+    e.preventDefault();
+    helper.hideError();
+
+    const _id = e.target.querySelector("#_id").value;
+    const _csrf = e.target.querySelector("#_csrf").value;
+    if(!_id || !_csrf)
+    {
+        helper.handleError('All fields are required!');
+        return false;
+    }
+
+    helper.sendPost(e.target.action, {_id, _csrf});
+
+    const response = await fetch('/getTeam');
+    const data = await response.json();
+    console.log(data);
+    return false;
     
-    const onLoad = await makeTeam.json();
-    console.log(onLoad);
 }
 
 const CharacterList = (props) => {
@@ -75,7 +99,7 @@ const CharacterList = (props) => {
             <form id="addToTeam" 
             name={chr.name}
             key={chr._id} 
-            // onSubmit={handleLogin} 
+            onSubmit={addTeamMember} 
             action="/add" 
             method="POST" 
             className="set">

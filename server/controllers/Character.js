@@ -50,9 +50,8 @@ const findCharacters = async (req, res) => {
   }
   // console.log(docs);
   // console.log(req.query.name);
-  
-  if(req.query.name === '')
-  {
+
+  if (req.query.name === '') {
     return res.status(204);
   }
 
