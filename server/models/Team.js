@@ -8,13 +8,14 @@ const TeamSchema = new mongoose.Schema({
     // type: Array,
     type: [mongoose.Schema.ObjectId],
   },
-  limit: {
-    type: Number,
-    max: 20,
-  },
+  // limit: {
+  //   type: Number,
+  //   max: 20,
+  // },
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
+    unique: true,
     ref: 'Account',
   },
   createdDate: {

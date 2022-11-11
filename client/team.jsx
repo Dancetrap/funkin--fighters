@@ -16,7 +16,6 @@ const init = async () => {
 
     // const load = await fetch('/load');
     // const onLoad = await load.json();
-    // console.log(onLoad);
 
     csrfToken = data.csrfToken;
     ReactDOM.render(
@@ -26,11 +25,9 @@ const init = async () => {
 
     const searchBox = document.querySelector('#characterField');
     searchBox.addEventListener('input', async ()=>{
-        // document.getElementById('results').innerHTML = '';
+        ReactDOM.unmountComponentAtNode(document.getElementById('results'));
         const response = await fetch(`/searchCharacters?name=${searchBox.value}`);
         const obj = await response.json();
-        console.log(response.status);
-        console.log(obj);
             ReactDOM.render(
                 <CharacterList character={obj} />,
                 document.getElementById('results')
@@ -44,20 +41,17 @@ const init = async () => {
         },
         body: JSON.stringify({ _csrf: csrfToken }),
       });
+
+    const makeTeam = await fetch('/loadTeam', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ _csrf: csrfToken }),
+    });
     
-    const onLoad = await load.json();
-}
-
-const getCharacters = async (obj) => {
-
-}
-
-const Nothing = () => {
-    return (
-        <div className="characterList">
-            <h3 className="emptyDomo">Nothing</h3>
-        </div>
-    );
+    const onLoad = await makeTeam.json();
+    console.log(onLoad);
 }
 
 const CharacterList = (props) => {
