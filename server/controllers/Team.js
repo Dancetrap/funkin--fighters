@@ -30,8 +30,8 @@ const createNewTeam = async (req, res) => {
 const addCharacterToTeam = async (req, res) => {
   const addTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   const teamMember = await CharacterModel.findById(req.body._id).exec();
-
-  const existsInTeam = addTeam.team.filter((c) => c.name === teamMember.name).length !== 0;
+ 
+  const existsInTeam = addTeam.team.filter((c) => c._id.equals(teamMember._id)).length !== 0;
 
   console.log(existsInTeam);
   if (existsInTeam) {
@@ -42,6 +42,10 @@ const addCharacterToTeam = async (req, res) => {
   addTeam.save();
   return res.status(201).json({ team: addTeam });
 };
+
+// const removeMemberFromTeam = async (req, res) => {
+//   const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+// }
 
 const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
   if (err) {

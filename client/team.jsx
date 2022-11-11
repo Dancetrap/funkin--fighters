@@ -118,4 +118,14 @@ const CharacterList = (props) => {
     );
 }
 
+const TeamMembers = (props) => {
+
+    // return (
+        // for(i = 0; i < 20; i++)
+        // {
+
+        // }
+    // )
+}
+
 window.onload = init;
