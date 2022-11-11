@@ -28,7 +28,22 @@ const init = async () => {
     searchBox.addEventListener('input', async ()=>{
         const response = await fetch(`/searchCharacters?name=${searchBox.value}`);
         const obj = await response.json();
+        console.log(response.status);
         console.log(obj);
+        if(searchBox.value == null || searchBox.value == '')
+        {
+            ReactDOM.render(
+                <Nothing />,
+                document.getElementById('content')
+            );
+        }
+        else
+        {
+            ReactDOM.render(
+                <CharacterList character={obj} />,
+                document.getElementById('content')
+            );
+        }
     });
 
     const load = await fetch('/load', {
@@ -40,35 +55,58 @@ const init = async () => {
       });
     
     const onLoad = await load.json();
-    console.log("Character List: " + onLoad);
-    console.log(onLoad);
 }
 
-// const CharacterList = (props) => {
-//     if(props.domos.length === 0)
-//     {
-//         return (
-//             <div className="characterList">
-//                 <h3 className="emptyDomo">No Domos Yet!</h3>
-//             </div>
-//         );
-//     }
+const getCharacters = async (obj) => {
 
-//     const domoNodes = props.domos.map(domo => {
-//         return (
-//             <div key = {domo._id} className="domo">
-//                 <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
-//                 <h3 className="domoName"> Name: {domo.name} </h3>
-//                 <h3 className="domoAge"> Age: {domo.age} </h3>
-//             </div>
-//         );
-//     });
+}
 
-//     return(
-//         <div className="characterList">
-//             {domoNodes}
-//         </div>
-//     );
-// }
+const Nothing = () => {
+    return (
+        <div className="characterList">
+            <h3 className="emptyDomo">Nothing</h3>
+        </div>
+    );
+}
+
+const CharacterList = (props) => {
+
+    if(props.character.length === 0 || props.character.length === undefined)
+    {
+        return (
+            <div className="characterList">
+                <h3 className="emptyDomo">Nothing</h3>
+            </div>
+        );
+    }
+
+    const characters = props.character.map(chr => {
+        return (
+            // <div key = {chr._id} className="char">
+            //     {/* <img src={chr.image} alt={chr.name} height="150px" style="object-fit: contain;" id={chr._id}></img> */}
+            //     <h3 className="domoName"> Name: {chr.name} </h3>
+            //     {/* <h3 className="domoAge"> Age: {domo.age} </h3> */}
+            // </div>
+            <form id="addToTeam" 
+            name={chr.name}
+            key={chr._id} 
+            // onSubmit={handleLogin} 
+            action="/add" 
+            method="POST" 
+            className="set">
+                <input type="image" height="150" src={chr.image} />
+                <h3 className="characterName"> {chr.name} </h3>
+                <input id="_id" type="hidden" name="_id" value={chr._id} />
+                <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+            </form>
+        );
+    });
+
+    return(
+        <div className="characterList">
+            {characters}
+        </div>
+    );
+}
 
 window.onload = init;

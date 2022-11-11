@@ -965,5 +965,22 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/75/Warioheadidle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e9/WarioApparitionIcons.png",
         "flip": false
+    },
+    "coronation day peach":{
+        "name": "coronation day peach",
+        "origin": "Coronation Day ROM Hack",
+        "mod": "Mario's Monday Night Massacre",
+        "quote": "I believe I am the god of this forest. Are you looking for me? - Coronation Peach",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f9/C.D_Peach_idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fd/Icon-pfull.png",
+        "flip": false
+    },
+    "jason":{
+        "name": "jason",
+        "origin": "Friday The 13th",
+        "mod": "Friday Night The 13th",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/da/JasonIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/54/FNT13JasonIcons.png",
+        "flip": false
     }
 }

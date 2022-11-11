@@ -294,3 +294,27 @@ h3.domoAge {
     padding: 5px;
     margin: 10px;
 }
+
+.characterList{
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    padding-top: 1em;
+}
+
+#addToTeam{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+    padding: 10px;
+    /* height: auto; */
+}
+
+#addToTeam input[type=image]{
+    align-self: center;
+}
