@@ -137,7 +137,7 @@ const TeamMembers = (props) => {
     for (let i = 0; i < 20; i++)
     {
         const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-            <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} />
+            <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
             {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
             <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
             </form>  
