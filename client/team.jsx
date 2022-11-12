@@ -68,7 +68,7 @@ const init = async () => {
     await updateMembers();
 }
 
-const addTeamMember = async (e) => 
+const updateTeam = async (e) => 
 {
     e.preventDefault();
     helper.hideError();
@@ -112,7 +112,7 @@ const CharacterList = (props) => {
             <form id="addToTeam" 
             name={chr.name}
             key={chr._id} 
-            onSubmit={addTeamMember} 
+            onSubmit={updateTeam} 
             action="/add" 
             method="POST" 
             className="set">
@@ -136,7 +136,7 @@ const TeamMembers = (props) => {
     let content = [];
     for (let i = 0; i < 20; i++)
     {
-        const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={addTeamMember} >
+        const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
             <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} />
             {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
             <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
