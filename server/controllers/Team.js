@@ -5,6 +5,7 @@ const TeamModel = require('../models/Team');
 const { Team } = models;
 
 const makerPage = (req, res) => res.render('team');
+const gamePage = (req, res) => res.render('game');
 
 const createNewTeam = async (req, res) => {
   const teamData = {
@@ -103,6 +104,7 @@ const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, 
 
 module.exports = {
   makerPage,
+  gamePage,
   getTeam,
   createNewTeam,
   addCharacterToTeam,

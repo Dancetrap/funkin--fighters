@@ -16,6 +16,7 @@ const router = (app) => {
   app.post('/maker', mid.requiresLogin, controllers.Domo.makeDomo);
 
   app.get('/team', mid.requiresLogin, controllers.Team.makerPage);
+  app.get('/game', mid.requiresLogin, controllers.Team.gamePage);
 
   app.get('/searchCharacters', mid.requiresLogin, controllers.Character.findCharacters);
   app.get('/getCharacter', mid.requiresLogin, controllers.Character.getCharacter);
