@@ -17,6 +17,12 @@ const init = async () => {
     // const load = await fetch('/load');
     // const onLoad = await load.json();
 
+    // const wait = await fetch(`/getCharacter?name=636e6574f553b97a16cfc184`);
+    // const obj = await wait.json();
+    // console.log(obj);
+
+    // await updateMembers();
+
     csrfToken = data.csrfToken;
     ReactDOM.render(
         <CharacterSearch csrf={csrfToken} />,
@@ -34,6 +40,15 @@ const init = async () => {
             );
     });
 
+    // const getTeam = await fetch('/getTeam');
+    // const theTeam = await getTeam.json();
+    // console.log(theTeam);
+    // await updateMembers();
+    ReactDOM.render(
+        <TeamMembers csrf={csrfToken} />,
+        document.getElementById('team')
+    );
+
     const load = await fetch('/load', {
         method: 'POST',
         headers: {
@@ -50,10 +65,7 @@ const init = async () => {
         body: JSON.stringify({ _csrf: csrfToken }),
     });
 
-
-    const getTeam = await fetch('/getTeam');
-    const theTeam = await getTeam.json();
-    console.log(theTeam);
+    await updateMembers();
 }
 
 const addTeamMember = async (e) => 
@@ -73,7 +85,8 @@ const addTeamMember = async (e) =>
 
     const response = await fetch('/getTeam');
     const data = await response.json();
-    console.log(data);
+    await updateMembers();
+    // console.log(data);
     return false;
     
 }
@@ -120,12 +133,65 @@ const CharacterList = (props) => {
 
 const TeamMembers = (props) => {
 
-    // return (
-        // for(i = 0; i < 20; i++)
-        // {
+    let content = [];
+    for (let i = 0; i < 20; i++)
+    {
+        const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={addTeamMember} >
+            <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} />
+            {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
+            <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+            </form>  
+        content.push(imageForm);
+    }
+    return content;
+}
 
-        // }
-    // )
+const updateMembers = async (e) =>
+{
+    const getTeam = await fetch('/getTeam');
+    const theTeam = await getTeam.json();
+
+    const members = theTeam.team[0].team;
+    // for(let i = 0; i < e.character.team.length; i++)
+    if(members.length != 0)
+    {
+        for(let i = 0; i < members.length; i++)
+        {
+            const wait = await fetch(`/getCharacter?name=${members[i]}`);
+            const obj = await wait.json();
+            const img = document.getElementById(i);
+            // console.log(img.height);
+            img.src = obj.character.image;
+            // Disable is not working
+            img.disable = false;
+    
+            const addition = document.getElementById(`characterSlot${i}`);
+            addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${obj.character._id} />`;
+            // What's suppose to happen
+            // For every character on the team
+                // Get the input with the id of that number
+                // src equals character image
+                // enable it
+                // If all becomes twenty 
+        }
+        for(let i = members.length; i < 20; i++)
+        {
+            const addition = document.getElementById(`characterSlot${i}`);
+            const idInput = addition.querySelector('#_id');
+            if(idInput != null)
+            {
+                addition.removeChild(idInput);
+            }
+            const img = document.getElementById(i);
+            img.src = "/assets/img/150.png";
+            img.disable = true;
+        }
+    }
+
+    // ReactDOM.render(
+    //     <TeamMembers csrf={csrfToken} />,
+    //     document.getElementById('team')
+    // );
 }
 
 window.onload = init;

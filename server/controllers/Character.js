@@ -61,52 +61,21 @@ const findCharacters = async (req, res) => {
   }
 
   return res.json(docs);
+};
 
-  // const search = [];
-  // const ids = [];
-  // if (!req.query.name) {
-  //   return res.status(204);
-  // }
+const getCharacter = async (req, res) => {
+  const id = req.query.name;
+  const doc = await CharacterModel.findById(id).exec();
 
-  // const split = req.query.name.split('');
-  // // empty all of list
-  // Object.keys(characters).forEach(async (k) => {
-  //   let exist = true;
-  //   const name = k.split('');
-  //   for (let i = 0; i < req.query.name.length; i++) {
-  //     if (exist) {
-  //       if (name[i] !== split[i]) {
-  //         exist = false;
-  //         break;
-  //       }
-  //     }
-  //   }
-  //   if (exist) {
-  //     search.push(k);
-  //   }
-  //   return undefined;
-  //   // return res.status(400).json({ error: 'No characters found' });
-  // });
-  // // console.log(search);
-  // if (search.length !== 0) {
-  //   search.forEach((c) => {
-  //     CharacterModel.findOne({ name: c }).exec((err, doc) => {
-  //       if (err) {
-  //         console.log(err);
-  //         return res.status(400).json({ error: 'An error occurred!' });
-  //       }
-  //       console.log(doc);
-  //       return doc;
-  //     });
-  //   });
-
-  // return res.status(200).json({ list: search });
-  // }
-  // return res.status(404).json({ list: [], error: 'No characters found' });
+  if (doc) {
+    return res.status(200).json({ character: doc });
+  }
+  return res.status(404).json({ error: 'Character not found' });
 };
 
 module.exports = {
   makerPage,
   findCharacters,
   createCharacterModels,
+  getCharacter,
 };

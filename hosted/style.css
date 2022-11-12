@@ -332,7 +332,25 @@ h3.domoAge {
 }
 
 #team{
-    width: 500px;
-    height: 250px;
+    /* width: 750px; */
+    width: auto;
+    height: auto;
+    /* height: 200px; */
     border: 1px solid #000;
+    /* display: flex;
+    align-content: center;
+    flex-wrap: wrap; */
+    padding: 10px;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 5vw);
+    grid-gap: 15px;
+}
+
+.player{
+    padding: 10px;
+    margin: 0%;
+    /* object-fit: cover; */
+    object-fit: contain;
 }
