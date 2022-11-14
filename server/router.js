@@ -22,7 +22,11 @@ const router = (app) => {
   app.get('/getCharacter', mid.requiresLogin, controllers.Character.getCharacter);
   app.post('/load', mid.requiresLogin, controllers.Character.createCharacterModels);
   app.post('/loadTeam', mid.requiresLogin, controllers.Team.createNewTeam);
-  app.get('/getTeam', mid.requiresLogin, controllers.Team.getTeam);
+  app.get('/yourTeam', mid.requiresLogin, controllers.Team.getYourTeam);
+  app.get('/theirTeam', mid.requiresLogin, controllers.Team.getOpponentTeam);
+
+  app.get('/user', mid.requiresLogin, controllers.Account.getYourUsername);
+  app.get('/oUser', mid.requiresLogin, controllers.Account.getUsername);
 
   app.post('/add', mid.requiresLogin, controllers.Team.addCharacterToTeam);
   app.post('/remove', mid.requiresLogin, controllers.Team.removeCharacterFromTeam);

@@ -66,6 +66,15 @@ const findAllUsers = (req, res) => {
   });
 };
 
+const getYourUsername = (req, res) => res.json({ username: req.session.account.username });
+
+const getUsername = (req, res) => {
+  Account.findById(req.query.id).exec((err, doc) => {
+    if (err) return res.status(400).json({ error: 'An error occurred!' });
+    return res.json({ username: doc.username });
+  });
+};
+
 module.exports = {
   loginPage,
   login,
@@ -73,4 +82,6 @@ module.exports = {
   signup,
   getToken,
   findAllUsers,
+  getYourUsername,
+  getUsername,
 };

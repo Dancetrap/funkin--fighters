@@ -348,6 +348,15 @@ h3.domoAge {
     grid-gap: 15px;
 }
 
+#gameMenu{
+    display: flex;
+    flex-direction: column;
+}
+
+#gameMenu button{
+    margin: 5px;
+}
+
 .player{
     padding: 10px;
     margin: 0%;

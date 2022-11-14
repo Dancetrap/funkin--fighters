@@ -1,14 +1,11 @@
 const models = require('../models');
 const CharacterModel = require('../models/Character');
 const TeamModel = require('../models/Team');
-const AccountModel = require('../models/Account');
 
 const { Team } = models;
 
 const makerPage = (req, res) => res.render('team');
 const gamePage = (req, res) => res.render('game');
-
-const teams = [];
 
 const createNewTeam = async (req, res) => {
   const teamData = {
@@ -97,7 +94,7 @@ const removeCharacterFromTeam = async (req, res) => {
   // return res.status(200).json({ error: 'An unexpected error has occured!' });
 };
 
-const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
+const getYourTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
   if (err) {
     console.log(err);
     return res.status(400).json({ error: 'An error occurred!' });
@@ -105,14 +102,21 @@ const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, 
   return res.json({ team: docs });
 });
 
-const findAccounts = async (req, res) => {
-  const teams = await TeamModel.find({ 
-      isAccepted: true, 
-      owner: {$ne: req.session.account._id} 
-    }).exec();
+const getOpponentTeam = async (req, res) => {
+  const doc = await TeamModel.findOne({ owner: req.query.team }).exec();
+  if (doc) {
+    return res.json({ team: doc });
+  }
+  return res.status(400).json({ error: 'An error has occured' });
+};
 
-  if(teams)
-  {
+const findAccounts = async (req, res) => {
+  const teams = await TeamModel.find({
+    isAccepted: true,
+    owner: { $ne: req.session.account._id },
+  }).exec();
+
+  if (teams) {
     return res.json({ accounts: teams });
   }
 
@@ -123,7 +127,8 @@ module.exports = {
   makerPage,
   gamePage,
   findAccounts,
-  getTeam,
+  getYourTeam,
+  getOpponentTeam,
   createNewTeam,
   addCharacterToTeam,
   removeCharacterFromTeam,
