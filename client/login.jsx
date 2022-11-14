@@ -45,7 +45,6 @@ const handleSignup = (e) => {
 }
 
 const LoginWindow = (props) => {
-    console.log(props.csrf);
     return (
         <form id="loginForm" 
         name="loginForm" 
