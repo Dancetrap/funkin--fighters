@@ -28,10 +28,7 @@ const createCharacterModels = async (req, res) => {
       search.push(addCharacter.save());
     });
 
-    return Promise.all(search).then(() => {
-      console.log(search);
-      return res.status(200).json({ message: 'success' });
-    }).catch((err) => {
+    return Promise.all(search).then(() => res.status(200).json({ message: 'success' })).catch((err) => {
       console.log(err);
       return res.status(500).json({ error: 'Something went wrong' });
     });
