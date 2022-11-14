@@ -106,36 +106,14 @@ const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, 
 });
 
 const findAccounts = async (req, res) => {
-  const validate = await AccountModel.findOne({}).exec();
-  if (validate) {
-    const account = await AccountModel.find({}).exec();
-    // console.log(account);
-    account.forEach(async (e) => {
-      const team = await TeamModel.find({ owner: e._id }).exec();
-      teams.push(team);
-      // console.log(team[0].isAccepted);
-      // console.log(e._id);
-      // console.log(req.session.account._id);
-      if (team[0].isAccepted && e._id !== req.session.account._id) {
-        console.log('push');
-        teams.push(team);
-        // console.log(teams);
-      }
-      // console.log(teams);
-    });
-    // console.log(teams);
-    // if (teams.length !== 0) {
-    //   return res.json({ accounts: teams });
-    // }
-    return Promise.all(teams).then(() => {
-      console.log(teams);
-      if (teams.length !== 0) {
-        return res.json({ accounts: teams });
-      }
-      return res.status(404).json({ error: 'No teams found' });
-    }).catch((err) => res.status(404).json({ error: err }));
-    // return res.status(404).json({ error: 'No teams found' });
-    // const teams = await TeamModel
+  const teams = await TeamModel.find({ 
+      isAccepted: true, 
+      owner: {$ne: req.session.account._id} 
+    }).exec();
+
+  if(teams)
+  {
+    return res.json({ accounts: teams });
   }
 
   return res.status(400).json({ error: 'No accounts found' });

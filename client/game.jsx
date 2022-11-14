@@ -3,7 +3,6 @@ let csrfToken;
 
 const SelectGame = (props) => {
 
-    console.log(props.team.team.length);
     if(props.team.team.length !== 20)
     {
         return (
@@ -43,6 +42,11 @@ const SelectGame = (props) => {
     );
 }
 
+const Game = (props) => {
+    // props.player
+    // props.opponent
+}
+
 const init = async () => {
     const response = await fetch('/getToken');
     const data = await response.json();
@@ -53,6 +57,7 @@ const init = async () => {
 
     const load = await fetch('/accounts');
     const accounts = await load.json();
+    console.log(accounts);
 
     ReactDOM.render(
         <SelectGame team={team.team[0]} />,
