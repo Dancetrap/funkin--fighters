@@ -1,6 +1,7 @@
 const models = require('../models');
 const CharacterModel = require('../models/Character');
 const TeamModel = require('../models/Team');
+const AccountModel = require('../models/Account');
 
 const { Team } = models;
 
@@ -102,9 +103,40 @@ const getTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, 
   return res.json({ team: docs });
 });
 
+const findAccounts = async (req, res) => {
+  const teams = [];
+
+  const validate = await AccountModel.findOne({}).exec();
+  if (validate) {
+    const account = await AccountModel.find({}).exec();
+    // console.log(account);
+    account.forEach(async (e) => {
+      const team = await TeamModel.find({ owner: e._id }).exec();
+      if (team.isAccepted && e._id !== req.session.account._id) {
+        teams.push(team);
+      }
+    });
+    // console.log(teams);
+    // if (teams.length !== 0) {
+    //   return res.json({ accounts: teams });
+    // }
+    return Promise.all(teams).then(() => {
+      if (teams.length !== 0) {
+        return res.json({ accounts: teams });
+      }
+      return res.status(404).json({ error: 'No teams found' });
+    }).catch((err) => res.status(404).json({ error: err }));
+    // return res.status(404).json({ error: 'No teams found' });
+    // const teams = await TeamModel
+  }
+
+  return res.status(400).json({ error: 'No accounts found' });
+};
+
 module.exports = {
   makerPage,
   gamePage,
+  findAccounts,
   getTeam,
   createNewTeam,
   addCharacterToTeam,

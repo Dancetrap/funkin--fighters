@@ -27,6 +27,8 @@ const router = (app) => {
   app.post('/add', mid.requiresLogin, controllers.Team.addCharacterToTeam);
   app.post('/remove', mid.requiresLogin, controllers.Team.removeCharacterFromTeam);
 
+  app.get('/accounts', mid.requiresLogin, controllers.Team.findAccounts);
+
   // app.get('/remove', mid.requiresLogin, controllers.Team.removeCharacterFromTeam);
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 
