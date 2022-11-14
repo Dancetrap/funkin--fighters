@@ -982,5 +982,32 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/da/JasonIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/54/FNT13JasonIcons.png",
         "flip": false
+    },
+    "cereal guy":{
+        "name": "cereal guy",
+        "origin": "Rage Comics",
+        "mod": "Friday Night Crunchin'",
+        "quote": "Well, for one thing....I had Reeses for breakfast. - Cereal Guy",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1c/Cereal-guy-idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/43/Icon-curiouscrunch.png",
+        "flip": false
+    },
+    "ifu":{
+        "name": "ifu",
+        "origin": "Friday Night Crunchin'",
+        "mod": "Friday Night Crunchin'",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a6/Ifu-idlenew.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f3/Icon-ifu.png",
+        "flip": false
+    }
+    ,
+    "idi":{
+        "name": "idi",
+        "origin": "YouAreAnIdiot.org",
+        "mod": "Friday Night Crunchin'",
+        "quote":"you are an idiot! ☺ ☺ ☺ - YouAreAnIdiot.org",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/37/Idiot_anim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/68/Icon-idiotFNC.png",
+        "flip": false
     }
 }

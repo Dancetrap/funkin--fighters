@@ -112,9 +112,15 @@ const findAccounts = async (req, res) => {
     // console.log(account);
     account.forEach(async (e) => {
       const team = await TeamModel.find({ owner: e._id }).exec();
-      if (team.isAccepted && e._id !== req.session.account._id) {
+      // console.log(team[0].isAccepted);
+      // console.log(e._id);
+      // console.log(req.session.account._id);
+      if (team[0].isAccepted && e._id !== req.session.account._id) {
+        console.log('push');
         teams.push(team);
+        // console.log(teams);
       }
+      // console.log(teams);
     });
     // console.log(teams);
     // if (teams.length !== 0) {
