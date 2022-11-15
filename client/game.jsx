@@ -87,16 +87,25 @@ const SelectTeam = (props) => {
     
     return ( 
         <div id="teams">
-            <h2 id='pName'></h2>
-        <div id="team">
+            <div id="twoteams">
+        <div id="teamPlayer">
+        <h2 id='pName'></h2>
+        <div id="teamP">
             {content}
+        </div>    
         </div>
-        <h3>vs.</h3>
-            <h2 id='oName'></h2>
-        <div id="team">
+        <h3 id='vs'>vs.</h3>
+        <div id="teamOpponent">
+        <h2 id='oName'></h2>
+        <div id="teamO">
             {oppContent}
         </div>
-        <button type='exist' onClick={loadOpposingTeam}>Find Another Team</button>
+        </div>
+        </div>
+        <div id="buttons">
+            <button type='exist' onClick={loadOpposingTeam}>Find Another Team</button>
+            <button type='exist'>Play Game</button>
+        </div>
     </div>
     );
 }
@@ -104,6 +113,21 @@ const SelectTeam = (props) => {
 const Game = (props) => {
     // props.player
     // props.opponent
+
+    // if character.flip is true, transform: scaleY(-1);
+
+    // document.addEventListener('keydown', function(event) {
+    // if(event.keyCode == 37) {
+        // alert('Left was pressed');
+    // }
+    // else if(event.keyCode == 39) {
+        // alert('Right was pressed');
+    // }
+
+    // Space is 32
+
+    // Lerp function, lerp(current number, new number, 1)
+// });
 }
 
 const loadOpposingTeam = async () => {

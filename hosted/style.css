@@ -348,6 +348,23 @@ h3.domoAge {
     grid-gap: 15px;
 }
 
+#teamP, #teamO{
+    /* width: 750px; */
+    width: auto;
+    height: auto;
+    /* height: 200px; */
+    border: 1px solid #000;
+    /* display: flex;
+    align-content: center;
+    flex-wrap: wrap; */
+    padding: 10px;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 5vw);
+    grid-gap: 15px;
+}
+
 #gameMenu{
     display: flex;
     flex-direction: column;
@@ -362,6 +379,48 @@ h3.domoAge {
     margin: 0%;
     /* object-fit: cover; */
     object-fit: contain;
+}
+
+#teams{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    /* flex-wrap: wrap;
+    position: relative; */
+    /* right: 100px; */
+    justify-content: center;
+}
+
+#vs{
+    position: relative;
+    top: 250px;
+}
+
+#pName, #oName{
+    text-align: center;
+}
+
+#twoteams{
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    /* justify-content: center; */
+}
+
+#teamPlayer, #teamOpponent{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+#buttons{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
 }
 
 @media screen and (max-width: 850px) and (min-width: 575px) {
@@ -404,4 +463,32 @@ h3.domoAge {
     .player{
         padding: 5px;
     }
+}
+
+@media screen and (max-width: 750px) and (min-width: 610px) {
+    #teamO, #teamP{
+        padding: 15px;
+        padding-bottom: 30px;
+        grid-template-columns: repeat(4, 5fr);
+        grid-template-rows: repeat(5, 5vw);
+        grid-gap: 20px;
+    }
+
+    /* .player{
+        padding: 5px;
+    } */
+}
+
+@media screen and (max-width: 610px) {
+    #teamO, #teamP{
+        padding: 15px;
+        padding-bottom: 30px;
+        grid-template-columns: repeat(2, 5fr);
+        grid-template-rows: repeat(10, 5vw);
+        grid-gap: 20px;
+    }
+
+    /* .player{
+        padding: 5px;
+    } */
 }

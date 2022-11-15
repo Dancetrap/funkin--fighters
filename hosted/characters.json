@@ -182,6 +182,42 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cf/MissingnoIcons.png",
         "flip": false
     },
+    "jeff the killer":{
+        "name": "jeff the killer",
+        "origin": "Jeff The Killer Creepypasta",
+        "mod": "Friday Night Trepidation",
+        "quote": "shhhhh..GO TO SLEEP - Jeff The Killer",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1c/JeffNewIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d5/Jefficons.png",
+        "flip": false
+    },
+    "slenderman":{
+        "name": "slenderman",
+        "origin": "Slenderman Creepypasta",
+        "mod": "Friday Night Trepidation",
+        "quote": "He is looking at you. When he screams, the world will end - Slenderman Creepypasta",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/56/SlenderNewIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9f/SlendermanIcons.png",
+        "flip": false
+    },
+    "ben drowned":{
+        "name": "ben drowned",
+        "origin": "Ben Drowned Creepypasta",
+        "mod": "Funkin' Drowned",
+        "quote": "You've met with a terrible fate, haven't you? - Ben Drowned",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/97/BenDrownedIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/09/BenDrownedIcons.png",
+        "flip": false
+    },
+    "eyeless jack":{
+        "name": "eyeless jack",
+        "origin": "Eyeless Jack Creepypasta",
+        "mod": "Friday Night Huntin'",
+        "quote": "My voice is not made for singing, to let you know. - Eyeless Jack",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f9/NoEyeJackIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3c/Icon-jack.png",
+        "flip": false
+    },
     "taeyai":{
         "name": "taeyai",
         "origin": "Cyber Sensation",
@@ -1069,8 +1105,7 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a6/Ifu-idlenew.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f3/Icon-ifu.png",
         "flip": false
-    }
-    ,
+    },
     "idi":{
         "name": "idi",
         "origin": "YouAreAnIdiot.org",
@@ -1078,6 +1113,24 @@
         "quote":"you are an idiot! ☺ ☺ ☺ - YouAreAnIdiot.org",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/37/Idiot_anim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/68/Icon-idiotFNC.png",
+        "flip": false
+    },
+    "mighty.zip":{
+        "name": "mighty.zip",
+        "origin": "Friday Night Funkin' D-Sides",
+        "mod": "Friday Night Funkin' D-Sides",
+        "quote":"In the notepad, fates all written. Cause Pandora didn't listen. Time will march and hear with me, THE SCREEN'S THE LAST YOU'LL EVER SEE - Mighty.zip",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/00/Mightyidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3d/MightyZIPIcons.png",
+        "flip": false
+    },
+    "euthanasia rabbit":{
+        "name": "euthanasia rabbit",
+        "origin": "Wednesday's Infidelity",
+        "mod": "Wednesday's Infidelity",
+        "quote":"In the end, we all die. Why should I even try? Gun in hand my life shall end. MY SUFFERING SHALL BE KNOWN FRIEND! - Euthanasia Rabbit",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c7/WIOswaldIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/Icon-OswaldWI.png",
         "flip": false
     }
 }
