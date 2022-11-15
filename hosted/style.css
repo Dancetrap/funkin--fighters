@@ -385,9 +385,9 @@ h3.domoAge {
     display: flex;
     flex-direction: column;
     align-content: center;
-    /* flex-wrap: wrap;
-    position: relative; */
-    /* right: 100px; */
+    flex-wrap: wrap;
+    /* position: relative;
+    right: 100px; */
     justify-content: center;
 }
 
@@ -405,6 +405,8 @@ h3.domoAge {
     display: flex;
     flex-direction: row;
     align-content: center;
+    position: relative;
+    right: 85px;
     /* justify-content: center; */
 }
 

@@ -73,6 +73,10 @@ const updateTeam = async (e) =>
     e.preventDefault();
     helper.hideError();
 
+    if(!e.target.querySelector("e._id")) {
+        return false;
+    }
+
     const _id = e.target.querySelector("#_id").value;
     const _csrf = e.target.querySelector("#_csrf").value;
     if(!_id || !_csrf)
@@ -174,18 +178,18 @@ const updateMembers = async (e) =>
                 // enable it
                 // If all becomes twenty 
         }
-        for(let i = members.length; i < 20; i++)
+    }
+    for(let i = members.length; i < 20; i++)
+    {
+        const addition = document.getElementById(`characterSlot${i}`);
+        const idInput = addition.querySelector('#_id');
+        if(idInput != null)
         {
-            const addition = document.getElementById(`characterSlot${i}`);
-            const idInput = addition.querySelector('#_id');
-            if(idInput != null)
-            {
-                addition.removeChild(idInput);
-            }
-            const img = document.getElementById(i);
-            img.src = "/assets/img/150.png";
-            img.disable = true;
+            addition.removeChild(idInput);
         }
+        const img = document.getElementById(i);
+        img.src = "/assets/img/150.png";
+        img.disable = true;
     }
 
     // ReactDOM.render(

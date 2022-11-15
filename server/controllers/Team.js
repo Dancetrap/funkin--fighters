@@ -1,3 +1,4 @@
+const { rest } = require('underscore');
 const models = require('../models');
 const CharacterModel = require('../models/Character');
 const TeamModel = require('../models/Team');
@@ -78,20 +79,6 @@ const removeCharacterFromTeam = async (req, res) => {
     return res.status(201).json({ error: 'Character has been removed' });
   }
   return res.status(400).json({ error: 'An unexpected error has occured!' });
-
-  // const id = req.query.name;
-  // const doc = await CharacterModel.findById(id).exec();
-
-  // const existsInTeam = getTeam.team.filter((c) => c._id.equals(doc._id)).length !== 0;
-  // // console.log(existsInTeam);
-  // if (existsInTeam) {
-  //   const index = getTeam.team.indexOf(doc._id);
-  //   console.log(index);
-  //   // console.log(getTeam.team);
-  //   return res.status(200).json({ error: 'Character has been found' });
-  // }
-
-  // return res.status(200).json({ error: 'An unexpected error has occured!' });
 };
 
 const getYourTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
@@ -123,6 +110,22 @@ const findAccounts = async (req, res) => {
   return res.status(400).json({ error: 'No accounts found' });
 };
 
+const generateCharacters = async (req, res) => {
+  let rteam;
+  try {
+    rteam = await CharacterModel.aggregate().sample(20).exec();
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'error getting random team' });
+  }
+
+  if (!rteam) {
+    return res.status(500).json({ error: 'no team generated' });
+  }
+
+  return res.json({ team: rteam });
+};
+
 module.exports = {
   makerPage,
   gamePage,
@@ -132,4 +135,5 @@ module.exports = {
   createNewTeam,
   addCharacterToTeam,
   removeCharacterFromTeam,
+  generateCharacters,
 };

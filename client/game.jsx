@@ -5,6 +5,8 @@ let accounts;
 let player;
 let opponent;
 
+let ai = false;
+
 // game variables
 const playerAlive = [];
 const playerDead = [];
@@ -24,7 +26,7 @@ const SelectGame = (props) => {
 
     let anotherPlayer = '';
 
-    if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={loadOpposingTeam}>Play against Another Player</button>;
+    if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={otherPlayer}>Play against Another Player</button>;
 
     // const gameOptions =
         // return (
@@ -54,7 +56,7 @@ const SelectGame = (props) => {
             <div key={"gameMenu"} id="gameMenu" >
                 {/* <form action="/ai"></form> */}
                 {/* <form action="/existing"></form> */}
-                <button type='ai'>Play against AI</button>
+                <button type='ai' onClick={aiPlayer} >Play against AI</button>
                 {anotherPlayer}
             </div>
         </div>
@@ -63,7 +65,7 @@ const SelectGame = (props) => {
 
 const SelectTeam = (props) => {
     let content = [];
-
+    let type;
 
     for (let i = 0; i < 20; i++)
     {
@@ -84,6 +86,9 @@ const SelectTeam = (props) => {
             </form>  
         oppContent.push(imageForm);
     }
+
+    if(ai) type = <button type='exist' onClick={aiPlayer}>Find Another Team</button>;
+    else type = <button type='exist' onClick={otherPlayer}>Find Another Team</button>;
     
     return ( 
         <div id="teams">
@@ -103,7 +108,7 @@ const SelectTeam = (props) => {
         </div>
         </div>
         <div id="buttons">
-            <button type='exist' onClick={loadOpposingTeam}>Find Another Team</button>
+            {type}
             <button type='exist'>Play Game</button>
         </div>
     </div>
@@ -130,28 +135,57 @@ const Game = (props) => {
 // });
 }
 
-const loadOpposingTeam = async () => {
+const aiPlayer = async () => {
+
+    const other = await fetch(`/random`);
+    opponent = await other.json();
+    // console.log(opponent.team);
+    ai = true;
+    await loadOpposingTeam(player.team[0], opponent, "Bot");  
+}
+
+const otherPlayer = async () => {
     const o = Math.floor(Math.random() * accounts.accounts.length);
 
     const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
     opponent = await other.json();
+
+    await loadOpposingTeam(player.team[0], opponent.team);   
+}
+
+const loadOpposingTeam = async (p,o,b) => {
+    // const o = Math.floor(Math.random() * accounts.accounts.length);
+
+    // const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
+    // opponent = await other.json();
+
+    // await preGame(player.team[0].team, opponent.team.team);
 
     ReactDOM.render(
         <SelectTeam csrf={csrfToken} />,
         document.getElementById('stage')
     );
 
-    const pMembers = player.team[0].team;
-    const oMembers = opponent.team.team;
+    const pMembers = p.team;
+    const oMembers = o.team;
     
     const yourName = await fetch(`/user`);
     const getMyName = await yourName.json();
 
-    const theirName = await fetch(`/oUser?id=${opponent.team.owner}`);
-    const getTheirName = await theirName.json();
+    if(b == null)
+    {
+        const theirName = await fetch(`/oUser?id=${opponent.team.owner}`);
+        const getTheirName = await theirName.json();
+        document.querySelector('#oName').innerHTML = getTheirName.username;
+    }
+    else
+    {
+        document.querySelector('#oName').innerHTML = b;
+    }
 
     document.querySelector('#pName').innerHTML = getMyName.username;
-    document.querySelector('#oName').innerHTML = getTheirName.username;
+    
+    
 
     for(let i = 0; i < pMembers.length; i++)
     {
@@ -168,16 +202,23 @@ const loadOpposingTeam = async () => {
     }
     for(let i = 0; i < oMembers.length; i++)
     {
-        const wait = await fetch(`/getCharacter?name=${oMembers[i]}`);
-        const obj = await wait.json();
         const img = document.getElementById("o"+i);
-        // console.log(img.height);
-        img.src = obj.character.image;
-        // Disable is not working
-        img.disable = false;
-    
         const addition = document.getElementById(`characterSlot${i}`);
-        addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${obj.character._id} />`;
+        if(ai)
+        {
+            img.src = oMembers[i].image;
+            addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${oMembers[i]._id} />`;
+        }
+        else
+        {
+            const wait = await fetch(`/getCharacter?name=${oMembers[i]}`);
+            const obj = await wait.json();
+            // console.log(img.height);
+            img.src = obj.character.image;
+            // Disable is not working
+            img.disable = false;
+            addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${obj.character._id} />`;
+        }
     }
 }
 
@@ -195,7 +236,6 @@ const init = async () => {
 
     const load = await fetch('/accounts');
     accounts = await load.json();
-    console.log(accounts);
 
     ReactDOM.render(
         <SelectGame team={player.team[0]} />,
