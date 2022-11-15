@@ -179,7 +179,11 @@ const loadOpposingTeam = async () => {
         const addition = document.getElementById(`characterSlot${i}`);
         addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${obj.character._id} />`;
     }
-} 
+}
+
+const playGame = async () => {
+    
+}
 
 const init = async () => {
     const response = await fetch('/getToken');
