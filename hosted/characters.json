@@ -312,6 +312,15 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f7/CupheadNewIcons.png",
         "flip": false
     },
+    "devil":{
+        "name": "devil",
+        "origin": "Cuphead",
+        "mod": "Indie Cross",
+        "quote": "You broke our deal...now it's my turn to break you!!! (The Phase 1 Devil Death line)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/43/DevilAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/80/DevilIndieIcon.png",
+        "flip": false
+    },
     "sans":{
         "name": "sans",
         "origin": "Undertale",
@@ -337,6 +346,24 @@
         "quote": "The creator lied to us - (Wall Message found in Bendy and the Ink Machine)",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/40/IndieBendyIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/dc/BendyIconIC.png",
+        "flip": false
+    },
+    "ink demon":{
+        "name": "ink demon",
+        "origin": "Bendy And The Ink Machine",
+        "mod": "Indie Cross",
+        "quote": "Beware the Ink Demon - (Wall Message found in Bendy and the Ink Machine)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/BendyNewIC.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e5/BendyNewIcon.png",
+        "flip": false
+    },
+    "sammy lawrence":{
+        "name": "sammy lawrence",
+        "origin": "Bendy And The Ink Machine",
+        "mod": "Indie Cross",
+        "quote": "Soon he will here me. He will set us free - Sammy Lawrence (Bendy and the Ink Machine Chapter 2)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/80/IndieSamIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/66/SammyIconIC.png",
         "flip": false
     },
     "imposter":{
@@ -541,9 +568,52 @@
         "name": "starved",
         "origin": "Starved Creepypasta",
         "mod": "Vs. Sonic.exe",
-        "quote": "I love that hedgehod - Starved after killing and eating Sonic",
+        "quote": "I love that hedgehog - Starved after killing and eating Sonic",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/StarvedIdleAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/91/StarvedIcons.png",
+        "flip": false
+    },
+    "furnace":{
+        "name": "furnace",
+        "origin": "Starved Creepypasta",
+        "mod": "Vs. Sonic.exe",
+        "quote": "TARGET SPOTTED - Furance",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b6/Furnace3.0Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/Icon-furnace-metal.png",
+        "flip": false
+    },
+    "fatal error":{
+        "name": "fatal error",
+        "origin": "Fatal Error Creepypasta",
+        "mod": "Vs. Sonic.exe",
+        "quote": "YOU CAN'T RUN FAR LITTLE FOX! - Fatal Error, Official Art",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/70/FatalErrorSonicIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/60/Icon-fatal-sonic.png",
+        "flip": false
+    },
+    "coldsteel":{
+        "name": "coldsteel",
+        "origin": "Coldsteel Meme",
+        "mod": "Vs. Sonic.exe",
+        "quote": "Psssh...nothin personnel...kid... Coldsteel Meme",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d4/Coldsleet.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e2/ColdsteelIcons.png",
+        "flip": false
+    },
+    "hog":{
+        "name": "hog",
+        "origin": "Hog/Scorched",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f3/SonicEXEHogIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/07/Icon-hog3.0.png",
+        "flip": false
+    },
+    "scorched":{
+        "name": "scorched",
+        "origin": "Hog/Scorched",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3c/ScorchedIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f2/Icon-scorched.png",
         "flip": false
     },
     "eduardo":{
