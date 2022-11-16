@@ -311,13 +311,11 @@ const playGame = async () => {
         opponentImg.style.transform = "scaleX(-1)";
     }
 
-    console.log(playerTurn);
     let coinFlip;
     if(playerTurn == null && opponentTurn == null)
     {
         const random = Math.random();
         coinFlip = random < 0.5;
-        console.log(coinFlip);
         if(coinFlip) playerTurn = true;
         else opponentTurn = true;
 
@@ -330,24 +328,7 @@ const playGame = async () => {
     if(opponentTurn)
     {
         roll.innerHTML = `${oName}'s Turn`;
-        setTimeout(function() {
-            oppRoll = getRandomInt(21);
-            console.log(oppRoll);
-            // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
-            opponentRollOutput.innerHTML = oppRoll;
-            curOpNum = oppRoll;
-            if(plyRoll == null)
-            {
-                playerTurn = true;
-                opponentTurn = false;
-                roll.innerHTML = `${pName}'s Turn`;
-            }
-            else
-            {
-                console.log("Compare");
-                compareNumbers(plyRoll,oppRoll);
-            }
-        }, 1000);
+        setTimeout(getRandomOpponent(), 3000);
     }
 
     if(playerTurn)
@@ -355,6 +336,7 @@ const playGame = async () => {
         roll.innerHTML = `${pName}'s Turn`;
     }
 
+    // Goals: figure out how to do timer for opponent
 
     document.addEventListener('keydown', function(event) {
         // 32 is the code for space
@@ -369,25 +351,7 @@ const playGame = async () => {
                 playerTurn = false;
                 opponentTurn = true;
                 roll.innerHTML = `${oName}'s Turn`;
-                setTimeout(function() {
-                    oppRoll = getRandomInt(21);
-                    console.log(oppRoll);
-                    // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
-                    opponentRollOutput.innerHTML = oppRoll;
-                    curOpNum = oppRoll;
-                    // I just realized I need to figure out how I'm going to do a tie. Maybe if it's a tie, I'll make the player go first
-                    if(plyRoll == null)
-                    {
-                        playerTurn = true;
-                        opponentTurn = false;
-                        roll.innerHTML = `${pName}'s Turn`;
-                    }
-                    else
-                    {
-                        console.log("Compare");
-                        compareNumbers(plyRoll,oppRoll);
-                    }
-                }, 1000);
+                setTimeout(getRandomOpponent(), 1000);
             }
             else
             {
@@ -396,6 +360,26 @@ const playGame = async () => {
             }
         }
     });
+
+    function getRandomOpponent() {
+        oppRoll = getRandomInt(21);
+        console.log(oppRoll);
+        // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
+        opponentRollOutput.innerHTML = oppRoll;
+        curOpNum = oppRoll;
+        // I just realized I need to figure out how I'm going to do a tie. Maybe if it's a tie, I'll make the player go first
+        if(plyRoll == null)
+        {
+            playerTurn = true;
+            opponentTurn = false;
+            roll.innerHTML = `${pName}'s Turn`;
+        }
+        else
+        {
+            console.log("Compare");
+            compareNumbers(plyRoll,oppRoll);
+        }
+    }
 
 }
 
