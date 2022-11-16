@@ -73,7 +73,7 @@ const updateTeam = async (e) =>
     e.preventDefault();
     helper.hideError();
 
-    if(!e.target.querySelector("e._id")) {
+    if(!e.target.querySelector("#_id")) {
         return false;
     }
 

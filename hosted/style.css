@@ -401,12 +401,12 @@ h3.domoAge {
 }
 
 #twoteams{
-    width: 50vw;
+    width: auto;
     display: flex;
     flex-direction: row;
     align-content: center;
-    position: relative;
-    right: 85px;
+    /* position: relative;
+    right: 85px; */
     /* justify-content: center; */
 }
 
@@ -450,6 +450,10 @@ h3.domoAge {
 
 #roll{
     margin: 0%;
+}
+
+#yourGuy, #theirGuy{
+    height: 50vh;
 }
 
 @media screen and (max-width: 850px) and (min-width: 575px) {

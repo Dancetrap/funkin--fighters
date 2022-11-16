@@ -145,13 +145,13 @@ const Game = (props) => {
         <div id="battle">
         <div id="player">
             <h3 id="playerCharName"></h3>
-            <img src="" alt="player" id="yourGuy" height="300" />
+            <img src="" alt="player" id="yourGuy" />
             <h3 id="yourNumber"></h3>
         </div>
         <h3>vs.</h3>
         <div id="opponent">
             <h3 id="opponentCharName"></h3>
-            <img src="" alt="opponent" id="theirGuy" height="300" />
+            <img src="" alt="opponent" id="theirGuy" />
             <h3 id="theirNumber"></h3>
         </div>
         </div>
@@ -250,6 +250,15 @@ const gameStart = async () => {
         document.getElementById('stage')
     );
 
+    if(playerAlive.length != 0)
+    {
+        playerAlive.splice(0);
+        playerDead.splice(0);
+        opponentAlive.splice(0);
+        opponentDead.splice(0);
+    }
+    
+
     for(let i = 0; i < 20; i++)
     {
         playerAlive.push(playerTeam[i]);
@@ -274,6 +283,12 @@ let opponentTurn;
 let curOpNum = 0;
 let curPNum = 0;
 
+    // rolling
+let plyRoll;
+let oppRoll;
+
+let roundOne = true;
+
 const playGame = async () => {
     // console.log("Start");
 
@@ -296,19 +311,32 @@ const playGame = async () => {
     const opponentRollOutput = document.getElementById('theirNumber');
 
     playerRollOutput.innerHTML = curPNum;
-    opponentRollOutput.innerHTML = curOpNum
+    opponentRollOutput.innerHTML = curOpNum;
 
     playerImg.src = ply.character.image;
     opponentImg.src = opp.character.image;
+
+    plyRoll = null;
+    oppRoll = null;
 
     if(ply.character.flip)
     {
         playerImg.style.transform = "scaleX(-1)";
     }
+    else
+    {
+        playerImg.style.transform = null;
+    }
+
+    console.log(opp.character.flip);
 
     if(!opp.character.flip)
     {
         opponentImg.style.transform = "scaleX(-1)";
+    }
+    else
+    {
+        opponentImg.style.transform = null;
     }
 
     let coinFlip;
@@ -322,13 +350,10 @@ const playGame = async () => {
     }
 
     const roll = document.getElementById('roll');
-    // rolling
-    let plyRoll;
-    let oppRoll;
     if(opponentTurn)
     {
         roll.innerHTML = `${oName}'s Turn`;
-        setTimeout(getRandomOpponent(), 3000);
+        setTimeout(getRandomOpponent, 3000);
     }
 
     if(playerTurn)
@@ -351,46 +376,95 @@ const playGame = async () => {
                 playerTurn = false;
                 opponentTurn = true;
                 roll.innerHTML = `${oName}'s Turn`;
-                setTimeout(getRandomOpponent(), 1000);
+                setTimeout(getRandomOpponent, 1000);
             }
             else
             {
-                console.log("Compare");
                 compareNumbers(plyRoll,oppRoll);
             }
         }
     });
+}
 
-    function getRandomOpponent() {
-        oppRoll = getRandomInt(21);
-        console.log(oppRoll);
-        // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
-        opponentRollOutput.innerHTML = oppRoll;
-        curOpNum = oppRoll;
-        // I just realized I need to figure out how I'm going to do a tie. Maybe if it's a tie, I'll make the player go first
-        if(plyRoll == null)
-        {
-            playerTurn = true;
-            opponentTurn = false;
-            roll.innerHTML = `${pName}'s Turn`;
-        }
-        else
-        {
-            console.log("Compare");
-            compareNumbers(plyRoll,oppRoll);
-        }
+function getRandomOpponent() {
+    const roll = document.getElementById('roll');
+    const opponentRollOutput = document.getElementById('theirNumber');
+
+    oppRoll = getRandomInt(21);
+    console.log(oppRoll);
+    // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
+    opponentRollOutput.innerHTML = oppRoll;
+    curOpNum = oppRoll;
+    // I just realized I need to figure out how I'm going to do a tie. Maybe if it's a tie, I'll make the player go first
+    if(plyRoll == null)
+    {
+        playerTurn = true;
+        opponentTurn = false;
+        roll.innerHTML = `${pName}'s Turn`;
     }
-
+    else
+    {
+        compareNumbers(plyRoll,oppRoll);
+    }
 }
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+
+// It's skipping numbers and I don't know why. I'll have to ask Austin on friday
 function compareNumbers(a,b) {
-    if(a > b) console.log("You Win");
-    else if(a < b) console.log("You Lose");
-    else if(a == b) console.log("Tie");
+    if(a > b){
+        console.log("You Win");
+        roll.innerHTML = `Point ${pName}`;
+        setTimeout(async function() {
+            opponentDead.push(opponentAlive[0]);
+            opponentAlive.splice(0,1);
+            if(opponentAlive.length == 0)
+            {
+                console.log("You Win");
+            }
+            else{
+                playerTurn = true;
+                opponentTurn = false;
+                await playGame();
+            }
+        },1000);
+    } 
+    else if(a < b){
+        roll.innerHTML = `Point ${oName}`;
+        console.log("You Lose");
+        setTimeout(async function() {
+            playerDead.push(playerAlive[0]);
+            playerAlive.splice(0,1);
+            if(playerAlive.length == 0)
+            {
+                console.log("You Lose");
+            }
+            else
+            {
+                playerTurn = false;
+                opponentTurn = true;
+                await playGame();
+            }
+        },1000);
+    } 
+    else if(a == b){
+        console.log("Tie");
+        setTimeout(function() {
+            let coinFlip;
+            const random = Math.random();
+            coinFlip = random < 0.5;
+            if(coinFlip){
+                playerTurn = true;
+            } 
+            else {
+                opponentTurn = true;
+                setTimeout(getRandomOpponent, 1000);
+            } 
+        }, 1000);
+    } 
 }
 
 const init = async () => {

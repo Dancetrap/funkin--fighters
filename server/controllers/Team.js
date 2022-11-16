@@ -39,6 +39,8 @@ const addCharacterToTeam = async (req, res) => {
     return res.status(400).json({ error: 'Character is already in team!' });
   }
 
+  console.log(teamMember);
+
   if (addTeam.team.length === 20) {
     return res.status(400).json({ error: 'Cannot add more team members' });
   }
