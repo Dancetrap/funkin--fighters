@@ -829,6 +829,15 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/83/VSONLINEAlienIcon.png",
         "flip": false
     },
+    "ena":{
+        "name": "ena",
+        "origin": "ENA",
+        "mod": "SugarCrush Stairway",
+        "quote": "Looks like I'm the best and you're the worst - ENA (ENA - Temptation Stairway)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/45/SugarCrushIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/97/EnaSCSWIcons.png",
+        "flip": false
+    },
     "hypno":{
         "name": "hypno",
         "origin": "Hypno's Lullaby",
