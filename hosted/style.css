@@ -374,7 +374,7 @@ h3.domoAge {
     margin: 5px;
 }
 
-.player{
+.player, .opponent{
     padding: 10px;
     margin: 0%;
     /* object-fit: cover; */
@@ -425,6 +425,33 @@ h3.domoAge {
     justify-content:space-evenly;
 }
 
+#game{
+    text-align: center;
+}
+
+#battle{
+    border: 2px solid #338acc;
+    height: 35px;
+    width: 75vw;
+    margin-top:0px;
+    margin-bottom: 15px;
+    padding-top:5px;
+    /* background-color: #55acee; */
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    min-height: 75vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+#roll{
+    margin: 0%;
+}
+
 @media screen and (max-width: 850px) and (min-width: 575px) {
     #team{
         padding: 15px;
@@ -434,7 +461,7 @@ h3.domoAge {
         grid-gap: 20px;
     }
 
-    .player{
+    .player, .opponent{
         padding: 5px;
     }
 }
@@ -448,7 +475,7 @@ h3.domoAge {
         grid-gap: 20px;
     }
 
-    .player{
+    .player, .opponent{
         padding: 10px;
     }
 }
@@ -462,7 +489,7 @@ h3.domoAge {
         grid-gap: 20px;
     }
 
-    .player{
+    .player, .opponent{
         padding: 5px;
     }
 }

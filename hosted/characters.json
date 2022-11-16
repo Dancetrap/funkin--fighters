@@ -508,7 +508,7 @@
         "quote": "Oh no you don't, Chris! - Solid (voiceline in Virgin Rage in SingStar Challenge)",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e7/Solidchrisidle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a5/Icon-solid.png",
-        "flip": false
+        "flip": true
     },
     "liquid chris":{
         "name": "liquid chris",

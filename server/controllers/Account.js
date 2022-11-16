@@ -30,6 +30,8 @@ const login = (req, res) => {
   });
 };
 
+// Ask how to make it go into other page if already logged in
+
 const signup = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;

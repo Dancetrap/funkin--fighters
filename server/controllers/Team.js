@@ -1,4 +1,4 @@
-const { rest } = require('underscore');
+// const { rest } = require('underscore');
 const models = require('../models');
 const CharacterModel = require('../models/Character');
 const TeamModel = require('../models/Team');
