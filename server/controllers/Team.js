@@ -83,6 +83,14 @@ const removeCharacterFromTeam = async (req, res) => {
   return res.status(400).json({ error: 'An unexpected error has occured!' });
 };
 
+// const getYourTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
+//   if (err) {
+//     console.log(err);
+//     return res.status(400).json({ error: 'An error occurred!' });
+//   }
+//   return res.json({ team: docs });
+// });
+
 const getYourTeam = (req, res) => {
   TeamModel.findUsingOwner(req.session.account._id, async (err, docs) => {
     if (err) {

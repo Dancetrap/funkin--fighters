@@ -1,3 +1,4 @@
+const { result } = require('underscore');
 const helper = require('./helper.js');
 let csrfToken;
 
@@ -70,7 +71,6 @@ const init = async () => {
     // Not updating
     const getTeam = await fetch('/yourTeam');
     team = await getTeam.json();
-    console.log(team);
 
     // objs = [];
     // for(let i = 0; i < team.team[0].team.length; i++)
@@ -111,7 +111,14 @@ const updateTeam = async (e) =>
         return false;
     }
 
-    helper.sendPost(e.target.action, {_id, _csrf});
+    helper.sendPost(e.target.action, {_id, _csrf},async(result)=>{
+        const getTeam = await fetch('/yourteam')
+        const theTeam = await getTeam.json();
+        ReactDOM.render(
+            <TeamMembers csrf={csrfToken} obj={theTeam} />,
+            document.getElementById('team')
+        );
+    });
 
     // It just jumps to reactdom
     // objs = [];
@@ -122,10 +129,7 @@ const updateTeam = async (e) =>
     //     console.log(obj.character);
     //     objs.push(obj.character);
     // }
-    // ReactDOM.render(
-    //     <TeamMembers csrf={csrfToken} objs={objs} />,
-    //     document.getElementById('team')
-    // );
+
     
     // updateMembers();
     return false;
@@ -185,7 +189,6 @@ const TeamMembers = (props) => {
 
     const content = [];
     // const theTeam = team.team[0].team;
-    console.log(props.obj.length);
 
         for (let i = 0; i < props.obj.length; i++)
         {
@@ -237,9 +240,6 @@ const getTeamImages = async (e) =>
         images.push(obj.character.image);
         ids.push(obj.character._id);
     }
-
-    console.log(images);
-    console.log(ids);
 }
 
 const updateMembers = async (e) =>
@@ -254,7 +254,6 @@ const updateMembers = async (e) =>
         {
             const wait = await fetch(`/getCharacter?name=${members[i]}`);
             const obj = await wait.json();
-            console.log(obj);
             const img = document.getElementById(i);
             // console.log(img.height);
             img.src = obj.character.image;
