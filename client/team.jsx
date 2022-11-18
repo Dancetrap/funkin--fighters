@@ -2,6 +2,8 @@ const helper = require('./helper.js');
 let csrfToken;
 
 let team;
+let images;
+let ids;
 
 const CharacterSearch = (props) => {
     return (
@@ -42,14 +44,12 @@ const init = async () => {
             );
     });
 
+    // I don't know what to do about this
+
     // const getTeam = await fetch('/getTeam');
     // const theTeam = await getTeam.json();
     // console.log(theTeam);
-    // await updateMembers();
-
-    const getTeam = await fetch('/yourTeam');
-    team = await getTeam.json();
-
+    // await getTeamImages();
     ReactDOM.render(
         <TeamMembers csrf={csrfToken} />,
         document.getElementById('team')
@@ -71,9 +71,12 @@ const init = async () => {
         body: JSON.stringify({ _csrf: csrfToken }),
     });
 
-    console.log(team);
-
-    // await updateMembers();
+    // Not updating
+    // const getTeam = await fetch('/yourTeam');
+    // team = await getTeam.json();
+    // await grabTeam();
+    
+    await updateMembers();
 }
 
 const updateTeam = async (e) => 
@@ -97,16 +100,35 @@ const updateTeam = async (e) =>
 
     // const response = await fetch('/yourTeam');
     // const data = await response.json();
-    // await updateMembers();
+
     // console.log(data);
 
+    // await grabTeam();
+
+    // Need to see what's wrong
+    // const getTeam = await fetch('/yourTeam');
+    // team = await getTeam.json();
+
+    // console.log(team);
+
+    // await getTeamImages();
     ReactDOM.render(
-        <TeamMembers csrf={csrfToken} />,
+        <TeamMembers csrf={csrfToken} images={images} id={ids} />,
         document.getElementById('team')
     );
 
+    await updateMembers();
     return false;
     
+}
+
+const grabTeam = async () =>
+{
+    await getTeamImages();
+    ReactDOM.render(
+        <TeamMembers csrf={csrfToken} images={images} id={ids} />,
+        document.getElementById('team')
+    );
 }
 
 const CharacterList = (props) => {
@@ -149,23 +171,37 @@ const CharacterList = (props) => {
     );
 }
 
-const TeamMembers = async (props) => {
+const TeamMembers = (props) => {
 
-    let content = [];
-    const theTeam = team.team[0].team;
+    const content = [];
+    // const theTeam = team.team[0].team;
+    // console.log(images.length);
 
-    for (let i = 0; i < theTeam.length; i++)
-    {
-        const wait = await fetch(`/getCharacter?name=${theTeam[i]}`);
-        const obj = await wait.json();
-        const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-            <input type="image" height="50" width="50" src={obj.character.image} className="player" id={i} />
-            <input id="_id" type="hidden" name="_id" value={obj.character._id} />
-            <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
-            </form>  
-        content.push(imageForm);
-    }
-    for (let i = theTeam.length; i < 20; i++)
+        // for (let i = 0; i < theTeam.length; i++)
+        // {
+        //     const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
+        //         <input type="image" height="50" width="50" src={props.images[i]} className="player" id={i} />
+        //         <input id="_id" type="hidden" name="_id" value={props.id[i]} />
+        //         <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+        //         </form>  
+        //     content.push(imageForm);
+        // }
+        // for (let i = theTeam.length; i < 20; i++)
+        // {
+        //     const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
+        //         <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
+        //         {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
+        //         <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+        //         </form>  
+        //     content.push(imageForm);
+        // }
+
+    // arrayPusher(content);
+    // console.log(content);
+
+    // Keeping this until I figure out how to use async data in react
+
+    for (let i = 0; i < 20; i++)
     {
         const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
             <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
@@ -175,14 +211,33 @@ const TeamMembers = async (props) => {
         content.push(imageForm);
     }
     return content;
+    // return(<div></div>)
+}
+
+const getTeamImages = async (e) =>
+{
+    images = [];
+    ids = [];
+    const theTeam = team.team[0].team;
+    for(let i = 0; i < theTeam.length; i++)
+    {
+        const wait = await fetch(`/getCharacter?name=${theTeam[i]}`);
+        const obj = await wait.json();
+        // console.log(obj.character.image);
+        images.push(obj.character.image);
+        ids.push(obj.character._id);
+    }
+
+    console.log(images);
+    console.log(ids);
 }
 
 const updateMembers = async (e) =>
 {
-    // const getTeam = await fetch('/yourteam');
-    // const theTeam = await getTeam.json();
+    const getTeam = await fetch('/yourteam');
+    const theTeam = await getTeam.json();
 
-    const members = team.team[0].team;
+    const members = theTeam.team[0].team;
     // for(let i = 0; i < e.character.team.length; i++)
     for(let i = members.length; i < 20; i++)
     {
