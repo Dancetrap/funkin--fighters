@@ -5,6 +5,8 @@ let team;
 let images;
 let ids;
 
+let objs;
+
 const CharacterSearch = (props) => {
     return (
     <form id="characterForm" action="characters" method="post">
@@ -50,10 +52,6 @@ const init = async () => {
     // const theTeam = await getTeam.json();
     // console.log(theTeam);
     // await getTeamImages();
-    ReactDOM.render(
-        <TeamMembers csrf={csrfToken} />,
-        document.getElementById('team')
-    );
 
     const load = await fetch('/load', {
         method: 'POST',
@@ -72,11 +70,25 @@ const init = async () => {
     });
 
     // Not updating
-    // const getTeam = await fetch('/yourTeam');
-    // team = await getTeam.json();
+    const getTeam = await fetch('/yourTeam');
+    team = await getTeam.json();
+    console.log(team.team[0].team);
+
+    objs = [];
+    for(let i = 0; i < team.team[0].team.length; i++)
+    {
+        const wait = await fetch(`/getCharacter?name=${team.team[0].team[i]}`);
+        const obj = await wait.json();
+        console.log(obj.character);
+        objs.push(obj.character);
+    }
     // await grabTeam();
+    ReactDOM.render(
+        <TeamMembers csrf={csrfToken} obj={objs}/>,
+        document.getElementById('team')
+    );
     
-    await updateMembers();
+    // await updateMembers();
 }
 
 const updateTeam = async (e) => 
@@ -98,26 +110,21 @@ const updateTeam = async (e) =>
 
     helper.sendPost(e.target.action, {_id, _csrf});
 
-    // const response = await fetch('/yourTeam');
-    // const data = await response.json();
-
-    // console.log(data);
-
-    // await grabTeam();
-
-    // Need to see what's wrong
-    // const getTeam = await fetch('/yourTeam');
-    // team = await getTeam.json();
-
-    // console.log(team);
-
-    // await getTeamImages();
+    // It just jumps to reactdom
+    objs = [];
+    for(let i = 0; i < team.team[0].team.length; i++)
+    {
+        const wait = await fetch(`/getCharacter?name=${team.team[0].team[i]}`);
+        const obj = await wait.json();
+        console.log(obj.character);
+        objs.push(obj.character);
+    }
     ReactDOM.render(
-        <TeamMembers csrf={csrfToken} images={images} id={ids} />,
+        <TeamMembers csrf={csrfToken} objs={objs} />,
         document.getElementById('team')
     );
 
-    await updateMembers();
+    // await updateMembers();
     return false;
     
 }
@@ -174,42 +181,43 @@ const CharacterList = (props) => {
 const TeamMembers = (props) => {
 
     const content = [];
+    console.log(props.obj);
     // const theTeam = team.team[0].team;
     // console.log(images.length);
 
-        // for (let i = 0; i < theTeam.length; i++)
-        // {
-        //     const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-        //         <input type="image" height="50" width="50" src={props.images[i]} className="player" id={i} />
-        //         <input id="_id" type="hidden" name="_id" value={props.id[i]} />
-        //         <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
-        //         </form>  
-        //     content.push(imageForm);
-        // }
-        // for (let i = theTeam.length; i < 20; i++)
-        // {
-        //     const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-        //         <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
-        //         {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
-        //         <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
-        //         </form>  
-        //     content.push(imageForm);
-        // }
+        for (let i = 0; i < props.obj.length; i++)
+        {
+            const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
+                <input type="image" height="50" width="50" src={props.obj[i].image} className="player" id={i} />
+                <input id="_id" type="hidden" name="_id" value={props.obj[i]._id} />
+                <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+                </form>  
+            content.push(imageForm);
+        }
+        for (let i = props.obj.length; i < 20; i++)
+        {
+            const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
+                <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
+                {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
+                <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+                </form>  
+            content.push(imageForm);
+        }
 
     // arrayPusher(content);
     // console.log(content);
 
     // Keeping this until I figure out how to use async data in react
 
-    for (let i = 0; i < 20; i++)
-    {
-        const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-            <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
-            {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
-            <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
-            </form>  
-        content.push(imageForm);
-    }
+    // for (let i = 0; i < 20; i++)
+    // {
+    //     const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
+    //         <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
+    //         {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
+    //         <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+    //         </form>  
+    //     content.push(imageForm);
+    // }
     return content;
     // return(<div></div>)
 }
