@@ -1,1 +1,66 @@
-(()=>{var e={603:e=>{const t=e=>{document.getElementById("errorMessage").textContent=e,document.getElementById("domoMessage").classList.remove("hidden")};e.exports={handleError:t,sendPost:async(e,a,o)=>{const m=await fetch(e,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(a)}),r=await m.json();document.getElementById("domoMessage").classList.add("hidden"),r.redirect&&(window.location=r.redirect),r.error&&t(r.error),o&&o(r)},hideError:()=>{document.getElementById("domoMessage").classList.add("hidden")}}}},t={};function a(o){var m=t[o];if(void 0!==m)return m.exports;var r=t[o]={exports:{}};return e[o](r,r.exports,a),r.exports}(()=>{const e=a(603),t=t=>{t.preventDefault(),e.hideError();const a=t.target.querySelector("#domoName").value,o=t.target.querySelector("#domoAge").value,m=t.target.querySelector("#_csrf").value;return a&&o?(e.sendPost(t.target.action,{name:a,age:o,_csrf:m},r),!1):(e.handleError("All fields are required!"),!1)},o=e=>React.createElement("form",{id:"domoForm",onSubmit:t,name:"domoForm",action:"/maker",method:"POST",className:"domoForm"},React.createElement("label",{htmlFor:"name"},"Name: "),React.createElement("input",{id:"domoName",type:"text",name:"name",placeholder:"Domo Name"}),React.createElement("label",{htmlFor:"age"},"Age: "),React.createElement("input",{id:"domoAge",type:"number",min:"0",name:"age"}),React.createElement("input",{id:"_csrf",type:"hidden",name:"_csrf",value:e.csrf}),React.createElement("input",{className:"makeDomoSubmit",type:"submit",value:"Make Domo"})),m=e=>{if(0===e.domos.length)return React.createElement("div",{className:"domoList"},React.createElement("h3",{className:"emptyDomo"},"No Domos Yet!"));const t=e.domos.map((e=>React.createElement("div",{key:e._id,className:"domo"},React.createElement("img",{src:"/assets/img/domoface.jpeg",alt:"domo face",className:"domoFace"}),React.createElement("h3",{className:"domoName"}," Name: ",e.name," "),React.createElement("h3",{className:"domoAge"}," Age: ",e.age," "))));return React.createElement("div",{className:"domoList"},t)},r=async()=>{const e=await fetch("/getDomos"),t=await e.json();ReactDOM.render(React.createElement(m,{domos:t.domos}),document.getElementById("domos"))};window.onload=async()=>{const e=await fetch("/getToken"),t=await e.json();ReactDOM.render(React.createElement(o,{csrf:t.csrfToken}),document.getElementById("makeDomo")),ReactDOM.render(React.createElement(m,{domos:[]}),document.getElementById("domos")),r()}})()})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./client/helper.js":
+/*!**************************!*\
+  !*** ./client/helper.js ***!
+  \**************************/
+/***/ ((module) => {
+
+eval("const handleError = message => {\n  document.getElementById('errorMessage').textContent = message;\n  document.getElementById('domoMessage').classList.remove('hidden');\n};\n\n/* Sends post requests to the server using fetch. Will look for various\r\n   entries in the response JSON object, and will handle them appropriately.\r\n*/\nconst sendPost = async (url, data, handler) => {\n  const response = await fetch(url, {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify(data)\n  });\n  const result = await response.json();\n  document.getElementById('domoMessage').classList.add('hidden');\n  if (result.redirect) {\n    window.location = result.redirect;\n  }\n  if (result.error) {\n    handleError(result.error);\n  }\n  if (handler) {\n    handler(result);\n  }\n};\nconst hideError = () => {\n  document.getElementById('domoMessage').classList.add('hidden');\n};\nmodule.exports = {\n  handleError,\n  sendPost,\n  hideError\n};\n\n//# sourceURL=webpack://Logins/./client/helper.js?");
+
+/***/ }),
+
+/***/ "./client/maker.jsx":
+/*!**************************!*\
+  !*** ./client/maker.jsx ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const helper = __webpack_require__(/*! ./helper.js */ \"./client/helper.js\");\nconst handleDomo = e => {\n  e.preventDefault();\n  helper.hideError();\n  const name = e.target.querySelector('#domoName').value;\n  const age = e.target.querySelector(\"#domoAge\").value;\n  const _csrf = e.target.querySelector(\"#_csrf\").value;\n  if (!name || !age) {\n    helper.handleError('All fields are required!');\n    return false;\n  }\n  helper.sendPost(e.target.action, {\n    name,\n    age,\n    _csrf\n  }, loadDomosFromServer);\n  return false;\n};\nconst DomoForm = props => {\n  return /*#__PURE__*/React.createElement(\"form\", {\n    id: \"domoForm\",\n    onSubmit: handleDomo,\n    name: \"domoForm\",\n    action: \"/maker\",\n    method: \"POST\",\n    className: \"domoForm\"\n  }, /*#__PURE__*/React.createElement(\"label\", {\n    htmlFor: \"name\"\n  }, \"Name: \"), /*#__PURE__*/React.createElement(\"input\", {\n    id: \"domoName\",\n    type: \"text\",\n    name: \"name\",\n    placeholder: \"Domo Name\"\n  }), /*#__PURE__*/React.createElement(\"label\", {\n    htmlFor: \"age\"\n  }, \"Age: \"), /*#__PURE__*/React.createElement(\"input\", {\n    id: \"domoAge\",\n    type: \"number\",\n    min: \"0\",\n    name: \"age\"\n  }), /*#__PURE__*/React.createElement(\"input\", {\n    id: \"_csrf\",\n    type: \"hidden\",\n    name: \"_csrf\",\n    value: props.csrf\n  }), /*#__PURE__*/React.createElement(\"input\", {\n    className: \"makeDomoSubmit\",\n    type: \"submit\",\n    value: \"Make Domo\"\n  }));\n};\nconst DomoList = props => {\n  if (props.domos.length === 0) {\n    return /*#__PURE__*/React.createElement(\"div\", {\n      className: \"domoList\"\n    }, /*#__PURE__*/React.createElement(\"h3\", {\n      className: \"emptyDomo\"\n    }, \"No Domos Yet!\"));\n  }\n  const domoNodes = props.domos.map(domo => {\n    return /*#__PURE__*/React.createElement(\"div\", {\n      key: domo._id,\n      className: \"domo\"\n    }, /*#__PURE__*/React.createElement(\"img\", {\n      src: \"/assets/img/domoface.jpeg\",\n      alt: \"domo face\",\n      className: \"domoFace\"\n    }), /*#__PURE__*/React.createElement(\"h3\", {\n      className: \"domoName\"\n    }, \" Name: \", domo.name, \" \"), /*#__PURE__*/React.createElement(\"h3\", {\n      className: \"domoAge\"\n    }, \" Age: \", domo.age, \" \"));\n  });\n  return /*#__PURE__*/React.createElement(\"div\", {\n    className: \"domoList\"\n  }, domoNodes);\n};\nconst loadDomosFromServer = async () => {\n  const response = await fetch('/getDomos');\n  const data = await response.json();\n  ReactDOM.render( /*#__PURE__*/React.createElement(DomoList, {\n    domos: data.domos\n  }), document.getElementById('domos'));\n};\nconst init = async () => {\n  const response = await fetch('/getToken');\n  const data = await response.json();\n  ReactDOM.render( /*#__PURE__*/React.createElement(DomoForm, {\n    csrf: data.csrfToken\n  }), document.getElementById('makeDomo'));\n  ReactDOM.render( /*#__PURE__*/React.createElement(DomoList, {\n    domos: []\n  }), document.getElementById('domos'));\n  loadDomosFromServer();\n};\nwindow.onload = init;\n\n//# sourceURL=webpack://Logins/./client/maker.jsx?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./client/maker.jsx");
+/******/ 	
+/******/ })()
+;

@@ -144,19 +144,50 @@ const Game = (props) => {
     return ( <div id="game">
         <div id="battle">
         <div id="player">
+            <h3 id="remainingPlayers">Players Left: </h3>
             <h3 id="playerCharName"></h3>
             <img src="" alt="player" id="yourGuy" />
             <h3 id="yourNumber"></h3>
         </div>
         <h3>vs.</h3>
         <div id="opponent">
+            <h3 id="remainingOpponents">Players Left: </h3>
             <h3 id="opponentCharName"></h3>
             <img src="" alt="opponent" id="theirGuy" />
             <h3 id="theirNumber"></h3>
         </div>
         </div>
         <h3 id="roll">Turn</h3>
+        <button type='exist' id='space' onClick={yourRoll} >Roll</button>
     </div> );
+}
+
+const Winner = (props) => {
+
+    let content = [];
+    for (let i = 0; i < 20; i++)
+    {
+        const image = <img src='' alt='winner' height="100px" key={`${i}won`} id={'y'+i} ></img>
+        content.push(image);
+    }
+
+    let message = '';
+    if(props.message)
+    {
+        message = "You Win!";
+    }
+    else
+    {
+        message = "You Lose!";
+    }
+
+    return (<div id='final'>
+        <h2>{message}</h2>
+        <div id='winners'>
+            {content}
+        </div>
+        <button id="tryagain" onClick={tryAgain}> Try Again </button>
+        </div>);
 }
 
 const aiPlayer = async () => {
@@ -265,6 +296,7 @@ const gameStart = async () => {
         if(ai) opponentAlive.push(opposingTeam[i]._id);
         else opponentAlive.push(opposingTeam[i]);
     }
+    
     startGame = true;
 
     console.log(pName);
@@ -292,17 +324,22 @@ let roundOne = true;
 const playGame = async () => {
     // console.log("Start");
 
+    // console.log(document.getElementById("remainingPlayers"));
+
     const getPlayer = await fetch(`/getCharacter?name=${playerAlive[0]}`);
     const ply = await getPlayer.json();
-    console.log(ply.character.image);
+    // console.log(ply.character.image);
 
     const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]}`);
     const opp = await getOpponent.json();
-    console.log(opp.character.image);
+    // console.log(opp.character.image);
 
     // Get all the images of characters
     const playerImg = document.getElementById('yourGuy');
     const opponentImg = document.getElementById('theirGuy');
+
+    document.getElementById('remainingPlayers').innerHTML = `Players Left: ${playerAlive.length}`;
+    document.getElementById('remainingOpponents').innerHTML = `Players Left: ${opponentAlive.length}`;
 
     document.getElementById('playerCharName').innerHTML = ply.character.name;
     document.getElementById('opponentCharName').innerHTML = opp.character.name;
@@ -315,6 +352,9 @@ const playGame = async () => {
 
     playerImg.src = ply.character.image;
     opponentImg.src = opp.character.image;
+
+    // plyRoll = null;
+    // oppRoll = null;
 
     plyRoll = null;
     oppRoll = null;
@@ -352,39 +392,47 @@ const playGame = async () => {
     const roll = document.getElementById('roll');
     if(opponentTurn)
     {
+
         roll.innerHTML = `${oName}'s Turn`;
-        setTimeout(getRandomOpponent, 3000);
+        document.getElementById('space').style.display = "none";
+        setTimeout(getRandomOpponent, 2000);
+        // getRandomOpponent();
     }
 
     if(playerTurn)
     {
+        document.getElementById('space').style.display = "block";
         roll.innerHTML = `${pName}'s Turn`;
     }
 
     // Goals: figure out how to do timer for opponent
 
-    document.addEventListener('keydown', function(event) {
+    // document.addEventListener('keypress', function(event) {
         // 32 is the code for space
-        if(event.keyCode == 32 && playerTurn) {
-            plyRoll = getRandomInt(21);
-            // playerRollOutput.innerHTML = lerp(curPNum,plyRoll,1);
-            playerRollOutput.innerHTML = plyRoll;
-            curPNum = plyRoll;
-            console.log(plyRoll);
-            if(oppRoll == null)
-            {
-                playerTurn = false;
-                opponentTurn = true;
-                roll.innerHTML = `${oName}'s Turn`;
-                setTimeout(getRandomOpponent, 1000);
-            }
-            else
-            {
-                compareNumbers(plyRoll,oppRoll);
-            }
-        }
-    });
+        // if(event.keyCode != 32 || !playerTurn) return;
+            // plyRoll = getRandomInt(21);
+            // // playerRollOutput.innerHTML = lerp(curPNum,plyRoll,1);
+            // playerRollOutput.innerHTML = plyRoll;
+            // curPNum = plyRoll;
+            // // console.log(plyRoll);
+            // if(oppRoll == null)
+            // {
+            //     playerTurn = false;
+            //     opponentTurn = true;
+            //     roll.innerHTML = `${oName}'s Turn`;
+            //     setTimeout(getRandomOpponent, 1000);
+            //     // getRandomOpponent();
+            // }
+            // else
+            // {
+            //     compareNumbers(plyRoll,oppRoll);
+            // }
+        // }
+    // }
+    // });
 }
+
+// What if instead of the spacebar, I can just create a button?
 
 function getRandomOpponent() {
     const roll = document.getElementById('roll');
@@ -400,7 +448,31 @@ function getRandomOpponent() {
     {
         playerTurn = true;
         opponentTurn = false;
+        document.getElementById('space').style.display = "block";
         roll.innerHTML = `${pName}'s Turn`;
+    }
+    else
+    {
+        compareNumbers(plyRoll,oppRoll);
+    }
+}
+
+function yourRoll() {
+    if(!playerTurn) return;
+    const playerRollOutput = document.getElementById('yourNumber');
+    plyRoll = getRandomInt(21);
+    // playerRollOutput.innerHTML = lerp(curPNum,plyRoll,1);
+    playerRollOutput.innerHTML = plyRoll;
+    curPNum = plyRoll;
+    // console.log(plyRoll);
+    if(oppRoll == null)
+    {
+        playerTurn = false;
+        opponentTurn = true;
+        document.getElementById('space').style.display = "none";
+        roll.innerHTML = `${oName}'s Turn`;
+        setTimeout(getRandomOpponent, 1000);
+        // getRandomOpponent();
     }
     else
     {
@@ -415,6 +487,9 @@ function getRandomInt(max) {
 
 // It's skipping numbers and I don't know why. I'll have to ask Austin on friday
 function compareNumbers(a,b) {
+    document.getElementById('space').style.display = "none";
+    playerTurn = false;
+    opponentTurn = false;
     if(a > b){
         console.log("You Win");
         roll.innerHTML = `Point ${pName}`;
@@ -423,12 +498,13 @@ function compareNumbers(a,b) {
             opponentAlive.splice(0,1);
             if(opponentAlive.length == 0)
             {
-                console.log("You Win");
+                console.log("Winner: You!");
+                await callWinner(true);
             }
             else{
                 playerTurn = true;
                 opponentTurn = false;
-                await playGame();
+                playGame();
             }
         },1000);
     } 
@@ -438,33 +514,72 @@ function compareNumbers(a,b) {
         setTimeout(async function() {
             playerDead.push(playerAlive[0]);
             playerAlive.splice(0,1);
+            playerTurn = false;
+            opponentTurn = true;
             if(playerAlive.length == 0)
             {
-                console.log("You Lose");
+                console.log("Winner: Other Guy");
+                await callWinner(false);
             }
             else
             {
-                playerTurn = false;
-                opponentTurn = true;
-                await playGame();
+                playGame();
             }
         },1000);
     } 
     else if(a == b){
         console.log("Tie");
+        roll.innerHTML = `Tie`;
         setTimeout(function() {
+            plyRoll = null;
+            oppRoll = null;
             let coinFlip;
             const random = Math.random();
             coinFlip = random < 0.5;
             if(coinFlip){
                 playerTurn = true;
+                document.getElementById('space').style.display = "block";
+                roll.innerHTML = `${pName}'s Turn`;
             } 
             else {
                 opponentTurn = true;
+                roll.innerHTML = `${oName}'s Turn`;
                 setTimeout(getRandomOpponent, 1000);
+                // getRandomOpponent();
             } 
         }, 1000);
     } 
+}
+async function callWinner(win) {
+    ReactDOM.render(
+        <Winner message={win} />,
+        document.getElementById('stage')
+    );
+    let winners;
+    if(win)
+    {
+        winners = playerTeam;
+    }
+    else
+    {
+        winners = opposingTeam;
+    }
+    
+    for(let i = 0; i < winners.length; i++)
+    {
+        const wait = await fetch(`/getCharacter?name=${winners[i]}`);
+        const obj = await wait.json();
+        const img = document.getElementById("y"+i);
+        console.log(img.height);
+        img.src = obj.character.image;
+    }
+}
+
+function tryAgain() {
+    ReactDOM.render(
+        <SelectGame team={player.team[0]} />,
+        document.getElementById('stage')
+    );
 }
 
 const init = async () => {
@@ -482,6 +597,7 @@ const init = async () => {
         <SelectGame team={player.team[0]} />,
         document.getElementById('stage')
     );
+
 }
 
 window.onload = init;

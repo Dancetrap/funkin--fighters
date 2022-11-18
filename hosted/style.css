@@ -365,9 +365,22 @@ h3.domoAge {
     grid-gap: 15px;
 }
 
-#gameMenu{
+#gameMenu, #final{
+    font-size: 20px;
+    text-align: center;
     display: flex;
     flex-direction: column;
+}
+
+#final button{
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#winners{
+    margin: 20px;
 }
 
 #gameMenu button{
@@ -448,12 +461,26 @@ h3.domoAge {
     margin-top: 20px;
 }
 
-#roll{
+#roll, #space{
     margin: 0%;
+}
+
+#space{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #yourGuy, #theirGuy{
     height: 50vh;
+}
+
+#remainingPlayers{
+    text-align: left;
+}
+
+#remainingOpponents{
+    text-align: right;
 }
 
 @media screen and (max-width: 850px) and (min-width: 575px) {
