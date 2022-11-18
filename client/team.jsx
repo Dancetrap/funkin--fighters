@@ -1,6 +1,8 @@
 const helper = require('./helper.js');
 let csrfToken;
 
+let team;
+
 const CharacterSearch = (props) => {
     return (
     <form id="characterForm" action="characters" method="post">
@@ -44,6 +46,10 @@ const init = async () => {
     // const theTeam = await getTeam.json();
     // console.log(theTeam);
     // await updateMembers();
+
+    const getTeam = await fetch('/yourTeam');
+    team = await getTeam.json();
+
     ReactDOM.render(
         <TeamMembers csrf={csrfToken} />,
         document.getElementById('team')
@@ -65,7 +71,9 @@ const init = async () => {
         body: JSON.stringify({ _csrf: csrfToken }),
     });
 
-    await updateMembers();
+    console.log(team);
+
+    // await updateMembers();
 }
 
 const updateTeam = async (e) => 
@@ -87,10 +95,16 @@ const updateTeam = async (e) =>
 
     helper.sendPost(e.target.action, {_id, _csrf});
 
-    const response = await fetch('/yourTeam');
-    const data = await response.json();
-    await updateMembers();
+    // const response = await fetch('/yourTeam');
+    // const data = await response.json();
+    // await updateMembers();
     // console.log(data);
+
+    ReactDOM.render(
+        <TeamMembers csrf={csrfToken} />,
+        document.getElementById('team')
+    );
+
     return false;
     
 }
@@ -135,13 +149,26 @@ const CharacterList = (props) => {
     );
 }
 
-const TeamMembers = (props) => {
+const TeamMembers = async (props) => {
 
     let content = [];
-    for (let i = 0; i < 20; i++)
+    const theTeam = team.team[0].team;
+
+    for (let i = 0; i < theTeam.length; i++)
+    {
+        const wait = await fetch(`/getCharacter?name=${theTeam[i]}`);
+        const obj = await wait.json();
+        const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
+            <input type="image" height="50" width="50" src={obj.character.image} className="player" id={i} />
+            <input id="_id" type="hidden" name="_id" value={obj.character._id} />
+            <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
+            </form>  
+        content.push(imageForm);
+    }
+    for (let i = theTeam.length; i < 20; i++)
     {
         const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-            <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} />
+            <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
             {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
             <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
             </form>  
@@ -152,11 +179,23 @@ const TeamMembers = (props) => {
 
 const updateMembers = async (e) =>
 {
-    const getTeam = await fetch('/yourteam');
-    const theTeam = await getTeam.json();
+    // const getTeam = await fetch('/yourteam');
+    // const theTeam = await getTeam.json();
 
-    const members = theTeam.team[0].team;
+    const members = team.team[0].team;
     // for(let i = 0; i < e.character.team.length; i++)
+    for(let i = members.length; i < 20; i++)
+    {
+        const addition = document.getElementById(`characterSlot${i}`);
+        const idInput = addition.querySelector('#_id');
+        if(idInput != null)
+        {
+            addition.removeChild(idInput);
+        }
+        const img = document.getElementById(i);
+        img.src = "/assets/img/150.png";
+        img.disable = true;
+    }
     if(members.length != 0)
     {
         for(let i = 0; i < members.length; i++)
@@ -178,18 +217,6 @@ const updateMembers = async (e) =>
                 // enable it
                 // If all becomes twenty 
         }
-    }
-    for(let i = members.length; i < 20; i++)
-    {
-        const addition = document.getElementById(`characterSlot${i}`);
-        const idInput = addition.querySelector('#_id');
-        if(idInput != null)
-        {
-            addition.removeChild(idInput);
-        }
-        const img = document.getElementById(i);
-        img.src = "/assets/img/150.png";
-        img.disable = true;
     }
 
     // ReactDOM.render(
