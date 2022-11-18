@@ -570,12 +570,14 @@ async function callWinner(win) {
     else
     {
         winners = opposingTeam;
+        console.log(winners);
         for(let i = 0; i < winners.length; i++)
         {
+            // Apparently it's getting back an object, which IDK why
             console.log(winners[i]);
             const wait = await fetch(`/getCharacter?name=${winners[i]}`);
-        //     const obj = await wait.json();
-        //     console.log(obj);
+            const obj = await wait.json();
+            console.log(obj);
         //     const img = document.getElementById("y"+i);
         //     console.log(img.height);
         //     img.src = obj.character.image;
