@@ -46,7 +46,24 @@
         "mod": "Vs. Whitty",
         "quote": "You're REALLY pushing my limits here, dude - Whitty",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4b/Whitty_Normal.gif",
-        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/IconSet_Whitty.png",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b7/CollectionCarolIcons.png",
+        "flip": false
+    },
+    "carol":{
+        "name": "carol",
+        "origin": "Vs. Carol",
+        "mod": "Vs. Carol",
+        "quote": "ayo peep this bop I whipped up - Carol",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4d/CarolAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b7/CollectionCarolIcons.png",
+        "flip": false
+    },
+    "sunday":{
+        "name": "sunday",
+        "origin": "Vs. Sunday",
+        "mod": "Vs. Sunday",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b2/SundayIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d8/UnusedSundayNormalIconMaybe.png",
         "flip": false
     },
     "tricky":{
@@ -1140,6 +1157,77 @@
         "quote":"In the end, we all die. Why should I even try? Gun in hand my life shall end. MY SUFFERING SHALL BE KNOWN FRIEND! - Euthanasia Rabbit",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c7/WIOswaldIdleAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/Icon-OswaldWI.png",
+        "flip": false
+    },
+    "mordecai":{
+        "name": "mordecai",
+        "origin": "Regular Show",
+        "mod": "Regular Friday Night",
+        "quote":"WHOOOOOOOOOOOOOOO!!!!!! - Mordecai",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/37/RFNMordIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1a/Icon-morde.png",
+        "flip": false
+    },
+    "rigby":{
+        "name": "rigby",
+        "origin": "Regular Show",
+        "mod": "Regular Friday Night",
+        "quote":"In yo face! - Rigby (Regular Show S3E7 - Cool Bikes)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/50/RFNRigIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/Icon-rigby.png",
+        "flip": false
+    },
+    "benson":{
+        "name": "benson",
+        "origin": "Regular Show",
+        "mod": "Regular Friday Night",
+        "quote":"GET BACK TO WORK OR YOU'RE FIRED! - Benson's iconic quote",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e7/Bensoncalm.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3d/Icon-RNFbenson.png",
+        "flip": false
+    },
+    "bill cipher":{
+        "name": "bill cipher",
+        "origin": "Gravity Falls",
+        "mod": "Vs Bill Cipher",
+        "quote":"Oh, I know lots of things. LOTS OF THINGS - Bill Cipher (Gravity Falls S1E19 - Dreamscapers)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/88/Bill_Idle_2.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/25/BillIcons.png",
+        "flip": false
+    },
+    "door stuck":{
+        "name": "door stuck",
+        "origin": "Door Stuck Meme",
+        "mod": "Vs Door Stuck",
+        "quote":"DOOR STUCK! DOOR'S STUCK!",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/47/DSNormal-Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/69/Doorstuckicons.png",
+        "flip": false
+    },
+    "peashooter":{
+        "name": "peashooter",
+        "origin": "Plants vs Zombies",
+        "mod": "Plants vs. Rappers",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/ae/PeashooterIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d8/Icon-Peashooter.png",
+        "flip": false
+    },
+    "arin hanson":{
+        "name": "arin hanson",
+        "origin": "YouTuber (Games Grumps/Egoraptor)",
+        "mod": "Arin/Oney Knockout!",
+        "quote":"I'm the video game boy. I'm the one who wins! - Arin (Stick Fight: This Is Skills PART 4)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/80/AOKOArinIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/10/EgoraptorIcons.png",
+        "flip": true
+    },
+    "chris o neill":{
+        "name": "chris o neill",
+        "origin": "YouTuber (Oneyplays)",
+        "mod": "Arin/Oney Knockout!",
+        "quote":"Have a boy - Oneyplays Slogan",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/bc/AOKOOneyIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cb/OneyIcons.png",
         "flip": false
     }
 }
