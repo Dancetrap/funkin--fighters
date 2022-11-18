@@ -27,8 +27,6 @@ const init = async () => {
     // const obj = await wait.json();
     // console.log(obj);
 
-    // await updateMembers();
-
     csrfToken = data.csrfToken;
     ReactDOM.render(
         <CharacterSearch csrf={csrfToken} />,
@@ -72,21 +70,26 @@ const init = async () => {
     // Not updating
     const getTeam = await fetch('/yourTeam');
     team = await getTeam.json();
-    console.log(team.team[0].team);
+    console.log(team);
 
-    objs = [];
-    for(let i = 0; i < team.team[0].team.length; i++)
-    {
-        const wait = await fetch(`/getCharacter?name=${team.team[0].team[i]}`);
-        const obj = await wait.json();
-        console.log(obj.character);
-        objs.push(obj.character);
-    }
-    // await grabTeam();
+    // objs = [];
+    // for(let i = 0; i < team.team[0].team.length; i++)
+    // {
+    //     const wait = await fetch(`/getCharacter?name=${team.team[0].team[i]}`);
+    //     const obj = await wait.json();
+    //     console.log(obj.character);
+    //     objs.push(obj.character);
+    // }
+
     ReactDOM.render(
-        <TeamMembers csrf={csrfToken} obj={objs}/>,
+        <TeamMembers csrf={csrfToken} obj={team}/>,
         document.getElementById('team')
     );
+
+    // ReactDOM.render(
+    //     <TeamMembers csrf={csrfToken}/>,
+    //     document.getElementById('team')
+    // );
     
     // await updateMembers();
 }
@@ -104,27 +107,27 @@ const updateTeam = async (e) =>
     const _csrf = e.target.querySelector("#_csrf").value;
     if(!_id || !_csrf)
     {
-        helper.handleError('All fields are required!');
+        // helper.handleError('All fields are required!');
         return false;
     }
 
     helper.sendPost(e.target.action, {_id, _csrf});
 
     // It just jumps to reactdom
-    objs = [];
-    for(let i = 0; i < team.team[0].team.length; i++)
-    {
-        const wait = await fetch(`/getCharacter?name=${team.team[0].team[i]}`);
-        const obj = await wait.json();
-        console.log(obj.character);
-        objs.push(obj.character);
-    }
-    ReactDOM.render(
-        <TeamMembers csrf={csrfToken} objs={objs} />,
-        document.getElementById('team')
-    );
-
-    // await updateMembers();
+    // objs = [];
+    // for(let i = 0; i < team.team[0].team.length; i++)
+    // {
+    //     const wait = await fetch(`/getCharacter?name=${team.team[0].team[i]}`);
+    //     const obj = await wait.json();
+    //     console.log(obj.character);
+    //     objs.push(obj.character);
+    // }
+    // ReactDOM.render(
+    //     <TeamMembers csrf={csrfToken} objs={objs} />,
+    //     document.getElementById('team')
+    // );
+    
+    // updateMembers();
     return false;
     
 }
@@ -181,9 +184,8 @@ const CharacterList = (props) => {
 const TeamMembers = (props) => {
 
     const content = [];
-    console.log(props.obj);
     // const theTeam = team.team[0].team;
-    // console.log(images.length);
+    console.log(props.obj.length);
 
         for (let i = 0; i < props.obj.length; i++)
         {
@@ -212,7 +214,7 @@ const TeamMembers = (props) => {
     // for (let i = 0; i < 20; i++)
     // {
     //     const imageForm = <form id={"characterSlot" + i} action="/remove" method="POST" className="d-sides" key={i} onSubmit={updateTeam} >
-    //         <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} disabled />
+    //         <input type="image" height="50" width="50" src="/assets/img/150.png" className="player" id={i} />
     //         {/* <input id="_id" type="hidden" name="_id" value={chr._id} /> */}
     //         <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
     //         </form>  
@@ -226,7 +228,7 @@ const getTeamImages = async (e) =>
 {
     images = [];
     ids = [];
-    const theTeam = team.team[0].team;
+    const theTeam = team;
     for(let i = 0; i < theTeam.length; i++)
     {
         const wait = await fetch(`/getCharacter?name=${theTeam[i]}`);
@@ -244,27 +246,15 @@ const updateMembers = async (e) =>
 {
     const getTeam = await fetch('/yourteam');
     const theTeam = await getTeam.json();
-
-    const members = theTeam.team[0].team;
+    console.log(theTeam);
     // for(let i = 0; i < e.character.team.length; i++)
-    for(let i = members.length; i < 20; i++)
+    if(theTeam.length != 0)
     {
-        const addition = document.getElementById(`characterSlot${i}`);
-        const idInput = addition.querySelector('#_id');
-        if(idInput != null)
-        {
-            addition.removeChild(idInput);
-        }
-        const img = document.getElementById(i);
-        img.src = "/assets/img/150.png";
-        img.disable = true;
-    }
-    if(members.length != 0)
-    {
-        for(let i = 0; i < members.length; i++)
+        for(let i = 0; i < theTeam.length; i++)
         {
             const wait = await fetch(`/getCharacter?name=${members[i]}`);
             const obj = await wait.json();
+            console.log(obj);
             const img = document.getElementById(i);
             // console.log(img.height);
             img.src = obj.character.image;
@@ -280,6 +270,18 @@ const updateMembers = async (e) =>
                 // enable it
                 // If all becomes twenty 
         }
+    }
+    for(let i = members.length; i < 20; i++)
+    {
+        const addition = document.getElementById(`characterSlot${i}`);
+        const idInput = addition.querySelector('#_id');
+        if(idInput != null)
+        {
+            addition.removeChild(idInput);
+        }
+        const img = document.getElementById(i);
+        img.src = "/assets/img/150.png";
+        img.disable = true;
     }
 
     // ReactDOM.render(

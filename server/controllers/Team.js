@@ -83,13 +83,21 @@ const removeCharacterFromTeam = async (req, res) => {
   return res.status(400).json({ error: 'An unexpected error has occured!' });
 };
 
-const getYourTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
-  if (err) {
-    console.log(err);
-    return res.status(400).json({ error: 'An error occurred!' });
-  }
-  return res.json({ team: docs });
-});
+const getYourTeam = (req, res) => {
+  TeamModel.findUsingOwner(req.session.account._id, async (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred!' });
+    }
+
+    try {
+      const team = await CharacterModel.find({_id: { $in: docs.team}}).exec();
+      return res.json(team);
+    } catch (err2) {
+      return res.status(500).json({error: 'failed to look up team members'});
+    }
+  });
+};
 
 const getOpponentTeam = async (req, res) => {
   const doc = await TeamModel.findOne({ owner: req.query.team }).exec();

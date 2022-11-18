@@ -35,7 +35,7 @@ TeamSchema.statics.findUsingOwner = (ownerId, callback) => {
   const search = {
     owner: mongoose.Types.ObjectId(ownerId),
   };
-  return TeamModel.find(search).select('team').lean().exec(callback);
+  return TeamModel.findOne(search).select('team').lean().exec(callback);
 };
 
 TeamModel = mongoose.model('Team', TeamSchema);

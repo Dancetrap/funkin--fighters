@@ -22,7 +22,9 @@ let pName, oName;
 
 const SelectGame = (props) => {
 
-    if(props.team.team.length !== 20)
+    console.log(props.team);
+
+    if(props.team.length !== 20)
     {
         return (
             <div className="characterList">
@@ -196,7 +198,7 @@ const aiPlayer = async () => {
     opponent = await other.json();
     // console.log(opponent.team);
     ai = true;
-    await loadOpposingTeam(player.team[0], opponent, "Bot");  
+    await loadOpposingTeam(player, opponent, "Bot");  
 }
 
 const otherPlayer = async () => {
@@ -205,7 +207,7 @@ const otherPlayer = async () => {
     const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
     opponent = await other.json();
 
-    await loadOpposingTeam(player.team[0], opponent.team);   
+    await loadOpposingTeam(player, opponent.team);   
 }
 
 const loadOpposingTeam = async (p,o,b) => {
@@ -221,7 +223,7 @@ const loadOpposingTeam = async (p,o,b) => {
         document.getElementById('stage')
     );
 
-    const pMembers = playerTeam = p.team;
+    const pMembers = playerTeam = p;
     const oMembers = opposingTeam = o.team;
     
     const yourName = await fetch(`/user`);
@@ -242,16 +244,16 @@ const loadOpposingTeam = async (p,o,b) => {
     
     for(let i = 0; i < pMembers.length; i++)
     {
-        const wait = await fetch(`/getCharacter?name=${pMembers[i]}`);
-        const obj = await wait.json();
+        // const wait = await fetch(`/getCharacter?name=${pMembers[i]}`);
+        // const obj = await wait.json();
         const img = document.getElementById("p"+i);
         // console.log(img.height);
-        img.src = obj.character.image;
+        img.src = pMembers[i].image;
         // Disable is not working
         img.disable = false;
     
         const addition = document.getElementById(`characterSlot${i}`);
-        addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${obj.character._id} />`;
+        addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${pMembers[i]._id} />`;
     }
     for(let i = 0; i < oMembers.length; i++)
     {
@@ -326,8 +328,8 @@ const playGame = async () => {
 
     // console.log(document.getElementById("remainingPlayers"));
 
-    const getPlayer = await fetch(`/getCharacter?name=${playerAlive[0]}`);
-    const ply = await getPlayer.json();
+    // const getPlayer = await fetch(`/getCharacter?name=${playerAlive[0]}`);
+    const ply = playerAlive[0];
     // console.log(ply.character.image);
 
     const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]}`);
@@ -341,7 +343,7 @@ const playGame = async () => {
     document.getElementById('remainingPlayers').innerHTML = `Players Left: ${playerAlive.length}`;
     document.getElementById('remainingOpponents').innerHTML = `Players Left: ${opponentAlive.length}`;
 
-    document.getElementById('playerCharName').innerHTML = ply.character.name;
+    document.getElementById('playerCharName').innerHTML = ply.name;
     document.getElementById('opponentCharName').innerHTML = opp.character.name;
 
     const playerRollOutput = document.getElementById('yourNumber');
@@ -350,7 +352,7 @@ const playGame = async () => {
     playerRollOutput.innerHTML = curPNum;
     opponentRollOutput.innerHTML = curOpNum;
 
-    playerImg.src = ply.character.image;
+    playerImg.src = ply.image;
     opponentImg.src = opp.character.image;
 
     // plyRoll = null;
@@ -359,7 +361,7 @@ const playGame = async () => {
     plyRoll = null;
     oppRoll = null;
 
-    if(ply.character.flip)
+    if(ply.flip)
     {
         playerImg.style.transform = "scaleX(-1)";
     }
@@ -559,25 +561,34 @@ async function callWinner(win) {
     if(win)
     {
         winners = playerTeam;
+        for(let i = 0; i < winners.length; i++)
+        {
+            const img = document.getElementById("y"+i);
+            img.src = winners[i].image;
+        }
     }
     else
     {
         winners = opposingTeam;
+        for(let i = 0; i < winners.length; i++)
+        {
+            console.log(winners[i]);
+            const wait = await fetch(`/getCharacter?name=${winners[i]}`);
+        //     const obj = await wait.json();
+        //     console.log(obj);
+        //     const img = document.getElementById("y"+i);
+        //     console.log(img.height);
+        //     img.src = obj.character.image;
+        }
     }
     
-    for(let i = 0; i < winners.length; i++)
-    {
-        const wait = await fetch(`/getCharacter?name=${winners[i]}`);
-        const obj = await wait.json();
-        const img = document.getElementById("y"+i);
-        console.log(img.height);
-        img.src = obj.character.image;
-    }
+
 }
 
 function tryAgain() {
+    ai = false;
     ReactDOM.render(
-        <SelectGame team={player.team[0]} />,
+        <SelectGame team={player} />,
         document.getElementById('stage')
     );
 }
@@ -590,11 +601,13 @@ const init = async () => {
     const fetchTeam = await fetch('/yourTeam');
     player = await fetchTeam.json();
 
+    console.log(player);
+
     const load = await fetch('/accounts');
     accounts = await load.json();
 
     ReactDOM.render(
-        <SelectGame team={player.team[0]} />,
+        <SelectGame team={player} />,
         document.getElementById('stage')
     );
 
