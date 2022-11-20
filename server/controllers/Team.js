@@ -5,7 +5,10 @@ const TeamModel = require('../models/Team');
 
 const { Team } = models;
 
-const makerPage = (req, res) => res.render('team');
+const makerPage = (req, res) => {
+  const pageName = `${req.session.account.username}'s Team`;
+  return res.render('team', { title: pageName });
+};
 const gamePage = (req, res) => res.render('game');
 
 const createNewTeam = async (req, res) => {
@@ -83,14 +86,6 @@ const removeCharacterFromTeam = async (req, res) => {
   return res.status(400).json({ error: 'An unexpected error has occured!' });
 };
 
-// const getYourTeam = (req, res) => TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
-//   if (err) {
-//     console.log(err);
-//     return res.status(400).json({ error: 'An error occurred!' });
-//   }
-//   return res.json({ team: docs });
-// });
-
 const getYourTeam = (req, res) => {
   TeamModel.findUsingOwner(req.session.account._id, async (err, docs) => {
     if (err) {
@@ -99,10 +94,10 @@ const getYourTeam = (req, res) => {
     }
 
     try {
-      const team = await CharacterModel.find({_id: { $in: docs.team}}).exec();
+      const team = await CharacterModel.find({ _id: { $in: docs.team } }).exec();
       return res.json(team);
     } catch (err2) {
-      return res.status(500).json({error: 'failed to look up team members'});
+      return res.status(500).json({ error: 'failed to look up team members' });
     }
   });
 };
