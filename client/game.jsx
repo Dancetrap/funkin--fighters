@@ -822,6 +822,10 @@ const loadOpposingTeam = async (p,o,b) => {
 
     // await preGame(player.team[0].team, opponent.team.team);
 
+    startGame = false;
+    playerTurn = null;
+    opponentTurn = null;
+
     ReactDOM.render(
         <SelectTeam csrf={csrfToken} />,
         document.getElementById('stage')
@@ -902,8 +906,12 @@ const gameStart = async () => {
         if(ai) opponentAlive.push(opposingTeam[i]._id);
         else opponentAlive.push(opposingTeam[i]);
     }
+
+    console.log(startGame);
     
     startGame = true;
+    curOpNum = 0;
+    curPNum = 0;
 
     console.log(pName);
     console.log(oName);
@@ -974,8 +982,6 @@ const playGame = async () => {
         playerImg.style.transform = null;
     }
 
-    console.log(opp.character.flip);
-
     if(!opp.character.flip)
     {
         opponentImg.style.transform = "scaleX(-1)";
@@ -1045,7 +1051,6 @@ function getRandomOpponent() {
     const opponentRollOutput = document.getElementById('theirNumber');
 
     oppRoll = getRandomInt(21);
-    console.log(oppRoll);
     // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
     opponentRollOutput.innerHTML = oppRoll;
     curOpNum = oppRoll;
@@ -1070,7 +1075,6 @@ function yourRoll() {
     // playerRollOutput.innerHTML = lerp(curPNum,plyRoll,1);
     playerRollOutput.innerHTML = plyRoll;
     curPNum = plyRoll;
-    // console.log(plyRoll);
     if(oppRoll == null)
     {
         playerTurn = false;
@@ -1097,7 +1101,7 @@ function compareNumbers(a,b) {
     playerTurn = false;
     opponentTurn = false;
     if(a > b){
-        console.log("You Win");
+        // console.log("You Win");
         roll.innerHTML = `Point ${pName}`;
         setTimeout(async function() {
             opponentDead.push(opponentAlive[0]);
@@ -1116,7 +1120,7 @@ function compareNumbers(a,b) {
     } 
     else if(a < b){
         roll.innerHTML = `Point ${oName}`;
-        console.log("You Lose");
+        // console.log("You Lose");
         setTimeout(async function() {
             playerDead.push(playerAlive[0]);
             playerAlive.splice(0,1);
@@ -1134,7 +1138,7 @@ function compareNumbers(a,b) {
         },1000);
     } 
     else if(a == b){
-        console.log("Tie");
+        // console.log("Tie");
         roll.innerHTML = `Tie`;
         setTimeout(function() {
             plyRoll = null;
@@ -1174,13 +1178,13 @@ async function callWinner(win) {
     else
     {
         winners = opposingTeam;
-        console.log(winners);
+        // console.log(winners);
         if(ai)
         {
             for(let i = 0; i < winners.length; i++)
             {
                 // Apparently it's getting back an object, which IDK why
-                console.log(winners[i]);
+                // console.log(winners[i]);
                 // const wait = await fetch(`/getCharacter?name=${winners[i]._id}`);
                 // const obj = await wait.json();
                 const img = document.getElementById("y"+i);
@@ -1192,7 +1196,7 @@ async function callWinner(win) {
             for(let i = 0; i < winners.length; i++)
             {
                 // Apparently it's getting back an object, which IDK why
-                console.log(winners[i]);
+                // console.log(winners[i]);
                 const wait = await fetch(`/getCharacter?name=${winners[i]}`);
                 const obj = await wait.json();
                 const img = document.getElementById("y"+i);
@@ -1254,7 +1258,8 @@ async function callWinnerBuild() {
 
 function tryAgain() {
     ai = false;
-    startGame = false;
+    if(playerAlive.length != 0) playerAlive.splice(0,playerAlive.length);
+    if(opponentAlive.length != 0) opponentAlive.splice(0,opponentAlive.length);
     ReactDOM.render(
         <SelectGame team={player} />,
         document.getElementById('stage')
