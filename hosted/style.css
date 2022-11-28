@@ -180,15 +180,17 @@ nav:nth-child(1) {
     font-size: 1.2em;
     width: 100px;
     background-color: #55acee;
-    border-radius: 2px;
+    border-radius: 10px;
     border-color: #66acee;
-    padding: 3px 0px;
+    padding: 5px 0px;
     color: white;
     text-decoration: none;
+    font-family: 'Phantom';
 }
 
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
     color: white;
+    cursor: pointer;
 }
 
 .formSubmit:hover {
@@ -391,6 +393,10 @@ h3.domoAge {
     height: auto;
     text-align: center;
     font-size: 32px;
+}
+
+.d-sides{
+    margin: 0%;
 }
 
 #team{

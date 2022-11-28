@@ -52,25 +52,30 @@ const init = async () => {
     // console.log(theTeam);
     // await getTeamImages();
 
-    const load = await fetch('/load', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ _csrf: csrfToken }),
-      });
-
-    const makeTeam = await fetch('/loadTeam', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ _csrf: csrfToken }),
-    });
-
-    // Not updating
     const getTeam = await fetch('/yourTeam');
     team = await getTeam.json();
+    if(team.error)
+    {
+        const load = await fetch('/load', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ _csrf: csrfToken }),
+        });
+
+        const makeTeam = await fetch('/loadTeam', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ _csrf: csrfToken }),
+        });
+
+        const getTeam = await fetch('/yourTeam');
+        team = await getTeam.json();
+    }
+
 
     // objs = [];
     // for(let i = 0; i < team.team[0].team.length; i++)

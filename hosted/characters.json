@@ -1150,6 +1150,51 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3d/MightyZIPIcons.png",
         "flip": false
     },
+    "god z":{
+        "name": "god z",
+        "origin": "Friday Night Funkin' D-Sides",
+        "mod": "Friday Night Funkin' D-Sides",
+        "quote":"LET ME SHOW YOU MY BEAUTIFUL WORLD. - God Z",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/45/GodZIdleDSides.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2b/Icon-godzofficial.png",
+        "flip": false
+    },
+    "tenma mighty":{
+        "name": "tenma mighty",
+        "origin": "Friday Night Funkin' D-Sides",
+        "mod": "Friday Night Funkin' D-Sides",
+        "quote":"You never stood a chance. - Tenma Mighty",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/25/Tenmarealidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/30/TenmaIconsOfficial.png",
+        "flip": true
+    },
+    "mitee":{
+        "name": "mitee",
+        "origin": "Friday Night Funkin' D-Sides",
+        "mod": "Friday Night Funkin' D-Sides",
+        "quote":"and why they ourple - Mitee",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/bf/Miteerealidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/65/MiteeIconsOfficial.png",
+        "flip": true
+    },
+    "ved guy":{
+        "name": "ved guy",
+        "origin": "Friday Night Funkin' D-Sides",
+        "mod": "Friday Night Funkin' D-Sides",
+        "quote":"Hey there! You got a birthday comin’ up? Did a pet die recently and you need some cheering up? Or maybe you’re just cravin’ pizza?! Well Fredbear’s Family Diner is open, 6 AM to 10 PM! Bring the whole family down, courtesy of your favorite bear n’ bun! See ya there! - Ved Guy",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ef/DSVedIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/43/DSideGuyIcons.png",
+        "flip": false
+    },
+    "mackpack":{
+        "name": "mackpack",
+        "origin": "Friday Night Funkin' D-Sides",
+        "mod": "Friday Night Funkin' D-Sides",
+        "quote":"Hello, Internet. Welcome to True Theory, the only series on the internet where you’ll hear nothing but the truth. - MackPack",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/ca/DSMatIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c8/Icon-mackpack.png",
+        "flip": false
+    },
     "euthanasia rabbit":{
         "name": "euthanasia rabbit",
         "origin": "Wednesday's Infidelity",
@@ -1237,6 +1282,68 @@
         "quote":"I will make you suffer. Suffer like so many of the others! - Springtrap (FNAF AR)",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c9/AftontrapIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4a/Aftonspringtrapicons.png",
+        "flip": false
+    },
+    "kris":{
+        "name": "kris",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/93/SeekKrisHyperlinkIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/6c/KrisVsRouxlsIcon.png",
+        "flip": true
+    },
+    "susie":{
+        "name": "susie",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "quote":"Hey. Let me tell you a secret. Quiet people piss me off! - Susie (Deltarune Chapter 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/6e/SeekSusieHyperlinkIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/5f/SusieDeltaruneIcon.png",
+        "flip": true
+    },
+    "ralsei":{
+        "name": "ralsei",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "quote":"The power of fluffy bois shines within you! - Deltarune Chapter 1 save file",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/79/SeekRalseiHyperlinkIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/5f/SusieDeltaruneIcon.png",
+        "flip": true
+    },
+    "lancer":{
+        "name": "lancer",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "quote":"I'm...! The bad guy! - Lancer (Deltarune Chapter 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3f/SeekLancerIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/60/LancerDeltaruneIcon.png",
+        "flip": true
+    },
+    "jevil":{
+        "name": "jevil",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "quote":"CHAOS! CHAOS! - Jevil (Deltarune Chapter 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/6b/SeekJevilIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3c/JevilDeltaruneIcon.png",
+        "flip": false
+    },
+    "seam":{
+        "name": "seam",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "quote":"Around here, you learn to find ways to pass the time... or go mad like everyone else. - Seam (Deltarune Chapter 1)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/50/SeekSeamIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/04/SeamDeltaruneIcon.png",
+        "flip": true
+    },
+    "spamton":{
+        "name": "spamton",
+        "origin": "Deltarune",
+        "mod": "Seek's Cool Deltarune Mod",
+        "quote":"NOW'S YOUR CHANCE TO BE A BIG SHOT! - Spamton (Deltarune Chapter 2)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7d/NelsonIdleDance.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ec/SeekSpamtonNeoIcons.png",
         "flip": false
     }
 }

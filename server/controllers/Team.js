@@ -97,7 +97,7 @@ const getYourTeam = (req, res) => {
       const team = await CharacterModel.find({ _id: { $in: docs.team } }).exec();
       return res.json(team);
     } catch (err2) {
-      return res.status(500).json({ error: 'failed to look up team members' });
+      return res.status(200).json({ error: true });
     }
   });
 };
