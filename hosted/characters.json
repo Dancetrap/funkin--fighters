@@ -1345,5 +1345,58 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7d/NelsonIdleDance.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ec/SeekSpamtonNeoIcons.png",
         "flip": false
+    },
+    "neonight":{
+        "name": "neonight",
+        "origin": "YouTuber (Neonight)",
+        "mod": "Neonight",
+        "quote":"Hi! My name is Neonight! I upload Friday Night Funkin :) - Neonight YouTube description",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/57/Neonight_Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/50/Neonighticons.png",
+        "flip": false
+    },
+    "sharv":{
+        "name": "sharv",
+        "origin": "YouTuber (Sharv)",
+        "mod": "Sharv",
+        "quote":"Beep Boop! Don't forget to subscribe! Friday Night Funkin content right here! - Sharv YouTube description",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/72/SharvIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2c/SharvAllIcons.png",
+        "flip": true
+    },
+    "lylace":{
+        "name": "lylace",
+        "origin": "YouTuber (Lylace)",
+        "mod": "Lylace",
+        "quote":"Hey, I upload Friday Night Funkin' content! Don't forget to subscribe if you enjoy my videos c: - Lylace YouTube description",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d8/LylaceIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f5/LylaceAllFullIcon.png",
+        "flip": false
+    },
+    "swirl":{
+        "name": "swirl",
+        "origin": "YouTuber (Swirl)",
+        "mod": "Swirl",
+        "quote":"❤ Hi I'm Swirl I do some FNF covers 🎶 - Swirl YouTube description",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8e/NewSwirlIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a0/IconSet_Swirl.png",
+        "flip": false
+    },
+    "zynux":{
+        "name": "zynux",
+        "origin": "YouTuber (Zynux)",
+        "mod": "Zynux",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1a/ZynuxIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/5a/ZynuxAllIcons.png",
+        "flip": false
+    },
+    "blantados":{
+        "name": "blantados",
+        "origin": "YouTuber (Blantados)",
+        "mod": "Blantados",
+        "quote":"I'm tired of not being able to do anything even though I'm the one making the videos. - Blantados",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b8/BlantadV3Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d1/Icon-Blantad.png",
+        "flip": false
     }
 }
