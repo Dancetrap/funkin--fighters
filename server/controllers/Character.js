@@ -16,7 +16,7 @@ const createCharacterModels = async (req, res) => {
   const doc = await CharacterModel.findOne({}).exec();
   // console.log(doc);
   const list = JSON.parse(JSON.stringify(characters));
-  console.log(Object.keys(list).length);
+  // console.log(Object.keys(list).length);
   if (!doc) {
     Object.keys(list).forEach((c) => {
       const character = {
@@ -66,7 +66,7 @@ const createCharacterModels = async (req, res) => {
       return res.status(500).json({ error: 'Something went wrong' });
     });
   }
-  console.log('No new characters');
+  // console.log('No new characters');
   return res.status(200).json({ message: 'Characters have already been loaded' });
 
   // return res.status(200).json({ message: 'Characters have already been loaded' });
