@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Funkin Fighters</title>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <link rel="shortcut icon" href="/assets/img/favicon.png"/>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+</head>
+<body>
+  <nav>
+    <a href="/profile"><img id="logo" src="/assets/img/profileIcon.png" alt="face logo"/></a>
+    <div class="navlink"><a id="logoutButton" href="/logout">Log out</a></div>
+    <div class="centerLink">
+      <div class="navlink"><a href="/home">Home</a></div>
+      <div class="navlink"><a href="/game">Game</a></div>
+      <div class="navlink"><a href="/team" id="teamButton">Your Team</a></div>
+    </div>
+  </nav>
+  <div id="profile">
+    <div id="pfp">
+
+    </div>
+    <div id="pinfo">
+        <h1>{{username}}</h1>
+        <hr>
+        <h2>Your Team</h2>
+        <div id="team">
+
+        </div>
+        <div id="wins">
+            <h3>Wins: 0</h3>
+            <h3>Losses: 0</h3>
+        </div>
+        <button id="premium">Unlock Premium Mode</button>
+    </div>
+  </div>
+  <div id="domoMessage" class='hidden'>
+    <img id="speech" src="/assets/img/speech.png" alt="speech box"/>
+    <h3><span id="errorMessage"></span></h3>
+    <img id="domo" src="assets/img/domo.png" alt="domo"/>
+  </div>
+  <script type="module" src="/assets/profileBundle.js"></script>
+</body>
+</html>

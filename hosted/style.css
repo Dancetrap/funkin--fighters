@@ -7,6 +7,29 @@ html, body {
     font-family: 'Phantom';
 }
 
+button {
+    border: 0px solid #338acc;
+    background-color: #55acee;
+    color: white;
+    font-family: 'Phantom';
+    font-size: larger;
+    padding: 20px;
+    border-radius: 20px;
+    transition: background-color 0.4s ease;
+    width: auto;
+}
+
+button:hover {
+    /* Convert color to HSB and lower B */
+    background-color:#338acc;
+    cursor: pointer;
+}
+
+button:active{
+    /* Convert color to HSB and raise B */
+    background-color: #66bdff;
+}
+
 #logo {
     height: 40px;
     width: 40;
@@ -84,7 +107,7 @@ nav:nth-child(1) {
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
 }
-
+/* 
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
@@ -126,7 +149,7 @@ nav:nth-child(1) {
 .makeDomoSubmit:hover {
     transition: background-color 0.4s ease;
     background-color: #338acc;
-}
+} */
 
 .mainForm {
     height: 300px;
@@ -189,7 +212,9 @@ nav:nth-child(1) {
     display: none;
 }
 
-#domoMessage {
+/* I'll get rid of these when I can */
+
+/* #domoMessage {
     top: 250px;
     width: 250px;
     height: 650px;
@@ -300,7 +325,7 @@ h3.domoAge {
 
 .domo:last-child {
     margin-bottom:10px;
-}
+} */
 
 #results {
     font-size: 15px;
@@ -524,6 +549,56 @@ h3.domoAge {
 
 #remainingOpponents{
     text-align: right;
+}
+
+#profile{
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#pfp, #pinfo{
+    /* border: 2px solid #338acc; */
+    padding: 10px;
+    /* width: 600px; */
+    /* height: 600px; */
+}
+
+#pinfo{
+
+}
+
+#wins{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#ppf{
+    position: relative;
+}
+
+#change{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0%;
+}
+
+#picture, #change{
+    border-radius: 1000px;
+    transition: .125s ease;
+}
+
+#ppf:hover #picture{
+    /* background-color: #338acc; */
+    opacity: 50%;
+}
+
+#ppf:hover #change{
+    opacity: 100%;
 }
 
 @font-face {

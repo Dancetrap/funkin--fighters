@@ -15,8 +15,10 @@ const router = (app) => {
   // app.get('/maker', mid.requiresLogin, controllers.Domo.makerPage);
   // app.post('/maker', mid.requiresLogin, controllers.Domo.makeDomo);
 
+  app.get('/home', mid.requiresLogin, controllers.home);
   app.get('/team', mid.requiresLogin, controllers.Team.makerPage);
   app.get('/game', mid.requiresLogin, controllers.Team.gamePage);
+  app.get('/profile', mid.requiresLogin, controllers.Account.profilePage);
 
   app.get('/searchCharacters', mid.requiresLogin, controllers.Character.findCharacters);
   app.get('/getCharacter', mid.requiresLogin, controllers.Character.getCharacter);
@@ -39,8 +41,6 @@ const router = (app) => {
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 
   // app.get('/searchCharacters', mid.requiresLogin, controllers.Character.searchTest);
-
-  app.get('/home', mid.requiresLogin, controllers.home);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   app.get('/*', controllers.notFound);

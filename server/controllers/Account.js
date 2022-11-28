@@ -2,6 +2,10 @@ const models = require('../models');
 
 const { Account } = models;
 
+const profilePage = (req, res) => {
+  res.render('profile', { username: req.session.account.username });
+};
+
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
@@ -50,7 +54,7 @@ const signup = async (req, res) => {
     const newAccount = new Account({ username, password: hash });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
-    return res.json({ redirect: '/team' });
+    return res.json({ redirect: '/home' });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {
@@ -79,6 +83,7 @@ const getUsername = (req, res) => {
 
 module.exports = {
   loginPage,
+  profilePage,
   login,
   logout,
   signup,
