@@ -11,11 +11,13 @@ const CharacterModel = require('../models/Character');
 
 const createCharacterModels = async (req, res) => {
   const search = [];
+  const newBatch = [];
 
   const doc = await CharacterModel.findOne({}).exec();
-
+  // console.log(doc);
+  const list = JSON.parse(JSON.stringify(characters));
+  console.log(Object.keys(list).length);
   if (!doc) {
-    const list = JSON.parse(JSON.stringify(characters));
     Object.keys(list).forEach((c) => {
       const character = {
         name: list[c].name,
@@ -33,7 +35,41 @@ const createCharacterModels = async (req, res) => {
       return res.status(500).json({ error: 'Something went wrong' });
     });
   }
+  const docs = await CharacterModel.find().exec();
+  // console.log(docs.length);
+  Object.keys(list).forEach((c) => {
+    // console.log(list[c].name);
+    let exist = true;
+    docs.forEach((d) => {
+      if (d.name === list[c].name) {
+        exist = false;
+      }
+    });
+    if (exist) {
+      const character = {
+        name: list[c].name,
+        // origin: characters[k].origin,
+        // mod: characters[k].mod,
+        image: list[c].imageURL,
+        flip: list[c].flip,
+      };
+      // console.log(character);
+      const addCharacter = new Character(character);
+      newBatch.push(addCharacter.save());
+    }
+    // return res.status(200).json({ message: 'No new characters' });
+  });
+
+  if (newBatch.length !== 0) {
+    return Promise.all(newBatch).then(() => res.status(200).json({ message: 'success' })).catch((err) => {
+      console.log(err);
+      return res.status(500).json({ error: 'Something went wrong' });
+    });
+  }
+  console.log('No new characters');
   return res.status(200).json({ message: 'Characters have already been loaded' });
+
+  // return res.status(200).json({ message: 'Characters have already been loaded' });
 };
 
 const findCharacters = async (req, res) => {

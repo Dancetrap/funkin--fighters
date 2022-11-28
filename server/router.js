@@ -40,6 +40,7 @@ const router = (app) => {
 
   // app.get('/searchCharacters', mid.requiresLogin, controllers.Character.searchTest);
 
+  app.get('/home', mid.requiresLogin, controllers.home);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   app.get('/*', controllers.notFound);

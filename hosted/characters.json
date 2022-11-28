@@ -1229,5 +1229,14 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/bc/AOKOOneyIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cb/OneyIcons.png",
         "flip": false
+    },
+    "springtrap":{
+        "name": "springtrap",
+        "origin": "Five Nights At Freddy's 3",
+        "mod": "Funkin' at Freddy's + Afton",
+        "quote":"I will make you suffer. Suffer like so many of the others! - Springtrap (FNAF AR)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c9/AftontrapIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4a/Aftonspringtrapicons.png",
+        "flip": false
     }
 }

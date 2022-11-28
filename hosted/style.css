@@ -4,6 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: 'Phantom';
 }
 
 #logo {
@@ -11,7 +12,7 @@ html, body {
     width: 40;
     padding-top: 5px;
     float:left;
-    border-radius: 8px;
+    border-radius: 1000px;
 }
 
 nav {
@@ -26,11 +27,11 @@ nav:nth-child(1) {
 
 .navlink {
     padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
+    /* padding-top: 8px;
+    padding-left: 20px; */
     color: white;
     font-size: 1.3em;
-    float: left;
+    /* float: left; */
 }
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
@@ -45,6 +46,43 @@ nav:nth-child(1) {
 .navlink a:hover {
     transition: background-color 0.8s ease;
     background-color: #66bdff;
+}
+
+#selected {
+    font-size: 1.2em;
+}
+
+.centerLink{
+    float: left;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    position: sticky;
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* padding-top: -25px; */
+}
+
+#logoutButton{
+    float: right;
+    padding-right: 30px;
+    padding-top: 8px;
+}
+
+#logon{
+    padding-top: 0.5em;
+}
+
+#signupForm, #loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
 }
 
 .domoForm {
@@ -264,7 +302,6 @@ h3.domoAge {
     margin-bottom:10px;
 }
 
-
 #results {
     font-size: 15px;
     text-align: center;
@@ -370,6 +407,12 @@ h3.domoAge {
     text-align: center;
     display: flex;
     flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 #final button{
@@ -482,6 +525,11 @@ h3.domoAge {
 #remainingOpponents{
     text-align: right;
 }
+
+@font-face {
+    font-family: 'Phantom';
+    src: url('font/phantom.ttf');
+  }
 
 @media screen and (max-width: 850px) and (min-width: 575px) {
     #team{

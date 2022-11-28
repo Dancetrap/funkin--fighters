@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        app: './client/maker.jsx',
         login: './client/login.jsx',
         team: './client/team.jsx',
         game: './client/game.jsx',
+        profile: './client/profile.jsx',
     },
     module: {
         rules: [

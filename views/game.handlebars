@@ -9,10 +9,13 @@
 </head>
 <body>
   <nav>
-    {{!-- <a href="/login"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a> --}}
-    <div class="navlink"><a href="/logout">Log out</a></div>
-    <div class="navlink">Game</div>
-    <div class="navlink"><a href="/team">Your Team</a></div>
+    <a href="/"><img id="logo" src="/assets/img/profileIcon.png" alt="face logo"/></a>
+    <div class="navlink"><a id="logoutButton" href="/logout">Log out</a></div>
+    <div class="centerLink">
+      <div class="navlink"><a href="/home">Home</a></div>
+      <div class="navlink"><span id="selected">Game</span></div>
+      <div class="navlink"><a href="/team" id="teamButton">Your Team</a></div>
+    </div>
   </nav>
   <div id="stage">
     
