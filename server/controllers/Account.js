@@ -30,7 +30,7 @@ const login = (req, res) => {
 
     req.session.account = Account.toAPI(account);
 
-    return res.json({ redirect: '/game' });
+    return res.json({ redirect: '/home' });
   });
 };
 
