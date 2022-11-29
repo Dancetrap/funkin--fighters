@@ -62,6 +62,7 @@ const init = async () => {
 
     const getTeam = await fetch('/yourTeam');
     team = await getTeam.json();
+    console.log(team);
     if(team.error)
     {
 

@@ -3,10 +3,23 @@ const mongoose = require('mongoose');
 
 let TeamModel = {};
 
+const MembersSchema = new mongoose.Schema({
+  charID: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+  },
+
+  index: {
+    type: Number,
+    min: 0,
+    max: 19,
+  },
+});
+
 const TeamSchema = new mongoose.Schema({
   team: {
     // type: Array,
-    type: [mongoose.Schema.ObjectId],
+    type: [MembersSchema],
   },
   // limit: {
   //   type: Number,
@@ -21,6 +34,12 @@ const TeamSchema = new mongoose.Schema({
   isAccepted: {
     type: Boolean,
   },
+  wins: {
+    type: Number,
+  },
+  losses: {
+    type: Number,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
@@ -30,6 +49,8 @@ const TeamSchema = new mongoose.Schema({
 TeamSchema.statics.toAPI = (doc) => ({
   team: doc.team,
 });
+
+// const team = await TeamSchema.findOne({owner: req.session.account._id})
 
 TeamSchema.statics.findUsingOwner = (ownerId, callback) => {
   const search = {

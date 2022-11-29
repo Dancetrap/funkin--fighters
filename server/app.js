@@ -1,4 +1,5 @@
 const path = require('path');
+// const fileUpload = require('express-fileupload');
 const express = require('express');
 const compression = require('compression');
 const favicon = require('serve-favicon');
@@ -11,14 +12,14 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const redis = require('redis');
 const csrf = require('csurf');
-
+// const fileUpload = require('express-fileupload');
 // const { red } = require('colorette');
 const router = require('./router.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // Change DomoMaker to something else;
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/DomoMaker';
+const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/funkinfighters';
 mongoose.connect(dbURI, (err) => {
   if (err) {
     console.log('Could not connect to database');
@@ -52,6 +53,8 @@ app.set('views', `${__dirname}/../views`);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// app.use(fileUpload());
 
 app.use(session({
   key: 'sessionid',

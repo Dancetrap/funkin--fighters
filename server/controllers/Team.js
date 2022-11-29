@@ -16,12 +16,16 @@ const createNewTeam = async (req, res) => {
     team: [],
     owner: req.session.account._id,
     isAccepted: false,
+    wins: 0,
+    losses: 0,
   };
 
   try {
     const newTeam = new Team(teamData);
     await newTeam.save();
-    return res.status(201).json({ team: newTeam.team, isAccepted: newTeam.isAccepted });
+    return res.status(201).json({
+      team: newTeam.team, isAccepted: newTeam.isAccepted, wins: 0, losses: 0,
+    });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {
@@ -36,19 +40,18 @@ const addCharacterToTeam = async (req, res) => {
   const addTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   const teamMember = await CharacterModel.findById(req.body._id).exec();
 
-  const existsInTeam = addTeam.team.filter((c) => c._id.equals(teamMember._id)).length !== 0;
+  const existsInTeam = addTeam.team.filter((c) => c.charID.equals(teamMember._id)).length !== 0;
 
   if (existsInTeam) {
     return res.status(400).json({ error: 'Character is already in team!' });
   }
 
-  console.log(teamMember);
+  // console.log(teamMember);
 
   if (addTeam.team.length === 20) {
     return res.status(400).json({ error: 'Cannot add more team members' });
   }
-  addTeam.team.push(req.body._id);
-
+  addTeam.team.push({ charID: req.body._id, slot: addTeam.team.length });
   if (addTeam.team.length === 20) {
     console.log('You filled out your team!');
     addTeam.isAccepted = true;
@@ -69,7 +72,7 @@ const removeCharacterFromTeam = async (req, res) => {
   const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   const teamMember = await CharacterModel.findById(req.body._id).exec();
 
-  const existsInTeam = getTeam.team.filter((c) => c._id.equals(teamMember._id)).length !== 0;
+  const existsInTeam = getTeam.team.filter((c) => c.charID.equals(teamMember._id)).length !== 0;
 
   if (existsInTeam) {
     const index = getTeam.team.indexOf(teamMember._id);
@@ -94,13 +97,27 @@ const getYourTeam = (req, res) => {
     }
 
     try {
-      const team = await CharacterModel.find({ _id: { $in: docs.team } }).exec();
+      const teamIDs = docs.team.map((c) => c.charID);
+      console.log(teamIDs);
+      const team = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
+      // sort team by team ID index
+
+      team.sort((a, b) => teamIDs.indexOf(b._id) - teamIDs.indexOf(a._id));
+      // console.log(teamIDs.indexOf(a._id));
+      // console.log(a._id);
+      // console.log(team);
       return res.json(team);
     } catch (err2) {
       return res.status(200).json({ error: true });
     }
   });
 };
+
+// const getYourTeam = async (req, res) => {
+//   const team = await TeamModel.findOne({ owner: req.session.account._id });
+//   team.team[0].slot = 5;
+//   team.team.sort((a,b))
+// }
 
 const getOpponentTeam = async (req, res) => {
   const doc = await TeamModel.findOne({ owner: req.query.team }).exec();

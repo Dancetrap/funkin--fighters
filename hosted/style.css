@@ -107,6 +107,22 @@ nav:nth-child(1) {
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
 }
+
+#characterimages{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 50px;
+}
+
+#bf, #gf{
+    width: auto;
+    height: 40%;
+}
+
+#gf{
+    transform: scaleX(-1);
+}
 /* 
 .domoForm {
     border: 2px solid #338acc;
@@ -208,6 +224,10 @@ nav:nth-child(1) {
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;
     box-shadow: 0px 0px 1px 1px #55acee;
+}
+
+#loginMessage {
+    font-size: 15px;
 }
 
 .hidden {
