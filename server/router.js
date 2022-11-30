@@ -37,6 +37,13 @@ const router = (app) => {
 
   app.get('/random', mid.requiresLogin, controllers.Team.generateCharacters);
 
+  app.post('/win', mid.requiresLogin, controllers.Team.addWin);
+  app.post('/lose', mid.requiresLogin, controllers.Team.addLoss);
+
+  app.get('/getSome', mid.requiresLogin, controllers.Team.getWinsAndLosses);
+
+  app.get('/upload', mid.requiresLogin, controllers.PFP.uploadFile);
+
   // app.get('/remove', mid.requiresLogin, controllers.Team.removeCharacterFromTeam);
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 

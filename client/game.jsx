@@ -1168,6 +1168,17 @@ async function callWinner(win) {
     let winners;
     if(win)
     {
+        // Win method
+        const win = await fetch('/win', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ _csrf: csrfToken }),
+        });
+        const winner = await win.json();
+        console.log(winner);
+
         winners = playerTeam;
         for(let i = 0; i < winners.length; i++)
         {
@@ -1177,6 +1188,17 @@ async function callWinner(win) {
     }
     else
     {
+        // Lose method
+        const lose = await fetch('/lose', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ _csrf: csrfToken }),
+        });
+        const loser = await lose.json();
+        console.log(loser);
+
         winners = opposingTeam;
         // console.log(winners);
         if(ai)

@@ -12,7 +12,7 @@ const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const redis = require('redis');
 const csrf = require('csurf');
-// const fileUpload = require('express-fileupload');
+const fileUpload = require('express-fileupload');
 // const { red } = require('colorette');
 const router = require('./router.js');
 
@@ -54,7 +54,7 @@ app.set('views', `${__dirname}/../views`);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use(fileUpload());
+app.use(fileUpload());
 
 app.use(session({
   key: 'sessionid',

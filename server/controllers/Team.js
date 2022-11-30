@@ -98,7 +98,7 @@ const getYourTeam = (req, res) => {
 
     try {
       const teamIDs = docs.team.map((c) => c.charID);
-      console.log(teamIDs);
+      // console.log(teamIDs);
       const team = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
       // sort team by team ID index
 
@@ -140,6 +140,31 @@ const findAccounts = async (req, res) => {
   return res.status(400).json({ error: 'No accounts found' });
 };
 
+const addWin = async (req, res) => {
+  const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+  getTeam.wins += 1;
+  getTeam.save();
+  return res.status(201).json({ error: 'You Win!' });
+};
+
+const addLoss = async (req, res) => {
+  const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+  getTeam.losses += 1;
+  getTeam.save();
+  return res.status(201).json({ error: 'You Win!' });
+};
+
+const getWinsAndLosses = async (req, res) => {
+  TeamModel.findUsingOwner(req.session.account._id, async (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred!' });
+    }
+
+    return res.json({ wins: docs.wins, losses: docs.losses });
+  });
+};
+
 const generateCharacters = async (req, res) => {
   let rteam;
   try {
@@ -165,5 +190,8 @@ module.exports = {
   createNewTeam,
   addCharacterToTeam,
   removeCharacterFromTeam,
+  addWin,
+  addLoss,
+  getWinsAndLosses,
   generateCharacters,
 };

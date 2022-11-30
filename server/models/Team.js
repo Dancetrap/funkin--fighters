@@ -48,6 +48,8 @@ const TeamSchema = new mongoose.Schema({
 
 TeamSchema.statics.toAPI = (doc) => ({
   team: doc.team,
+  wins: doc.wins,
+  losses: doc.losses,
 });
 
 // const team = await TeamSchema.findOne({owner: req.session.account._id})
@@ -56,7 +58,7 @@ TeamSchema.statics.findUsingOwner = (ownerId, callback) => {
   const search = {
     owner: mongoose.Types.ObjectId(ownerId),
   };
-  return TeamModel.findOne(search).select('team').lean().exec(callback);
+  return TeamModel.findOne(search).select('team wins losses').lean().exec(callback);
 };
 
 TeamModel = mongoose.model('Team', TeamSchema);

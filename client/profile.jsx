@@ -5,6 +5,31 @@ let team;
 let images;
 let ids;
 
+let victories;
+
+const uploadFile = async (e) => {
+    e.preventDefault();
+
+    const _csrf = e.target.querySelector("#_csrf").value;
+
+    const response = await fetch('/upload',{
+        method: 'POST',
+        body: new FormData(e.target),
+    });
+
+    const text = await response.text();
+    console.log(text);
+    // document.getElementById('messages').innerText = text;
+
+    return false;
+};
+
+// const init = () => {
+
+// };
+
+// window.onload = init;
+
 const init = async () => {
     const response = await fetch('/getToken');
     const data = await response.json();
@@ -50,6 +75,10 @@ const init = async () => {
         team = await getTeam.json();
     }
 
+    const add = await fetch('/getSome');
+    victories = await add.json();
+    console.log(victories);
+
     ReactDOM.render(
         <TeamMembers csrf={csrfToken} obj={team}/>,
         document.getElementById('team')
@@ -59,14 +88,23 @@ const init = async () => {
         <Pfp csrf={csrfToken}/>,
         document.getElementById('pfp')
     );
+
+    ReactDOM.render(
+        <WinnersAndLosers vic={victories}/>,
+        document.getElementById('wins')
+    );
+
+    const uploadForm = document.getElementById('hover');
+    uploadForm.addEventListener('submit', uploadFile);
 }
 
 const Pfp = (props) => {
     return <div id='ppf'>
-        <form action="/" key='prof' id='hover'>
+        <form action="/upload" key='prof' id='hover'>
             <input type="image" height="250" width="250" src="/assets/img/profileIcon.png" id='picture' />
             {/* <img src="/assets/img/choose.png" alt="choose" id="change" height="250" width="250" /> */}
             <input type="image" height="250" width="250" src="/assets/img/choose.png" id='change' />
+            <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
         </form>
     </div>
 }
@@ -94,6 +132,13 @@ const TeamMembers = (props) => {
                 </form>  
             content.push(imageForm);
         }
+    return content;
+}
+
+const WinnersAndLosers = (props) => {
+    const content = [];
+    content.push(<h3 key='wins'>Wins: {props.vic.wins}</h3>)
+    content.push(<h3 key='losses'>Losses: {props.vic.losses}</h3>)
     return content;
 }
 
