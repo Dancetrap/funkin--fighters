@@ -51,7 +51,9 @@ const signup = async (req, res) => {
 
   try {
     const hash = await Account.generateHash(pass);
-    const newAccount = new Account({ username, password: hash, picture: '/assets/img/profileIcon.png' });
+    const newAccount = new Account({
+      username, password: hash, picture: '/assets/img/profileIcon.png', premium: false,
+    });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
     return res.json({ redirect: '/home' });
@@ -81,6 +83,21 @@ const getUsername = (req, res) => {
   });
 };
 
+const getAccount = async (req, res) => {
+  const acc = await Account.findOne({ username: req.session.account.username }).exec();
+  return res.json({ account: acc });
+};
+
+const setPreminumMode = async (req, res) => {
+  const yourAccount = await Account.findOne({ username: req.session.account.username }).exec();
+  if (!yourAccount.premium) {
+    yourAccount.premium = true;
+    yourAccount.save();
+    return res.json({ message: 'You are now a premium member' });
+  }
+  return res.json({ message: 'Premium has already been set ' });
+};
+
 module.exports = {
   loginPage,
   profilePage,
@@ -91,4 +108,6 @@ module.exports = {
   findAllUsers,
   getYourUsername,
   getUsername,
+  getAccount,
+  setPreminumMode,
 };

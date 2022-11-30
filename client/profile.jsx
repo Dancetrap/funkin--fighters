@@ -6,6 +6,7 @@ let images;
 let ids;
 
 let victories;
+let account;
 
 const uploadFile = async (e) => {
     e.preventDefault();
@@ -24,9 +25,38 @@ const uploadFile = async (e) => {
     return false;
 };
 
-// const init = () => {
+const upgrade = () => {
+    const unlock = document.getElementById('premium');
+    unlock.style.backgroundColor = "black";
+    unlock.textContent = "Unlocked";
+}
 
-// };
+const premiumMode = async (e) => {
+    const response = await fetch('/unlock',{
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({  _csrf: csrfToken }),
+    });
+    // Need to make this a callback
+    const result = await response.json();
+    // console.log(result);
+
+    if(result.message)
+    {
+        upgrade();
+    }
+};
+
+const checkIfUnlocked = () => {
+    
+    const pre = Object.values(account)[0].premium
+    if(pre)
+    {
+        upgrade();
+    }
+}
 
 // window.onload = init;
 
@@ -77,7 +107,16 @@ const init = async () => {
 
     const add = await fetch('/getSome');
     victories = await add.json();
-    console.log(victories);
+    
+    // const premi = await fetch('/unlock');
+    // const premium = await premi.json();
+    // console.log(premium);
+
+    const acc = await fetch('/account');
+    account = await acc.json();
+    console.log(account);
+
+    checkIfUnlocked();
 
     ReactDOM.render(
         <TeamMembers csrf={csrfToken} obj={team}/>,
@@ -96,6 +135,10 @@ const init = async () => {
 
     const uploadForm = document.getElementById('hover');
     uploadForm.addEventListener('submit', uploadFile);
+
+    const unlock = document.getElementById('premium');
+    unlock.addEventListener('click', premiumMode);
+    console.log(unlock);
 }
 
 const Pfp = (props) => {

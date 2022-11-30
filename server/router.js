@@ -44,6 +44,9 @@ const router = (app) => {
 
   app.get('/upload', mid.requiresLogin, controllers.PFP.uploadFile);
 
+  app.get('/account', mid.requiresLogin, controllers.Account.getAccount);
+  app.post('/unlock', mid.requiresLogin, controllers.Account.setPreminumMode);
+
   // app.get('/remove', mid.requiresLogin, controllers.Team.removeCharacterFromTeam);
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 
