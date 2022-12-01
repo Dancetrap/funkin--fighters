@@ -1398,5 +1398,39 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b8/BlantadV3Idle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d1/Icon-Blantad.png",
         "flip": false
+    },
+    "dan avidan":{
+        "name": "dan avidan",
+        "origin": "YouTuber (Games Grumps/Ninja Sex Party)",
+        "mod": "Arin/Oney Knockout!",
+        "quote":"No matter how hard you work and how big a celebrity you become, you'll never be as famous as cheese - Dan Avidan",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e5/AOKODannyIdle.gif",
+        "flip": true
+    },
+    "sr pelo":{
+        "name": "sr pelo",
+        "origin": "YouTuber (Sr Pelo)",
+        "mod": "Arin/Oney Knockout!",
+        "quote":"AAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHH!!!!!!!!!! - Sr. Pelo",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b2/AOKOPeloIdle.gif",
+        "flip": false
+    },
+    "garfield":{
+        "name": "garfield",
+        "origin": "Garfield",
+        "mod": "NERMAL NERMAL NERMALLIN",
+        "quote":"I hate Mondays - Garfield's iconic quote",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/03/Narfield.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/de/GarfieldIconSet.png",
+        "flip": false
+    },
+    "nermal":{
+        "name": "nermal",
+        "origin": "Garfield",
+        "mod": "NERMAL NERMAL NERMALLIN",
+        "quote":"I'm cute and your not! - Nermal taunting Garfield",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f5/Nermal_Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f5/NermalIconSet.png",
+        "flip": false
     }
 }

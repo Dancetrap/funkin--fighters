@@ -114,10 +114,10 @@ nav:nth-child(1) {
     align-items: center;
     padding-top: 50px;
 
-    /* position: fixed;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
 }
 
 #bf, #gf{
@@ -127,6 +127,11 @@ nav:nth-child(1) {
 
 #gf{
     transform: scaleX(-1);
+    margin-right: 10vw;
+}
+
+#bf{
+    margin-left: 10vw;
 }
 /* 
 .domoForm {
@@ -630,6 +635,10 @@ h3.domoAge {
 
 #ppf:hover #change{
     opacity: 100%;
+}
+
+#headercolor, #bodycolor{
+    width: 100px;
 }
 
 @font-face {

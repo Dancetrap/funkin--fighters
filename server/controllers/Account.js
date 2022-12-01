@@ -52,7 +52,7 @@ const signup = async (req, res) => {
   try {
     const hash = await Account.generateHash(pass);
     const newAccount = new Account({
-      username, password: hash, picture: '/assets/img/profileIcon.png', premium: false,
+      username, password: hash, picture: '/assets/img/profileIcon.png', premium: false, header: '#55acee', body: '#ffffff',
     });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
@@ -98,6 +98,14 @@ const setPreminumMode = async (req, res) => {
   return res.json({ message: 'Premium has already been set ' });
 };
 
+const preminumSettings = async (req, res) => {
+  const yourAccount = await Account.findOne({ username: req.session.account.username }).exec();
+  yourAccount.header = req.body.header;
+  yourAccount.body = req.body.body;
+  yourAccount.save();
+  return res.json({ message: 'Colors have been set' });
+};
+
 module.exports = {
   loginPage,
   profilePage,
@@ -110,4 +118,5 @@ module.exports = {
   getUsername,
   getAccount,
   setPreminumMode,
+  preminumSettings,
 };

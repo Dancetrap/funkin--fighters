@@ -39,6 +39,12 @@ const AccountSchema = new mongoose.Schema({
   premium: {
     type: Boolean,
   },
+  header: {
+    type: String,
+  },
+  body: {
+    type: String,
+  },
   createdDate: {
     type: Date,
     default: Date.now,

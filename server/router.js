@@ -46,6 +46,7 @@ const router = (app) => {
 
   app.get('/account', mid.requiresLogin, controllers.Account.getAccount);
   app.post('/unlock', mid.requiresLogin, controllers.Account.setPreminumMode);
+  app.post('/apply', mid.requiresLogin, controllers.Account.preminumSettings);
 
   // app.get('/remove', mid.requiresLogin, controllers.Team.removeCharacterFromTeam);
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);

@@ -6,6 +6,7 @@ module.exports = {
         team: './client/team.jsx',
         game: './client/game.jsx',
         profile: './client/profile.jsx',
+        premium: './client/premium.jsx',
     },
     module: {
         rules: [

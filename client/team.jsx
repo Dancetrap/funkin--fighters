@@ -118,7 +118,7 @@ const updateTeam = async (e) =>
         return false;
     }
 
-    helper.sendPost(e.target.action, {_id, _csrf},async(result)=>{
+    helper.sendPost(e.target.action, {_id, _csrf}, async(result)=>{
         const getTeam = await fetch('/yourteam')
         const theTeam = await getTeam.json();
         ReactDOM.render(

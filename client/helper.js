@@ -128,6 +128,10 @@ const signUpError = (message) => {
     }
   }
 
+  const setColor = async (url, data, handler) => {
+    const result = await post(url, data, handler);
+  }
+
   module.exports = {
     handleError,
     loginError,
@@ -138,4 +142,5 @@ const signUpError = (message) => {
     vDomo,
     loginAccountPage,
     signUpAccountPage,
+    setColor,
   };
