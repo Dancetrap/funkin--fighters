@@ -200,7 +200,7 @@ const luma = (a) => {
 
     var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
-    return luma < 50;
+    return luma < 40;
     // if (luma < 40) {
     //     // pick a different colour
     // }
