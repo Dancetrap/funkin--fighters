@@ -51,7 +51,7 @@ const addCharacterToTeam = async (req, res) => {
   if (addTeam.team.length === 20) {
     return res.status(400).json({ error: 'Cannot add more team members' });
   }
-  addTeam.team.push({ charID: req.body._id, slot: addTeam.team.length });
+  addTeam.team.push({ charID: req.body._id, index: addTeam.team.length });
   if (addTeam.team.length === 20) {
     console.log('You filled out your team!');
     addTeam.isAccepted = true;
@@ -98,20 +98,81 @@ const getYourTeam = (req, res) => {
     }
 
     try {
+      // let team = [];
+      // console.log(chars.length);
       const teamIDs = docs.team.map((c) => c.charID);
       // console.log(teamIDs);
+      // console.log(docs.team[0].index);
+      // const team = [];
+      // await teamIDs.forEach(async (id) => {
+      //   // console.log(id);
+      //   const t = await CharacterModel.find({ _id: id }).exec();
+      //   team.push(t);
+      //   // console.log(team);
+      // });
+
+      // const team = teamIDs.map(async (c) => {
+      //   const t = await CharacterModel.find({ _id: c }).exec();
+      //   return t;
+      // });
+
+      // console.log(team);
+      // return res.status(400).json({ error: "An unexpected error occured" });
       const team = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
+      // console.log(team);
+      // const sort = team.sort((a, b) => docs.team[a].index - docs.team[b].index);
+      // console.log(sort);
+      // console.log(team[0]._id);
+      // console.log(teamIDs[0]);
+      // console.log(team[0]._id === teamIDs[0]);
+      // console.log(team[0]._id.equals(teamIDs[0]));
+      // console.log(teamIDs.valueOf(team[0]._id));
+      // .indexOf(idYourAreLookingFor);
+
+      // console.log(team.map((c) => c._id));
+      // console.log(team.length);
+      // team.forEach((t) => console.log(teamIDs[0]));
+      // teamIDs.forEach((c) => console.log(team.indexOf(c)));
+
       // sort team by team ID index
 
       // team.forEach((t) => console.log(t._id));
-      // team.forEach((t) => console.log(teamIDs.indexOf(t._id)));
+      // team.forEach((t) => {
+      // console.log(t);
+      // console.log(teamIDs.indexOf(t._id));
+      // console.log(teamIDs.indexOf('638667985a6b0c43a8e9cfb0'));
+      // console.log(teamIDs[team[t]]);
+      // });
+
+      // for (let i = 0; i < team.length; i++) {
+      // console.log(team[i]._id);
+      // console.log(teamIDs[i]);
+
+      // console.log(teamIDs.contains(team[i]._id));
+
+      // console.log(teamIDs[i].equals(team[i]._id));
+      // }
       // team.forEach((t) => console.log(teamIDs.includes(t._id)));
 
-      team.sort((a, b) => teamIDs.indexOf(b._id) - teamIDs.indexOf(a._id));
+      // team.sort((a, b) => teamIDs.indexOf(b._id) - teamIDs.indexOf(a._id));
       // console.log(teamIDs.indexOf(a._id));
       // console.log(a._id);
       // console.log(team);
+
       return res.json(team);
+
+      // return Promise.all(team).then(() => {
+      //   console.log(team);
+      //   res.status(200).json(team);
+      // });
+
+      // return Promise.all(team).then(() => {
+      //   console.log(team);
+      //   res.status(200).json(team);
+      // }).catch((er) => {
+      //   console.log(er);
+      //   return res.status(500).json({ error: 'Something went wrong' });
+      // });
     } catch (err2) {
       return res.status(200).json({ error: true });
     }

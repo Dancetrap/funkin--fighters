@@ -12,7 +12,6 @@ const MembersSchema = new mongoose.Schema({
   index: {
     type: Number,
     min: 0,
-    max: 19,
   },
 });
 
