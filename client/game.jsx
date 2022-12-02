@@ -228,6 +228,8 @@ const loadOpposingTeam = async (p,o,b) => {
         document.getElementById('stage')
     );
 
+    premium.init();
+
     const pMembers = playerTeam = p;
     const oMembers = opposingTeam = o.team;
     
@@ -287,6 +289,8 @@ const gameStart = async () => {
         <Game csrf={csrfToken} />,
         document.getElementById('stage')
     );
+
+    premium.init();
 
     if(playerAlive.length != 0)
     {
@@ -562,6 +566,9 @@ async function callWinner(win) {
         <Winner message={win} />,
         document.getElementById('stage')
     );
+
+    premium.init();
+
     let winners;
     if(win)
     {
@@ -683,10 +690,11 @@ function tryAgain() {
         <SelectGame team={player} />,
         document.getElementById('stage')
     );
+
+    premium.init();
 }
 
 const init = async () => {
-    premium.init();
 
     const response = await fetch('/getToken');
     const data = await response.json();
@@ -704,6 +712,8 @@ const init = async () => {
         <SelectGame team={player} />,
         document.getElementById('stage')
     );
+
+    premium.init();
 
     // await callWinnerBuild();
 }

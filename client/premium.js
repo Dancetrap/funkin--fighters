@@ -35,8 +35,21 @@ const init = async () => {
 
         console.log(buttons);
         
-        buttons.forEach((button) => button.style.backgroundColor = headercolor);
         links.forEach((a) => a.style.backgroundColor = headercolor);
+        buttons.forEach((button) => button.style.backgroundColor = headercolor);
+
+        if (helper.luma(headercolor))
+        {
+            buttons.forEach((button) => button.style.color = "white");
+            links.forEach((a) => a.style.color = "white");
+            document.getElementById('selected').style.color = "white";
+        }
+        else
+        {
+            buttons.forEach((button) => button.style.color = "black");
+            links.forEach((a) => a.style.color = "black");
+            document.getElementById('selected').style.color = "black";
+        }
         
     }
 

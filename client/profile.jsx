@@ -106,8 +106,8 @@ const premiumMode = async (e) => {
 
     if(result.message)
     {
-        setColor();
         upgrade();
+        setColor();
     }
 };
 
@@ -116,8 +116,8 @@ const checkIfUnlocked = () => {
     const pre = Object.values(account)[0].premium;
     if(pre)
     {
-        setColor();
         upgrade();
+        setColor();
     }
 }
 
@@ -216,7 +216,7 @@ const setColor = (e) => {
     const body = document.querySelector('body');
     const buttons = document.querySelectorAll('button');
     const links = document.querySelectorAll('a');
-    const submits = document.querySelector('.formSubmit');
+    const submits = document.querySelector('#apply');
     // console.log(submits);
 
     // console.log(luma(Object.values(account)[0].header));
@@ -224,6 +224,7 @@ const setColor = (e) => {
 
     nav.style.backgroundColor = Object.values(account)[0].header;
     body.style.backgroundColor = Object.values(account)[0].body;
+    submits.style.backgroundColor = Object.values(account)[0].header;
 
     if (helper.luma(Object.values(account)[0].body))
     {
@@ -241,11 +242,25 @@ const setColor = (e) => {
     {
         buttons.forEach((button) => button.style.color = "white");
         links.forEach((a) => a.style.color = "white");
+        submits.style.color = "white";
     }
     else
     {
         buttons.forEach((button) => button.style.color = "black");
         links.forEach((a) => a.style.color = "black");
+        submits.style.color = "black";
+    }
+
+    const unlock = document.getElementById('premium');
+    if (helper.luma(Object.values(account)[0].header))
+    {
+        unlock.style.backgroundColor = "white";
+        unlock.style.color = Object.values(account)[0].header;
+    }
+    else
+    {
+        unlock.style.backgroundColor = Object.values(account)[0].header;
+        unlock.style.color = "black";
     }
 
     // submits.forEach((a) => a.style.backgroundColor = Object.values(account)[0].header);
@@ -301,13 +316,17 @@ const WinnersAndLosers = (props) => {
 
 const Premium = (props) => {
     return <div id='settings'>
-        <form action="/apply" method="POST" key="colorful" onSubmit={colorIn} >
-            <label htmlFor="header">Main Color: </label>
-            <input type="color" id="headercolor" name="header" defaultValue={props.color.header} />
-            <label htmlFor="body">Secondary Color: </label>
-            <input type="color" id="bodycolor" name="body" defaultValue={props.color.body} />
+        <form action="/apply" method="POST" key="colorful" id="colorSettings" onSubmit={colorIn} >
+            <div className="colors">
+                <label htmlFor="header">Main Color: </label>
+                <input type="color" id="headercolor" name="header" defaultValue={props.color.header} />
+            </div>
+            <div className="colors">
+                <label htmlFor="body">Secondary Color: </label>
+                <input type="color" id="bodycolor" name="body" defaultValue={props.color.body} />
+            </div>
             <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
-            <input className="formSubmit" type="submit" value="Apply" />  
+            <input className="formSubmit" id="apply" type="submit" value="Apply" />  
         </form>
     </div>
 }

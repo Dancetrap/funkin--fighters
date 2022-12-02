@@ -80,11 +80,11 @@ const removeCharacterFromTeam = async (req, res) => {
       getTeam.isAccepted = false;
       getTeam.team.splice(index, 1);
       getTeam.save();
-      return res.status(200).json({ error: 'You are no longer accepted' });
+      return res.status(200).json({ message: 'You are no longer accepted' });
     }
     getTeam.team.splice(index, 1);
     getTeam.save();
-    return res.status(200).json({ error: 'Character has been removed' });
+    return res.status(200).json({ message: 'Character has been removed' });
   }
   return res.status(400).json({ error: 'An unexpected error has occured!' });
 };
