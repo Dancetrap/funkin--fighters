@@ -61,6 +61,31 @@ const addCharacterToTeam = async (req, res) => {
 
   addTeam.save();
   return res.status(201).json({ team: addTeam });
+
+  // const addTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+  // const teamMember = await CharacterModel.findById(req.body._id).exec();
+
+  // const existsInTeam = addTeam.team.filter((c) => c._id.equals(teamMember._id)).length !== 0;
+
+  // console.log(existsInTeam);
+  // if (existsInTeam) {
+  //   return res.status(400).json({ error: 'Character is already in team!' });
+  // }
+
+  // if (addTeam.team.length === 20) {
+  //   return res.status(400).json({ error: 'Cannot add more team members' });
+  // }
+  // addTeam.team.push(req.body._id);
+
+  // if (addTeam.team.length === 20) {
+  //   console.log('You filled out your team!');
+  //   addTeam.isAccepted = true;
+  //   addTeam.save();
+  //   return res.status(201).json({ team: addTeam });
+  // }
+
+  // addTeam.save();
+  // return res.status(201).json({ team: addTeam });
 };
 
 // more bugs
@@ -69,6 +94,24 @@ const addCharacterToTeam = async (req, res) => {
 //  Talk to Austin about all of this
 
 const removeCharacterFromTeam = async (req, res) => {
+  // const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+  // const teamMember = await CharacterModel.findById(req.body._id).exec();
+
+  // const existsInTeam = getTeam.team.filter((c) => c._id.equals(teamMember._id)).length !== 0;
+
+  // if (existsInTeam) {
+  //   const index = getTeam.team.indexOf(teamMember._id);
+  //   if (getTeam.team.length === 20) {
+  //     getTeam.isAccepted = false;
+  //     getTeam.team.splice(index, 1);
+  //     getTeam.save();
+  //     return res.status(201).json({ message: 'You are no longer accepted' });
+  //   }
+  //   getTeam.team.splice(index, 1);
+  //   getTeam.save();
+  //   return res.status(201).json({ error: 'Character has been removed' });
+  // }
+  // return res.status(400).json({ error: 'An unexpected error has occured!' });
   const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   const teamMember = await CharacterModel.findById(req.body._id).exec();
 
@@ -90,7 +133,13 @@ const removeCharacterFromTeam = async (req, res) => {
   return res.status(400).json({ error: 'An unexpected error has occured!' });
 };
 
-const getYourTeam = (req, res) => {
+const getYourTeam = async (req, res) => {
+  // const docs = await TeamModel.findOne({ owner: req.session.account._id }).exec();
+  // if (docs) {
+  //   return res.json({ team: docs });
+  // }
+  // return res.status(400).json({ error: 'An error has occured' });
+
   TeamModel.findUsingOwner(req.session.account._id, async (err, docs) => {
     if (err) {
       console.log(err);
@@ -179,11 +228,14 @@ const getYourTeam = (req, res) => {
   });
 };
 
-// const getYourTeam = async (req, res) => {
-//   const team = await TeamModel.findOne({ owner: req.session.account._id });
-//   team.team[0].slot = 5;
-//   team.team.sort((a,b))
-// }
+// const getYourTeam = (req, res) =>
+// TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
+//   if (err) {
+//     console.log(err);
+//     return res.status(400).json({ error: 'An error occurred!' });
+//   }
+//   return res.json({ team: docs });
+// });
 
 const getOpponentTeam = async (req, res) => {
   const doc = await TeamModel.findOne({ owner: req.query.team }).exec();
