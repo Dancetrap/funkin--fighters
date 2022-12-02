@@ -237,12 +237,29 @@ const getYourTeam = async (req, res) => {
 //   return res.json({ team: docs });
 // });
 
-const getOpponentTeam = async (req, res) => {
-  const doc = await TeamModel.findOne({ owner: req.query.team }).exec();
-  if (doc) {
-    return res.json({ team: doc });
-  }
-  return res.status(400).json({ error: 'An error has occured' });
+const getOpponentTeam = (req, res) => {
+  // const doc = await TeamModel.findOne({ owner: req.query.team }).exec();
+  // if (doc) {
+  //   return res.json({ team: doc });
+  // }
+  // return res.status(400).json({ error: 'An error has occured' });
+
+  TeamModel.findUsingOwner(req.query.team, async (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred!' });
+    }
+    // console.log(docs.owner);
+    try {
+      const teamIDs = docs.team.map((c) => c.charID);
+      const t = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
+      console.log(t);
+      // return res.json({ team: t, owner: req.query.team });
+      return res.json(t);
+    } catch (err2) {
+      return res.status(200).json({ error: true });
+    }
+  });
 };
 
 const findAccounts = async (req, res) => {

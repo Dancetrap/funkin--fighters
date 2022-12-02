@@ -200,15 +200,21 @@ const aiPlayer = async () => {
     // console.log(opponent.team);
     ai = true;
     await loadOpposingTeam(player, opponent, "Bot");  
+
 }
+
+let oUsername;
 
 const otherPlayer = async () => {
     const o = Math.floor(Math.random() * accounts.accounts.length);
-
+    
     const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
+    oUsername = accounts.accounts[o].owner;
     opponent = await other.json();
-
-    await loadOpposingTeam(player, opponent.team);   
+    console.log(opponent);
+    // await loadOpposingTeam(player, opponent.team);
+    await loadOpposingTeam(player, opponent);
+  
 }
 
 const loadOpposingTeam = async (p,o,b) => {
@@ -231,14 +237,17 @@ const loadOpposingTeam = async (p,o,b) => {
     premium.init();
 
     const pMembers = playerTeam = p;
-    const oMembers = opposingTeam = o.team;
+    const oMembers = opposingTeam = o;
+    // const oMembers = opposingTeam = o.team;
+
+    console.log(oMembers);
     
     const yourName = await fetch(`/user`);
     const getMyName = await yourName.json();
 
     if(b == null)
     {
-        const theirName = await fetch(`/oUser?id=${opponent.team.owner}`);
+        const theirName = await fetch(`/oUser?id=${oUsername}`);
         const getTheirName = await theirName.json();
         document.querySelector('#oName').innerHTML = oName = getTheirName.username;
     }
@@ -703,7 +712,7 @@ const init = async () => {
     const fetchTeam = await fetch('/yourTeam');
     player = await fetchTeam.json();
 
-    // console.log(player);
+    console.log(player);
 
     const load = await fetch('/accounts');
     accounts = await load.json();
