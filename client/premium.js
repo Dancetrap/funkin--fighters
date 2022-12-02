@@ -32,8 +32,6 @@ const init = async () => {
         {
             body.style.color = "black";
         }
-
-        console.log(buttons);
         
         links.forEach((a) => a.style.backgroundColor = headercolor);
         buttons.forEach((button) => button.style.backgroundColor = headercolor);

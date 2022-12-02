@@ -119,7 +119,7 @@ const removeCharacterFromTeam = async (req, res) => {
 
   if (existsInTeam) {
     const index = getTeam.team.indexOf(teamMember._id);
-    // console.log(teamMember.name);
+    // console.log(index);
     if (getTeam.team.length === 20) {
       getTeam.isAccepted = false;
       getTeam.team.splice(index, 1);
@@ -237,7 +237,7 @@ const getYourTeam = async (req, res) => {
 //   return res.json({ team: docs });
 // });
 
-const getOpponentTeam = (req, res) => {
+const getOpponentTeam = async (req, res) => {
   // const doc = await TeamModel.findOne({ owner: req.query.team }).exec();
   // if (doc) {
   //   return res.json({ team: doc });
@@ -253,7 +253,6 @@ const getOpponentTeam = (req, res) => {
     try {
       const teamIDs = docs.team.map((c) => c.charID);
       const t = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
-      console.log(t);
       // return res.json({ team: t, owner: req.query.team });
       return res.json(t);
     } catch (err2) {

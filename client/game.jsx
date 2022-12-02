@@ -211,7 +211,7 @@ const otherPlayer = async () => {
     const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
     oUsername = accounts.accounts[o].owner;
     opponent = await other.json();
-    console.log(opponent);
+    // console.log(opponent);
     // await loadOpposingTeam(player, opponent.team);
     await loadOpposingTeam(player, opponent);
   
@@ -235,12 +235,14 @@ const loadOpposingTeam = async (p,o,b) => {
     );
 
     premium.init();
-
+    let oMembers;
     const pMembers = playerTeam = p;
-    const oMembers = opposingTeam = o;
-    // const oMembers = opposingTeam = o.team;
+    if(ai) oMembers = opposingTeam = o.team;
+    else oMembers = opposingTeam = o;
+    // const oMembers = opposingTeam = o;
 
-    console.log(oMembers);
+
+    // console.log(oMembers);
     
     const yourName = await fetch(`/user`);
     const getMyName = await yourName.json();
@@ -282,13 +284,15 @@ const loadOpposingTeam = async (p,o,b) => {
         }
         else
         {
-            const wait = await fetch(`/getCharacter?name=${oMembers[i]}`);
-            const obj = await wait.json();
-            // console.log(img.height);
-            img.src = obj.character.image;
+            // console.log(oMembers[i]);
+
+            // const wait = await fetch(`/getCharacter?name=${oMembers[i]}`);
+            // const obj = await wait.json();
+            // // console.log(img.height);
+            img.src = oMembers[i].image;
             // Disable is not working
             img.disable = false;
-            addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${obj.character._id} />`;
+            addition.innerHTML += `<input id="_id" type="hidden" name="_id" value=${oMembers[i]._id} />`;
         }
     }
 }
@@ -352,10 +356,18 @@ const playGame = async () => {
 
     // const getPlayer = await fetch(`/getCharacter?name=${playerAlive[0]}`);
     const ply = playerAlive[0];
-    // console.log(ply.character.image);
 
-    const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]}`);
-    const opp = await getOpponent.json();
+    let opp;
+
+    if(ai) {
+        const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]}`);
+        opp = await getOpponent.json();
+    }
+    else opp = opponentAlive[0];
+
+    console.log(playerAlive);
+    console.log(opponentAlive);
+    
     // console.log(opp.character.image);
 
     // Get all the images of characters
@@ -366,7 +378,7 @@ const playGame = async () => {
     document.getElementById('remainingOpponents').innerHTML = `Players Left: ${opponentAlive.length}`;
 
     document.getElementById('playerCharName').innerHTML = ply.name;
-    document.getElementById('opponentCharName').innerHTML = opp.character.name;
+    document.getElementById('opponentCharName').innerHTML = opp.name;
 
     const playerRollOutput = document.getElementById('yourNumber');
     const opponentRollOutput = document.getElementById('theirNumber');
