@@ -1,5 +1,6 @@
 const { result } = require('underscore');
 const helper = require('./helper.js');
+const premium = require('./premium.js');
 let csrfToken;
 
 let team;
@@ -18,6 +19,7 @@ const CharacterSearch = (props) => {
 }
 
 const init = async () => {
+    premium.init();
     const response = await fetch('/getToken');
     const data = await response.json();
 

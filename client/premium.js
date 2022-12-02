@@ -1,3 +1,5 @@
+const helper = require('./helper.js');
+
 let account;
 let premium;
 
@@ -16,14 +18,33 @@ const init = async () => {
     if(premium)
     {
         const nav = document.querySelector('nav');
+        const body = document.querySelector('body');
         const buttons = document.querySelectorAll('button');
         const links = document.querySelectorAll('a');
     
         nav.style.backgroundColor = headercolor;
+        body.style.backgroundColor = bodycolor;
+        if (helper.luma(bodycolor))
+        {
+            body.style.color = "white";
+        }
+        else
+        {
+            body.style.color = "black";
+        }
+
+        console.log(buttons);
+        
         buttons.forEach((button) => button.style.backgroundColor = headercolor);
         links.forEach((a) => a.style.backgroundColor = headercolor);
         
     }
+
+    document.getElementById('logo').src = account.account.picture;
 };
 
-window.onload = init;
+// window.onload = init;
+
+module.exports = {
+    init,
+}

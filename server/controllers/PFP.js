@@ -1,6 +1,6 @@
 const models = require('../models');
 
-const { PFP } = models;
+const { PFP, Account } = models;
 
 const uploadFile = async (req, res) => {
   /* First we will check if req.files doesn't exist, or if it does exist
@@ -53,6 +53,10 @@ const uploadFile = async (req, res) => {
   try {
     const newFile = new PFP(sampleFile);
     const doc = await newFile.save();
+
+    const picture = `/retrieve?_id=${doc._id}`;
+    await Account.findByIdAndUpdate(req.session.account._id, { picture }).exec();
+
     return res.status(201).json({
       message: 'File stored successfully!',
       fileId: doc._id,
@@ -65,6 +69,45 @@ const uploadFile = async (req, res) => {
   }
 };
 
+const retrieveFile = async (req, res) => {
+  /* First ensure that the user gave us an _id. Remember that req.query
+     is populated by bodyParser if there are query parameters with the
+     request.
+
+     If they don't send us an _id, we can't look up the file so we will
+     send them an error instead.
+  */
+  if (!req.query._id) {
+    return res.status(400).json({ error: 'Missing file id!' });
+  }
+
+  /* If we have a file id from the user, we can attempt to find the file.
+     One of three things can happen. 1) There is an error contacting the
+     database (which will send us to the catch statement). 2) The database
+     responds but finds no file with that id. 3) The database finds the file.
+  */
+  let doc;
+  try {
+    // First we attempt to find the file by the _id sent by the user.
+    doc = await PFP.findOne({ _id: req.query._id }).exec();
+  } catch (err) {
+    // If we have an error contacting the database, let the user know something happened.
+    console.log(err);
+    return res.status(400).json({ error: 'Something went wrong retrieving file!' });
+  }
+  if (!doc) {
+    return res.status(404).json({ error: 'File not found!' });
+  }
+  res.set({
+    'Content-Type': doc.mimetype,
+    'Content-Length': doc.size,
+    'Content-Disposition': `filename="${doc.name}"`,
+  });
+
+  return res.send(doc.data);
+};
+
 module.exports = {
   uploadFile,
+  retrieveFile,
 };

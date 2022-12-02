@@ -42,7 +42,8 @@ const router = (app) => {
 
   app.get('/getSome', mid.requiresLogin, controllers.Team.getWinsAndLosses);
 
-  app.get('/upload', mid.requiresLogin, controllers.PFP.uploadFile);
+  app.post('/upload', mid.requiresLogin, controllers.PFP.uploadFile);
+  app.get('/retrieve', mid.requiresLogin, controllers.PFP.retrieveFile);
 
   app.get('/account', mid.requiresLogin, controllers.Account.getAccount);
   app.post('/unlock', mid.requiresLogin, controllers.Account.setPreminumMode);
@@ -52,6 +53,7 @@ const router = (app) => {
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 
   // app.get('/searchCharacters', mid.requiresLogin, controllers.Character.searchTest);
+  app.get('/n', mid.requiresSecure, mid.requiresLogout, controllers.nil);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   app.get('/*', controllers.notFound);

@@ -13,5 +13,10 @@ const notFound = (req, res) => {
   });
 };
 
+const nil = (req, res) => {
+  res.json({ message: 'nothing' });
+};
+
 module.exports.home = home;
 module.exports.notFound = notFound;
+module.exports.nil = nil;

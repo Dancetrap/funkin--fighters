@@ -84,7 +84,7 @@ const getUsername = (req, res) => {
 };
 
 const getAccount = async (req, res) => {
-  const acc = await Account.findOne({ username: req.session.account.username }).exec();
+  const acc = await Account.findOne({ username: req.session.account.username }).select('-password').exec();
   return res.json({ account: acc });
 };
 
@@ -103,7 +103,7 @@ const preminumSettings = async (req, res) => {
   yourAccount.header = req.body.header;
   yourAccount.body = req.body.body;
   yourAccount.save();
-  return res.json({ message: 'Colors have been set' });
+  return res.json({ message: 'Colors have been set', head: yourAccount.header, body: yourAccount.body });
 };
 
 module.exports = {

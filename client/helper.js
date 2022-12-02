@@ -130,7 +130,73 @@ const signUpError = (message) => {
 
   const setColor = async (url, data, handler) => {
     const result = await post(url, data, handler);
+    // console.log(result.head);
+
+    const nav = document.querySelector('nav');
+    const body = document.querySelector('body');
+    const buttons = document.querySelectorAll('button');
+    const links = document.querySelectorAll('a');
+    const submits = document.querySelector('.formSubmit');
+    // console.log(submits);
+
+    // console.log(luma(result.head));
+    // if it's true, then set text to white, else set it to black
+
+    nav.style.backgroundColor = result.head;
+
+    body.style.backgroundColor = result.body;
+    if (luma(result.body))
+    {
+        body.style.color = "white";
+    }
+    else
+    {
+        body.style.color = "black";
+    }
+
+    buttons.forEach((button) => button.style.backgroundColor = result.head);
+    links.forEach((a) => a.style.backgroundColor = result.head);
+    if (luma(result.head))
+    {
+        buttons.forEach((button) => button.style.color = "white");
+        links.forEach((a) => a.style.color = "white");
+    }
+    else
+    {
+        buttons.forEach((button) => button.style.color = "black");
+        links.forEach((a) => a.style.color = "black");
+    }
+
+    const unlock = document.getElementById('premium');
+    if(unlock != null || unlock != undefined)
+    {
+      if (luma(result.head))
+      {
+        unlock.style.backgroundColor = "white";
+        unlock.style.color = result.head;
+      }
+      else
+      {
+        unlock.style.backgroundColor = result.head;
+        unlock.style.color = "black";
+      }
+    }
   }
+
+  const luma = (a) => {
+    var c = a.substring(1);      // strip #
+    var rgb = parseInt(c, 16);   // convert rrggbb to decimal
+    var r = (rgb >> 16) & 0xff;  // extract red
+    var g = (rgb >>  8) & 0xff;  // extract green
+    var b = (rgb >>  0) & 0xff;  // extract blue
+
+    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+
+    return luma < 50;
+    // if (luma < 40) {
+    //     // pick a different colour
+    // }
+}
 
   module.exports = {
     handleError,
@@ -143,4 +209,5 @@ const signUpError = (message) => {
     loginAccountPage,
     signUpAccountPage,
     setColor,
+    luma,
   };

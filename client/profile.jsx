@@ -8,26 +8,69 @@ let ids;
 let victories;
 let account;
 
+function getImgData() {
+    const files = chooseFile.files[0];
+    if (files) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(files);
+      fileReader.addEventListener("load", function () {
+        imgPreview.style.display = "block";
+        imgPreview.innerHTML = '<img src="' + this.result + '" />';
+      });    
+    }
+  }
+
 const uploadFile = async (e) => {
     e.preventDefault();
 
-    const _csrf = e.target.querySelector("#_csrf").value;
+    console.log(e.target);
+    // const _csrf = e.target.querySelector("#_csrf").value;
 
-    const response = await fetch('/upload',{
+    const response = await fetch('/upload', {
         method: 'POST',
         body: new FormData(e.target),
     });
 
-    const text = await response.text();
-    // console.log(text);
+    const text = await response.json();
+    // console.log(text.message);
     // document.getElementById('messages').innerText = text;
+
+    if(text.message)
+    {
+        document.getElementById('picture').src = `/retrieve?_id=${text.fileId}`;
+        document.getElementById('logo').src = `/retrieve?_id=${text.fileId}`;
+        console.log(document.getElementById('picture').src);
+    }
 
     return false;
 };
 
+const uploadPic = async () => 
+{
+    const forum = document.getElementById('hover');
+
+    const response = await fetch('/upload', {
+        method: 'POST',
+        body: new FormData(forum),
+    });
+
+    const text = await response.json();
+    // console.log(text.message);
+    // document.getElementById('messages').innerText = text;
+
+    if(text.message)
+    {
+        document.getElementById('picture').src = `/retrieve?_id=${text.fileId}`;
+        document.getElementById('logo').src = `/retrieve?_id=${text.fileId}`;
+        console.log(document.getElementById('picture').src);
+    }
+
+    return false;
+}
+
 const upgrade = () => {
     const unlock = document.getElementById('premium');
-    if (luma(Object.values(account)[0].header))
+    if (helper.luma(Object.values(account)[0].header))
     {
         unlock.style.backgroundColor = "white";
         unlock.style.color = Object.values(account)[0].header;
@@ -40,6 +83,8 @@ const upgrade = () => {
     unlock.style.boxShadow = "2px 2px 25px black"
     unlock.textContent = "Unlocked";
     document.getElementById('features').style.display = "block";
+
+    unlock.disabled = true;
 
     ReactDOM.render(
         <Premium color={Object.values(account)[0]}/>,
@@ -116,7 +161,9 @@ const init = async () => {
 
     const acc = await fetch('/account');
     account = await acc.json();
-    // console.log(account);
+    // console.log();
+
+    document.getElementById('logo').src = account.account.picture;
 
     checkIfUnlocked();
 
@@ -126,7 +173,7 @@ const init = async () => {
     );
 
     ReactDOM.render(
-        <Pfp csrf={csrfToken}/>,
+        <Pfp pfp={account.account} csrf={csrfToken}/>,
         document.getElementById('pfp')
     );
 
@@ -135,8 +182,8 @@ const init = async () => {
         document.getElementById('wins')
     );
 
-    const uploadForm = document.getElementById('hover');
-    uploadForm.addEventListener('submit', uploadFile);
+    // const uploadForm = document.getElementById('hover');
+    // uploadForm.addEventListener('submit', uploadFile);
 
     const unlock = document.getElementById('premium');
     unlock.addEventListener('click', premiumMode);
@@ -158,14 +205,15 @@ const colorIn = async (e) => {
     account = await acc.json();
     console.log(account);
 
-    await setColor();
-    await upgrade();
+    // await setColor();
+    // await upgrade();
     return false;
 }
 
 // set everything to be the color of the selected one
 const setColor = (e) => {
     const nav = document.querySelector('nav');
+    const body = document.querySelector('body');
     const buttons = document.querySelectorAll('button');
     const links = document.querySelectorAll('a');
     const submits = document.querySelector('.formSubmit');
@@ -175,9 +223,21 @@ const setColor = (e) => {
     // if it's true, then set text to white, else set it to black
 
     nav.style.backgroundColor = Object.values(account)[0].header;
+    body.style.backgroundColor = Object.values(account)[0].body;
+
+    if (helper.luma(Object.values(account)[0].body))
+    {
+        body.style.color = "white";
+    }
+    else
+    {
+        body.style.color = "black";
+    }
+
+
     buttons.forEach((button) => button.style.backgroundColor = Object.values(account)[0].header);
     links.forEach((a) => a.style.backgroundColor = Object.values(account)[0].header);
-    if (luma(Object.values(account)[0].header))
+    if (helper.luma(Object.values(account)[0].header))
     {
         buttons.forEach((button) => button.style.color = "white");
         links.forEach((a) => a.style.color = "white");
@@ -191,27 +251,16 @@ const setColor = (e) => {
     // submits.forEach((a) => a.style.backgroundColor = Object.values(account)[0].header);
 };
 
-const luma = (a) => {
-    var c = a.substring(1);      // strip #
-    var rgb = parseInt(c, 16);   // convert rrggbb to decimal
-    var r = (rgb >> 16) & 0xff;  // extract red
-    var g = (rgb >>  8) & 0xff;  // extract green
-    var b = (rgb >>  0) & 0xff;  // extract blue
-
-    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
-
-    return luma < 40;
-    // if (luma < 40) {
-    //     // pick a different colour
-    // }
-}
-
 const Pfp = (props) => {
     return <div id='ppf'>
-        <form action="/upload" key='prof' id='hover'>
-            <input type="image" height="250" width="250" src="/assets/img/profileIcon.png" id='picture' />
-            {/* <img src="/assets/img/choose.png" alt="choose" id="change" height="250" width="250" /> */}
-            <input type="image" height="250" width="250" src="/assets/img/choose.png" id='change' />
+        <form action="/upload" key='prof' id='hover' encType='multipart/form-data' >
+            {/* <input type="image" height="250" width="250" src={props.pfp.picture} id='picture' /> */}
+            <img src={props.pfp.picture} alt="img" height="250" width="250" id="picture" />
+            <label htmlFor='fileUploader'>
+                <img src="/assets/img/choose.png" alt="img" height="250" width="250" id='change' />
+            </label>
+            <input type="file" name='sampleFile' id='fileUploader' accept="image/*" onChange={uploadPic} />
+                {/* <input type="image" height="250" width="250" src="/assets/img/choose.png" id='change' /> */}
             <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
         </form>
     </div>
