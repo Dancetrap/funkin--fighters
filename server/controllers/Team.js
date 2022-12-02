@@ -76,6 +76,7 @@ const removeCharacterFromTeam = async (req, res) => {
 
   if (existsInTeam) {
     const index = getTeam.team.indexOf(teamMember._id);
+    // console.log(teamMember.name);
     if (getTeam.team.length === 20) {
       getTeam.isAccepted = false;
       getTeam.team.splice(index, 1);
@@ -101,6 +102,10 @@ const getYourTeam = (req, res) => {
       // console.log(teamIDs);
       const team = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
       // sort team by team ID index
+
+      // team.forEach((t) => console.log(t._id));
+      // team.forEach((t) => console.log(teamIDs.indexOf(t._id)));
+      // team.forEach((t) => console.log(teamIDs.includes(t._id)));
 
       team.sort((a, b) => teamIDs.indexOf(b._id) - teamIDs.indexOf(a._id));
       // console.log(teamIDs.indexOf(a._id));
