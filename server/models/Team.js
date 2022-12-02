@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 // const Character = require('./Character.js');
 
+// console.log(Character);
+
 let TeamModel = {};
 
 const MembersSchema = new mongoose.Schema({
@@ -19,6 +21,7 @@ const TeamSchema = new mongoose.Schema({
   team: {
     // type: Array,
     type: [MembersSchema],
+    // type: [Character],
   },
   // limit: {
   //   type: Number,
