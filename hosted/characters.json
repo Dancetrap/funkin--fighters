@@ -1432,5 +1432,21 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f5/Nermal_Idle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f5/NermalIconSet.png",
         "flip": false
+    },
+    "tactie":{
+        "name": "tactie",
+        "origin": "YouTuber (Trake)",
+        "mod": "Tactie",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/86/TactieIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f6/Tacties_icon_new.png",
+        "flip": true
+    },
+    "trake":{
+        "name": "trake",
+        "origin": "YouTuber (Trake)",
+        "mod": "Trake",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/82/TrakeYTIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9b/TrakeIcons.png",
+        "flip": true
     }
 }

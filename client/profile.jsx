@@ -316,7 +316,9 @@ const WinnersAndLosers = (props) => {
 
 const Premium = (props) => {
     return <div id='settings'>
+        <h2 id='setTitle'>App Color</h2>
         <form action="/apply" method="POST" key="colorful" id="colorSettings" onSubmit={colorIn} >
+            <div id="colorOpt">
             <div className="colors">
                 <label htmlFor="header">Main Color: </label>
                 <input type="color" id="headercolor" name="header" defaultValue={props.color.header} />
@@ -324,6 +326,7 @@ const Premium = (props) => {
             <div className="colors">
                 <label htmlFor="body">Secondary Color: </label>
                 <input type="color" id="bodycolor" name="body" defaultValue={props.color.body} />
+            </div>
             </div>
             <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
             <input className="formSubmit" id="apply" type="submit" value="Apply" />  

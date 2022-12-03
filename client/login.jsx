@@ -93,6 +93,7 @@ const init = async () => {
     loginButton.addEventListener('click', (e) => {
         document.getElementById('bf').src = "/assets/img/bf.png";
         document.getElementById('gf').src = "/assets/img/gf.png";
+        document.getElementById('logMode').textContent = "Log In";
         e.preventDefault();
         ReactDOM.render(<LoginWindow csrf={data.csrfToken} />, 
             document.getElementById('content'));
@@ -102,6 +103,7 @@ const init = async () => {
     signupButton.addEventListener('click', (e) => {
         document.getElementById('bf').src = "/assets/img/bf.png";
         document.getElementById('gf').src = "/assets/img/gf.png";
+        document.getElementById('logMode').textContent = "Sign Up";
         e.preventDefault();
         ReactDOM.render(<SignupWindow csrf={data.csrfToken} />, 
             document.getElementById('content'));
