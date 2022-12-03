@@ -52,31 +52,6 @@ const signUpError = (message) => {
     return result;
   }
 
-  const sendPost = async (url, data, handler) => {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-  
-    const result = await response.json();
-    document.getElementById('domoMessage').classList.add('hidden');
-  
-    if(result.redirect) {
-      window.location = result.redirect;
-    }
-  
-    if(result.error) {
-      handleError(result.error);
-    }
-
-    if(handler) {
-      handler(result);
-    }
-  };
-
   const hideError = () => {
     document.getElementById('message').classList.add('hidden');
     document.getElementById('team').style.borderColor = "#000000";
@@ -86,24 +61,6 @@ const signUpError = (message) => {
     document.getElementById('loginMessage').classList.add('hidden');
   };
   
-
-  const vDomo = async (url, data, handler) => {
-    const result = await post(url, data, handler);
-
-    document.getElementById('domoMessage').classList.add('hidden');
-  
-    if(result.redirect) {
-      window.location = result.redirect;
-    }
-  
-    if(result.error) {
-      handleError(result.error);
-    }
-
-    if(handler) {
-        handler(result);
-    }
-  }
 
   const loginAccountPage = async (url, data, handler) => {
     const result = await post(url, data, handler);
@@ -179,16 +136,38 @@ const signUpError = (message) => {
         body.style.color = "black";
     }
 
+    const hsl = hexToHSL(result.head).split(",");
+    const h = parseInt(hsl[0]);
+    const s = parseInt(hsl[1]);
+    let b = parseInt(hsl[2]);
+
     buttons.forEach((button) => button.style.backgroundColor = result.head);
     links.forEach((a) => a.style.backgroundColor = result.head);
     if (luma(result.head))
     {
-        buttons.forEach((button) => button.style.color = "white");
+      b = b + 5;
+        buttons.forEach((button) => {
+          button.style.color = "white";
+          button.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = HSLToHex(h,s,b);
+          });
+          button.addEventListener('mouseout', (e) => {
+            e.target.style.backgroundColor = result.head;
+          });
+        });
         links.forEach((a) => a.style.color = "white");
     }
     else
     {
-        buttons.forEach((button) => button.style.color = "black");
+      b = b - 5;
+        buttons.forEach((button) => { button.style.color = "black";
+        button.addEventListener('mouseover', (e) => {
+          e.target.style.backgroundColor = HSLToHex(h,s,b);
+        });
+        button.addEventListener('mouseout', (e) => {
+          e.target.style.backgroundColor = result.head;
+        });
+      });
         links.forEach((a) => a.style.color = "black");
     }
 
@@ -278,7 +257,7 @@ function hexToHSL(H) {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  return "hsl(" + h + "," + s + "%," + l + "%)";
+  return h + "," + s + "," + l;
 }
 
 function HSLToHex(h,s,l) {
@@ -326,10 +305,8 @@ function HSLToHex(h,s,l) {
     loginError,
     signUpError,
     handleTeam,
-    sendPost,
     hideError,
     hideThing,
-    vDomo,
     loginAccountPage,
     signUpAccountPage,
     teamWork,

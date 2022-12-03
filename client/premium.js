@@ -36,16 +36,43 @@ const init = async () => {
         links.forEach((a) => a.style.backgroundColor = headercolor);
         buttons.forEach((button) => button.style.backgroundColor = headercolor);
 
+        const hsl = helper.hexToHSL(headercolor).split(",");
+        const h = parseInt(hsl[0]);
+        const s = parseInt(hsl[1]);
+        let b = parseInt(hsl[2]);
+
         if (helper.luma(headercolor))
         {
-            buttons.forEach((button) => button.style.color = "white");
-            links.forEach((a) => a.style.color = "white");
+            b = b + 5;
+            buttons.forEach((button) => { 
+                button.style.color = "white";
+                button.addEventListener('mouseover', (e) => {
+                    e.target.style.backgroundColor = helper.HSLToHex(h,s,b);
+                });
+                button.addEventListener('mouseout', (e) => {
+                    e.target.style.backgroundColor = headercolor;
+                });
+                // button.dispatchEvent(event);
+            });
+            links.forEach((a) =>{ 
+                a.style.color = "white";
+            });
             document.getElementById('selected').style.color = "white";
         }
         else
         {
-            buttons.forEach((button) => button.style.color = "black");
-            links.forEach((a) => a.style.color = "black");
+            b = b - 5;
+            buttons.forEach((button) => { 
+                button.style.color = "black";
+                button.addEventListener('mouseover', (e) => {
+                    e.target.style.backgroundColor = helper.HSLToHex(h,s,b);
+                });
+                button.addEventListener('mouseout', (e) => {
+                    e.target.style.backgroundColor = headercolor;
+                });
+            });
+            links.forEach((a) =>{ a.style.color = "black"; });
+
             document.getElementById('selected').style.color = "black";
         }
         

@@ -235,18 +235,40 @@ const setColor = (e) => {
         body.style.color = "black";
     }
 
+    const hsl = helper.hexToHSL(Object.values(account)[0].header).split(",");
+    const h = parseInt(hsl[0]);
+    const s = parseInt(hsl[1]);
+    let b = parseInt(hsl[2]);
 
     buttons.forEach((button) => button.style.backgroundColor = Object.values(account)[0].header);
     links.forEach((a) => a.style.backgroundColor = Object.values(account)[0].header);
     if (helper.luma(Object.values(account)[0].header))
     {
-        buttons.forEach((button) => button.style.color = "white");
+        b = b + 5;
+        buttons.forEach((button) => { 
+            button.style.color = "white"; 
+            button.addEventListener('mouseover', (e) => {
+                e.target.style.backgroundColor = helper.HSLToHex(h,s,b);
+            });
+            button.addEventListener('mouseout', (e) => {
+                e.target.style.backgroundColor = Object.values(account)[0].header;
+            });    
+        });
         links.forEach((a) => a.style.color = "white");
         submits.style.color = "white";
     }
     else
     {
-        buttons.forEach((button) => button.style.color = "black");
+        b = b - 5;
+        buttons.forEach((button) => {
+            button.style.color = "black";
+            button.addEventListener('mouseover', (e) => {
+                e.target.style.backgroundColor = helper.HSLToHex(h,s,b);
+            });
+            button.addEventListener('mouseout', (e) => {
+                e.target.style.backgroundColor = Object.values(account)[0].header;
+            });            
+        });
         links.forEach((a) => a.style.color = "black");
         submits.style.color = "black";
     }
