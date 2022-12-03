@@ -537,6 +537,10 @@ h3.domoAge {
     margin: 20px;
 }
 
+#teamP, #teamO{
+    background-color: white;
+}
+
 #buttons{
     margin: 20px;
     display: flex;
@@ -553,6 +557,7 @@ h3.domoAge {
 #battle{
     border: 2px solid #338acc;
     background-color: white;
+    color: black;
     height: 35px;
     width: 75vw;
     margin-top:0px;

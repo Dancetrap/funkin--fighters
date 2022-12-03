@@ -37,7 +37,7 @@ const SelectGame = (props) => {
     let anotherPlayer = '';
 
     // This will be commented out if I cannot figure out how to fix this. I'll probably ask Austin on Monday
-    // if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={otherPlayer}>Play against Another Player</button>;
+    if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={otherPlayer}>Play against Another Player</button>;
 
     return(
         <div className="characterList">
@@ -124,25 +124,29 @@ const Game = (props) => {
     // Lerp function, lerp(current number, new number, 1)
 // });
 
-    return ( <div id="game">
-        <div id="battle">
-        <div id="player">
-            <h3 id="remainingPlayers">Players Left: </h3>
-            <h3 id="playerCharName"></h3>
-            <img src="" alt="player" id="yourGuy" />
-            <h3 id="yourNumber"></h3>
-        </div>
-        <h3>vs.</h3>
-        <div id="opponent">
-            <h3 id="remainingOpponents">Players Left: </h3>
-            <h3 id="opponentCharName"></h3>
-            <img src="" alt="opponent" id="theirGuy" />
-            <h3 id="theirNumber"></h3>
-        </div>
-        </div>
-        <h3 id="roll">Turn</h3>
-        <button type='exist' id='space' onClick={yourRoll} >Roll</button>
-    </div> );
+    const game = ( <div id="game">
+    <div id="battle">
+    <div id="player">
+        <h3 id="remainingPlayers">Players Left: </h3>
+        <h3 id="playerCharName"></h3>
+        <img src="" alt="player" id="yourGuy" />
+        <h3 id="yourNumber"></h3>
+    </div>
+    <h3>vs.</h3>
+    <div id="opponent">
+        <h3 id="remainingOpponents">Players Left: </h3>
+        <h3 id="opponentCharName"></h3>
+        <img src="" alt="opponent" id="theirGuy" />
+        <h3 id="theirNumber"></h3>
+    </div>
+    </div>
+    <h3 id="roll">Turn</h3>
+    <button type='exist' id='space' onClick={yourRoll} >Roll</button>
+</div> );
+
+    console.log("crapple");
+
+    return game;
 }
 
 const Winner = (props) => {
@@ -301,7 +305,7 @@ const gameStart = async () => {
         else opponentAlive.push(opposingTeam[i]);
     }
 
-    console.log(opponentAlive.length);
+    // console.log(opponentAlive.length);
     
     startGame = true;
     curOpNum = 0;
@@ -343,9 +347,10 @@ const playGame = async () => {
         const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]}`);
         opp = await getOpponent.json();
     }
-    else opp = {character: opponentAlive[0]};
-
-    console.log(opp);
+    else{
+        const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]._id}`);
+        opp = await getOpponent.json();
+    }
     
     // console.log(opp.character.image);
 
@@ -353,14 +358,11 @@ const playGame = async () => {
     const playerImg = document.getElementById('yourGuy');
     const opponentImg = document.getElementById('theirGuy');
 
-    console.log(document.getElementById('remainingPlayers'));
-
     document.getElementById('remainingPlayers').innerHTML = `Players Left: ${playerAlive.length}`;
     document.getElementById('remainingOpponents').innerHTML = `Players Left: ${opponentAlive.length}`;
 
     document.getElementById('playerCharName').innerHTML = ply.name;
-    if(ai) document.getElementById('opponentCharName').innerHTML = opp.character.name;
-    else document.getElementById('opponentCharName').innerHTML = opp.name;
+    document.getElementById('opponentCharName').innerHTML = opp.character.name;
 
     const playerRollOutput = document.getElementById('yourNumber');
     const opponentRollOutput = document.getElementById('theirNumber');
@@ -626,7 +628,7 @@ async function callWinner(win) {
             {
                 // Apparently it's getting back an object, which IDK why
                 // console.log(winners[i]);
-                const wait = await fetch(`/getCharacter?name=${winners[i]}`);
+                const wait = await fetch(`/getCharacter?name=${winners[i]._id}`);
                 const obj = await wait.json();
                 const img = document.getElementById("y"+i);
                 img.src = obj.character.image;
@@ -637,7 +639,13 @@ async function callWinner(win) {
 }
 
 async function callWinnerBuild() {
-    const other = await fetch(`/random`);
+    // const other = await fetch(`/random`);
+    // opponent = await other.json();
+
+    const o = Math.floor(Math.random() * accounts.accounts.length);
+    
+    const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
+    oUsername = accounts.accounts[o].owner;
     opponent = await other.json();
 
     ReactDOM.render(
@@ -668,13 +676,13 @@ async function callWinnerBuild() {
         //     // img.src = obj.character.image;
         // }
 
-        winners = opponent.team;
+        winners = opponent;
         // winners = opponent.team.team;
         // console.log(winners);
         for(let i = 0; i < winners.length; i++)
         {
              // Apparently it's getting back an object, which IDK why
-            console.log(winners[i]);
+            // console.log(winners[i]);
             const wait = await fetch(`/getCharacter?name=${winners[i]._id}`);
             const obj = await wait.json();
             // console.log(obj);
