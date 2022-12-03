@@ -36,28 +36,8 @@ const SelectGame = (props) => {
 
     let anotherPlayer = '';
 
-    if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={otherPlayer}>Play against Another Player</button>;
-
-    // const gameOptions =
-        // return (
-            // <div key = {chr._id} className="char">
-            //     {/* <img src={chr.image} alt={chr.name} height="150px" style="object-fit: contain;" id={chr._id}></img> */}
-            //     <h3 className="domoName"> Name: {chr.name} </h3>
-            //     {/* <h3 className="domoAge"> Age: {domo.age} </h3> */}
-            // </div>
-            // <form id="addToTeam" 
-            // name={chr.name}
-            // key={chr._id} 
-            // onSubmit={updateTeam} 
-            // action="/add" 
-            // method="POST" 
-            // className="set">
-            //     <input type="image" height="150" src={chr.image} />
-            //     <h3 className="characterName"> {chr.name} </h3>
-            //     <input id="_id" type="hidden" name="_id" value={chr._id} />
-            //     <input id="_csrf" type="hidden" name="_csrf" value={csrfToken} />
-            // </form>
-        // );
+    // This will be commented out if I cannot figure out how to fix this. I'll probably ask Austin on Monday
+    // if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={otherPlayer}>Play against Another Player</button>;
 
     return(
         <div className="characterList">
@@ -321,7 +301,7 @@ const gameStart = async () => {
         else opponentAlive.push(opposingTeam[i]);
     }
 
-    console.log(startGame);
+    console.log(opponentAlive.length);
     
     startGame = true;
     curOpNum = 0;
@@ -363,10 +343,9 @@ const playGame = async () => {
         const getOpponent = await fetch(`/getCharacter?name=${opponentAlive[0]}`);
         opp = await getOpponent.json();
     }
-    else opp = opponentAlive[0];
+    else opp = {character: opponentAlive[0]};
 
-    console.log(playerAlive);
-    console.log(opponentAlive);
+    console.log(opp);
     
     // console.log(opp.character.image);
 
@@ -374,11 +353,14 @@ const playGame = async () => {
     const playerImg = document.getElementById('yourGuy');
     const opponentImg = document.getElementById('theirGuy');
 
+    console.log(document.getElementById('remainingPlayers'));
+
     document.getElementById('remainingPlayers').innerHTML = `Players Left: ${playerAlive.length}`;
     document.getElementById('remainingOpponents').innerHTML = `Players Left: ${opponentAlive.length}`;
 
     document.getElementById('playerCharName').innerHTML = ply.name;
-    document.getElementById('opponentCharName').innerHTML = opp.name;
+    if(ai) document.getElementById('opponentCharName').innerHTML = opp.character.name;
+    else document.getElementById('opponentCharName').innerHTML = opp.name;
 
     const playerRollOutput = document.getElementById('yourNumber');
     const opponentRollOutput = document.getElementById('theirNumber');

@@ -79,6 +79,7 @@ const signUpError = (message) => {
 
   const hideError = () => {
     document.getElementById('message').classList.add('hidden');
+    document.getElementById('team').style.borderColor = "#000000";
   };
 
   const hideThing = () => {

@@ -1,4 +1,5 @@
 // const { rest } = require('underscore');
+const mongoose = require('mongoose');
 const models = require('../models');
 const CharacterModel = require('../models/Character');
 const TeamModel = require('../models/Team');
@@ -118,7 +119,11 @@ const removeCharacterFromTeam = async (req, res) => {
   const existsInTeam = getTeam.team.filter((c) => c.charID.equals(teamMember._id)).length !== 0;
 
   if (existsInTeam) {
-    const index = getTeam.team.indexOf(teamMember._id);
+    // console.log(getTeam.team);
+    const teams = getTeam.team.map((c) => mongoose.Types.ObjectId(c.charID).toString());
+    const mem = mongoose.Types.ObjectId(teamMember._id).toString();
+    // const index = getTeam.team.indexOf(teamMember._id);
+    const index = teams.indexOf(mem);
     // console.log(index);
     if (getTeam.team.length === 20) {
       getTeam.isAccepted = false;
@@ -147,103 +152,19 @@ const getYourTeam = async (req, res) => {
     }
 
     try {
-      // let team = [];
-      // console.log(chars.length);
       const teamIDs = docs.team.map((c) => c.charID);
-      // console.log(teamIDs);
-      // console.log(docs.team[0].index);
-      // const team = [];
-      // await teamIDs.forEach(async (id) => {
-      //   // console.log(id);
-      //   const t = await CharacterModel.find({ _id: id }).exec();
-      //   team.push(t);
-      //   // console.log(team);
-      // });
+      const teamOne = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
+      const ddTeam = teamIDs.map((c) => mongoose.Types.ObjectId(c).toString());
 
-      // const team = teamIDs.map(async (c) => {
-      //   const t = await CharacterModel.find({ _id: c }).exec();
-      //   return t;
-      // });
-
-      // console.log(team);
-      // return res.status(400).json({ error: "An unexpected error occured" });
-      const team = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
-      // console.log(team);
-      // const sort = team.sort((a, b) => docs.team[a].index - docs.team[b].index);
-      // console.log(sort);
-      // console.log(team[0]._id);
-      // console.log(teamIDs[0]);
-      // console.log(team[0]._id === teamIDs[0]);
-      // console.log(team[0]._id.equals(teamIDs[0]));
-      // console.log(teamIDs.valueOf(team[0]._id));
-      // .indexOf(idYourAreLookingFor);
-
-      // console.log(team.map((c) => c._id));
-      // console.log(team.length);
-      // team.forEach((t) => console.log(teamIDs[0]));
-      // teamIDs.forEach((c) => console.log(team.indexOf(c)));
-
-      // sort team by team ID index
-
-      // team.forEach((t) => console.log(t._id));
-      // team.forEach((t) => {
-      // console.log(t);
-      // console.log(teamIDs.indexOf(t._id));
-      // console.log(teamIDs.indexOf('638667985a6b0c43a8e9cfb0'));
-      // console.log(teamIDs[team[t]]);
-      // });
-
-      // for (let i = 0; i < team.length; i++) {
-      // console.log(team[i]._id);
-      // console.log(teamIDs[i]);
-
-      // console.log(teamIDs.contains(team[i]._id));
-
-      // console.log(teamIDs[i].equals(team[i]._id));
-      // }
-      // team.forEach((t) => console.log(teamIDs.includes(t._id)));
-
-      // team.sort((a, b) => teamIDs.indexOf(b._id) - teamIDs.indexOf(a._id));
-      // console.log(teamIDs.indexOf(a._id));
-      // console.log(a._id);
-      // console.log(team);
-
-      return res.json(team);
-
-      // return Promise.all(team).then(() => {
-      //   console.log(team);
-      //   res.status(200).json(team);
-      // });
-
-      // return Promise.all(team).then(() => {
-      //   console.log(team);
-      //   res.status(200).json(team);
-      // }).catch((er) => {
-      //   console.log(er);
-      //   return res.status(500).json({ error: 'Something went wrong' });
-      // });
+      teamOne.sort((a, b) => ddTeam.indexOf(a._id.toString()) - ddTeam.indexOf(b._id.toString()));
+      return res.json(teamOne);
     } catch (err2) {
       return res.status(200).json({ error: true });
     }
   });
 };
 
-// const getYourTeam = (req, res) =>
-// TeamModel.findUsingOwner(req.session.account._id, (err, docs) => {
-//   if (err) {
-//     console.log(err);
-//     return res.status(400).json({ error: 'An error occurred!' });
-//   }
-//   return res.json({ team: docs });
-// });
-
 const getOpponentTeam = async (req, res) => {
-  // const doc = await TeamModel.findOne({ owner: req.query.team }).exec();
-  // if (doc) {
-  //   return res.json({ team: doc });
-  // }
-  // return res.status(400).json({ error: 'An error has occured' });
-
   TeamModel.findUsingOwner(req.query.team, async (err, docs) => {
     if (err) {
       console.log(err);
@@ -252,9 +173,11 @@ const getOpponentTeam = async (req, res) => {
     // console.log(docs.owner);
     try {
       const teamIDs = docs.team.map((c) => c.charID);
-      const t = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
-      // return res.json({ team: t, owner: req.query.team });
-      return res.json(t);
+      const teamOne = await CharacterModel.find({ _id: { $in: teamIDs } }).exec();
+      const ddTeam = teamIDs.map((c) => mongoose.Types.ObjectId(c).toString());
+
+      teamOne.sort((a, b) => ddTeam.indexOf(a._id.toString()) - ddTeam.indexOf(b._id.toString()));
+      return res.json(teamOne);
     } catch (err2) {
       return res.status(200).json({ error: true });
     }
