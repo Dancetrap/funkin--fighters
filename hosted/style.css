@@ -228,6 +228,7 @@ nav:nth-child(1) {
     width: 750px;
     box-shadow: 1px 1px 20px black;
     background-color: white;
+    color: #000;
     transition: .125s ease;
     height: auto;
     /* border: 3px solid #55acee; */
@@ -301,6 +302,16 @@ nav:nth-child(1) {
     flex-direction: row;
 }
 
+#instructions{
+    text-align: center;
+    list-style-position: inside;
+}
+
+#instructions li{
+    font-size: 20px;
+    line-height: 40px;
+}
+
 .infoMarkers, .infoMessages{
     /* position: absolute; */
     position: relative;
@@ -311,6 +322,14 @@ nav:nth-child(1) {
     position: absolute;
     /* and play around with this */
     /* top:90px; */
+}
+
+.info{
+    opacity: 0;
+}
+
+.info.visible{
+    opacity: 1;
 }
 
 /* Placement of info markers */
@@ -332,6 +351,77 @@ nav:nth-child(1) {
 #i3{
     left: 1060px;
     top: 80px;
+}
+
+#i4{
+    left: 444px;
+    top: 112px;
+}
+
+#i5{
+    left: 1000px;
+    top: 250px;
+}
+
+#i6{
+    left: 910px;
+    top: 450px;
+}
+
+#i7{
+    left: 700px;
+    top: 500px;
+}
+
+#i8{
+    left: 690px;
+    top: 540px;
+}
+
+/* Messages */
+#m0{
+    left: 480px;
+    top: 40px;
+}
+
+#m1{
+    left: 955px;
+    top: 40px;
+}
+
+#m2{
+    left: 410px;
+    top: 70px;
+}
+
+#m3{
+    left: 1090px;
+    top: 70px;
+}
+
+#m4{
+    left: 474px;
+    top: 102px;
+}
+
+#m5{
+    left: 1030px;
+    top: 240px;
+}
+
+#m6{
+    left: 940px;
+    top: 440px;
+}
+
+#m7{
+    left: 730px;
+    top: 490px;
+}
+
+#m8{
+    left: 720px;
+    top: 530px;
 }
 
 #results {
@@ -598,6 +688,10 @@ nav:nth-child(1) {
 
 #remainingOpponents{
     text-align: right;
+}
+
+#tryagin{
+    width: 250px;
 }
 
 #profile{

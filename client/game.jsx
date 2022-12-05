@@ -184,7 +184,7 @@ const Winner = (props) => {
         <div id='winners'>
             {content}
         </div>
-        <button id="tryagain" onClick={tryAgain}> Try Again </button>
+        <button id="tryagain" onClick={tryAgain}> Play Again </button>
         </div>);
 }
 
