@@ -11,6 +11,7 @@ const init = () => {
     for(let i = 0; i < marks.length; i++)
     {
         marks[i].addEventListener("mouseover", display);
+        marks[i].addEventListener("mouseout", hide);
     }
 };
 
