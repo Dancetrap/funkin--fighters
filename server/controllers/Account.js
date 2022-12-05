@@ -1,4 +1,5 @@
 const models = require('../models');
+// const AccountModel = require('../models/Account');
 
 const { Account } = models;
 
@@ -88,6 +89,13 @@ const getAccount = async (req, res) => {
   return res.json({ account: acc });
 };
 
+const getAccountThroughId = (req, res) => {
+  Account.findById(req.query.id).select('-password').exec((err, docs) => {
+    if (err) return res.status(400).json({ error: 'An error occurred!' });
+    return res.json({ account: docs });
+  });
+};
+
 const setPreminumMode = async (req, res) => {
   const yourAccount = await Account.findOne({ username: req.session.account.username }).exec();
   if (!yourAccount.premium) {
@@ -117,6 +125,7 @@ module.exports = {
   getYourUsername,
   getUsername,
   getAccount,
+  getAccountThroughId,
   setPreminumMode,
   preminumSettings,
 };

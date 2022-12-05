@@ -46,6 +46,7 @@ const router = (app) => {
   app.get('/retrieve', mid.requiresLogin, controllers.PFP.retrieveFile);
 
   app.get('/account', mid.requiresLogin, controllers.Account.getAccount);
+  app.get('/accountId', mid.requiresLogin, controllers.Account.getAccountThroughId);
   app.post('/unlock', mid.requiresLogin, controllers.Account.setPreminumMode);
   app.post('/apply', mid.requiresLogin, controllers.Account.preminumSettings);
 

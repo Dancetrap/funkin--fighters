@@ -6,6 +6,9 @@ let accounts;
 let player;
 let opponent;
 
+let playerPic;
+let opponentPic;
+
 let playerTeam;
 let opposingTeam;
 
@@ -38,12 +41,15 @@ const SelectGame = (props) => {
 
     // This will be commented out if I cannot figure out how to fix this. I'll probably ask Austin on Monday
     if(accounts.accounts.length !== 0) anotherPlayer = <button type='exist' onClick={otherPlayer}>Play against Another Player</button>;
-
+    const divStyle = {
+        textAlign: 'center',
+        margin: '25px',
+    }
     return(
         <div className="characterList">
             {/* {characters} */}
-            {/* <h3 className="emptyDomo">You are qualified</h3> */}
             <div key={"gameMenu"} id="gameMenu" >
+            <h3 style={divStyle}>You are qualified - Select your player</h3>
                 {/* <form action="/ai"></form> */}
                 {/* <form action="/existing"></form> */}
                 <button type='ai' onClick={aiPlayer} >Play against AI</button>
@@ -85,6 +91,7 @@ const SelectTeam = (props) => {
             <div id="twoteams">
         <div id="teamPlayer">
         <h2 id='pName'></h2>
+        <img src={playerPic} alt="you" className="teamProfile" id="teamPlayPic" />
         <div id="teamP">
             {content}
         </div>    
@@ -92,6 +99,7 @@ const SelectTeam = (props) => {
         <h3 id='vs'>vs.</h3>
         <div id="teamOpponent">
         <h2 id='oName'></h2>
+        <img src={opponentPic} alt="them" className="teamProfile" id="teamOppoPic" />
         <div id="teamO">
             {oppContent}
         </div>
@@ -101,6 +109,7 @@ const SelectTeam = (props) => {
             {type}
             <button type='exist' onClick={gameStart}>Play Game</button>
         </div>
+        <button type='exist' id='backButton' onClick={tryAgain}>Back</button>
     </div>
     );
 }
@@ -127,6 +136,7 @@ const Game = (props) => {
     const game = ( <div id="game">
     <div id="battle">
     <div id="player">
+        <img src={playerPic} alt="you" className="gameProfile" id="teamPlayPic" />
         <h3 id="remainingPlayers">Players Left: </h3>
         <h3 id="playerCharName"></h3>
         <img src="" alt="player" id="yourGuy" />
@@ -134,6 +144,7 @@ const Game = (props) => {
     </div>
     <h3>vs.</h3>
     <div id="opponent">
+        <img src={opponentPic} alt="them" className="gameProfile" id="teamOppoPic" />
         <h3 id="remainingOpponents">Players Left: </h3>
         <h3 id="opponentCharName"></h3>
         <img src="" alt="opponent" id="theirGuy" />
@@ -144,7 +155,7 @@ const Game = (props) => {
     <button type='exist' id='space' onClick={yourRoll} >Roll</button>
 </div> );
 
-    console.log("crapple");
+    // console.log("crapple");
 
     return game;
 }
@@ -181,6 +192,7 @@ const aiPlayer = async () => {
 
     const other = await fetch(`/random`);
     opponent = await other.json();
+    opponentPic = "/assets/img/bot.png";
     // console.log(opponent.team);
     ai = true;
     await loadOpposingTeam(player, opponent, "Bot");  
@@ -195,7 +207,11 @@ const otherPlayer = async () => {
     const other = await fetch(`/theirTeam?team=${accounts.accounts[o].owner}`);
     oUsername = accounts.accounts[o].owner;
     opponent = await other.json();
-    // console.log(opponent);
+    // console.log(accounts);
+
+    const otra = await fetch(`/accountId?id=${oUsername}`);
+    const pic = await otra.json();
+    opponentPic = pic.account.picture;
     // await loadOpposingTeam(player, opponent.team);
     await loadOpposingTeam(player, opponent);
   
@@ -695,6 +711,7 @@ async function callWinnerBuild() {
 
 function tryAgain() {
     ai = false;
+    opponentPic = null;
     if(playerAlive.length != 0) playerAlive.splice(0,playerAlive.length);
     if(opponentAlive.length != 0) opponentAlive.splice(0,opponentAlive.length);
     ReactDOM.render(
@@ -714,10 +731,14 @@ const init = async () => {
     const fetchTeam = await fetch('/yourTeam');
     player = await fetchTeam.json();
 
-    console.log(player);
+    // console.log(player);
 
     const load = await fetch('/accounts');
     accounts = await load.json();
+
+    const acc = await fetch('/account');
+    const account = await acc.json();
+    playerPic = account.account.picture;
 
     ReactDOM.render(
         <SelectGame team={player} />,
