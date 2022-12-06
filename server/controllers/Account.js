@@ -3,10 +3,12 @@ const models = require('../models');
 
 const { Account } = models;
 
+// Opens profile page
 const profilePage = (req, res) => {
   res.render('profile', { username: req.session.account.username });
 };
 
+// Opens login page
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
@@ -35,8 +37,7 @@ const login = (req, res) => {
   });
 };
 
-// Ask how to make it go into other page if already logged in
-
+// Ask how to make it go into other page if already logged in! Done and done
 const signup = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -75,6 +76,7 @@ const findAllUsers = (req, res) => {
   });
 };
 
+// A lot of these are self-explanatory
 const getYourUsername = (req, res) => res.json({ username: req.session.account.username });
 
 const getUsername = (req, res) => {
@@ -84,11 +86,13 @@ const getUsername = (req, res) => {
   });
 };
 
+// Gets your account
 const getAccount = async (req, res) => {
   const acc = await Account.findOne({ username: req.session.account.username }).select('-password').exec();
   return res.json({ account: acc });
 };
 
+// Gets the account of another user
 const getAccountThroughId = (req, res) => {
   Account.findById(req.query.id).select('-password').exec((err, docs) => {
     if (err) return res.status(400).json({ error: 'An error occurred!' });
@@ -96,6 +100,7 @@ const getAccountThroughId = (req, res) => {
   });
 };
 
+// This turns on premium mode
 const setPreminumMode = async (req, res) => {
   const yourAccount = await Account.findOne({ username: req.session.account.username }).exec();
   if (!yourAccount.premium) {

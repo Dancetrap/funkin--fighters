@@ -201,14 +201,14 @@ const addWin = async (req, res) => {
   const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   getTeam.wins += 1;
   getTeam.save();
-  return res.status(201).json({ error: 'You Win!' });
+  return res.status(201).json({ message: 'You Win!' });
 };
 
 const addLoss = async (req, res) => {
   const getTeam = await TeamModel.findOne({ owner: req.session.account._id }).exec();
   getTeam.losses += 1;
   getTeam.save();
-  return res.status(201).json({ error: 'You Win!' });
+  return res.status(201).json({ message: 'You Lose!' });
 };
 
 const getWinsAndLosses = async (req, res) => {

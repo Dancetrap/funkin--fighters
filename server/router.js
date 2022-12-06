@@ -3,7 +3,6 @@ const mid = require('./middleware');
 
 const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
-  // app.get('/getDomos', mid.requiresLogin, controllers.Domo.getDomos);
 
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
@@ -11,10 +10,7 @@ const router = (app) => {
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
 
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
-
-  // app.get('/maker', mid.requiresLogin, controllers.Domo.makerPage);
-  // app.post('/maker', mid.requiresLogin, controllers.Domo.makeDomo);
-
+  
   app.get('/home', mid.requiresLogin, controllers.home);
   app.get('/team', mid.requiresLogin, controllers.Team.makerPage);
   app.get('/game', mid.requiresLogin, controllers.Team.gamePage);
@@ -40,7 +36,7 @@ const router = (app) => {
   app.post('/win', mid.requiresLogin, controllers.Team.addWin);
   app.post('/lose', mid.requiresLogin, controllers.Team.addLoss);
 
-  app.get('/getSome', mid.requiresLogin, controllers.Team.getWinsAndLosses);
+  app.get('/victories', mid.requiresLogin, controllers.Team.getWinsAndLosses);
 
   app.post('/upload', mid.requiresLogin, controllers.PFP.uploadFile);
   app.get('/retrieve', mid.requiresLogin, controllers.PFP.retrieveFile);
@@ -54,7 +50,6 @@ const router = (app) => {
   // app.post('/load', mid.requiresLogin, controllers.Character.testModels);
 
   // app.get('/searchCharacters', mid.requiresLogin, controllers.Character.searchTest);
-  app.get('/n', mid.requiresSecure, mid.requiresLogout, controllers.nil);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   app.get('/*', controllers.notFound);

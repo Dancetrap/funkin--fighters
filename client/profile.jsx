@@ -2,48 +2,10 @@ const helper = require('./helper.js');
 let csrfToken;
 
 let team;
-let images;
-let ids;
 
 let victories;
 let account;
 
-function getImgData() {
-    const files = chooseFile.files[0];
-    if (files) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(files);
-      fileReader.addEventListener("load", function () {
-        imgPreview.style.display = "block";
-        imgPreview.innerHTML = '<img src="' + this.result + '" />';
-      });    
-    }
-  }
-
-const uploadFile = async (e) => {
-    e.preventDefault();
-
-    console.log(e.target);
-    // const _csrf = e.target.querySelector("#_csrf").value;
-
-    const response = await fetch('/upload', {
-        method: 'POST',
-        body: new FormData(e.target),
-    });
-
-    const text = await response.json();
-    // console.log(text.message);
-    // document.getElementById('messages').innerText = text;
-
-    if(text.message)
-    {
-        document.getElementById('picture').src = `/retrieve?_id=${text.fileId}`;
-        document.getElementById('logo').src = `/retrieve?_id=${text.fileId}`;
-        console.log(document.getElementById('picture').src);
-    }
-
-    return false;
-};
 
 const uploadPic = async () => 
 {
@@ -152,7 +114,7 @@ const init = async () => {
         team = await getTeam.json();
     }
 
-    const add = await fetch('/getSome');
+    const add = await fetch('/victories');
     victories = await add.json();
     
     // const premi = await fetch('/unlock');

@@ -347,6 +347,9 @@ let curPNum = 0;
 let plyRoll;
 let oppRoll;
 
+let pCurRoll;
+let oCurRoll;
+
 let roundOne = true;
 
 const playGame = async () => {
@@ -394,6 +397,9 @@ const playGame = async () => {
 
     plyRoll = null;
     oppRoll = null;
+
+    pCurRoll = curPNum;
+    oCurRoll = curOpNum;
 
     if(ply.flip)
     {
@@ -473,7 +479,8 @@ function getRandomOpponent() {
     const opponentRollOutput = document.getElementById('theirNumber');
 
     oppRoll = getRandomInt(21);
-    // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,1);
+    // setInterval(opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,0.5));
+    // opponentRollOutput.innerHTML = lerp(curOpNum,oppRoll,0.5);
     opponentRollOutput.innerHTML = oppRoll;
     curOpNum = oppRoll;
     // I just realized I need to figure out how I'm going to do a tie. Maybe if it's a tie, I'll make the player go first
@@ -494,7 +501,8 @@ function yourRoll() {
     if(!playerTurn) return;
     const playerRollOutput = document.getElementById('yourNumber');
     plyRoll = getRandomInt(21);
-    // playerRollOutput.innerHTML = lerp(curPNum,plyRoll,1);
+    // setInterval(playerRollOutput.innerHTML = lerp(curPNum,plyRoll,0.5));
+    // playerRollOutput.innerHTML = lerp(curPNum,plyRoll,0.5);
     playerRollOutput.innerHTML = plyRoll;
     curPNum = plyRoll;
     if(oppRoll == null)
@@ -516,6 +524,9 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+// function lerp(A, B, t) {
+//     return A + (B - A) * t;
+// }
 
 // It's skipping numbers and I don't know why. I'll have to ask Austin on friday
 function compareNumbers(a,b) {
