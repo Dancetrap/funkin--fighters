@@ -160,7 +160,7 @@ const CharacterList = (props) => {
     {
         return (
             <div className="characterList">
-                <h3 className="emptyDomo">Nothing</h3>
+                <h3 className="emptyDomo">No characters found</h3>
             </div>
         );
     }
