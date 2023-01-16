@@ -1448,5 +1448,13 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/82/TrakeYTIdleAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9b/TrakeIcons.png",
         "flip": true
+    },
+    "skarlet bunny":{
+        "name": "skarlet bunny",
+        "origin": "Graffiti Groovin'",
+        "mod": "Graffiti Groovin'",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d4/SkarletPlayable.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9b/TrakeIcons.png",
+        "flip": true
     }
 }
