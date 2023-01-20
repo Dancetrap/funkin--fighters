@@ -566,10 +566,19 @@
     "dorkly sonic":{
         "name": "dorkly sonic",
         "origin": "Sonic For Hire",
-        "mod": "Vs. Dorkly Sonic",
+        "mod": "Funkin For Hire",
         "quote": "Why did you say that like it was a completely normal sentence? - Sonic (Sonic Meets Original Fan Characters)",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/27/DorklySonicIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9a/Icon-dorkly.png",
+        "flip": false
+    },
+    "dorkly tails":{
+        "name": "dorkly tails",
+        "origin": "Sonic For Hire",
+        "mod": "Funkin For Hire",
+        "quote": "You stupid fuck... - Dorkly Tails",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/ae/Tails_Dork.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e9/DTailsIcons.png",
         "flip": false
     },
     "huggy wuggy":{
@@ -1456,5 +1465,14 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d4/SkarletPlayable.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/63/Icon-skarlet.png",
         "flip": true
+    },
+    "denji":{
+        "name": "denji",
+        "origin": "Chainsaw Man",
+        "mod": "FNF CHAINSAW VS SWORD",
+        "quote":"What, did your gramps never teach you? Prey should never trust what a hunter says! - Denji, Chainsaw Man, Chapter 37",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/ChainsawManIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/Icon-chain.png",
+        "flip": false
     }
 }
