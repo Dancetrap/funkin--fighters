@@ -1562,5 +1562,13 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d9/ChefogusAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/47/ChefMogusIcons.png",
         "flip": false
+    },
+    "jerma":{
+        "name": "jerma",
+        "origin": "YouTuber (Jerma985)",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/5b/VIJermaIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/Icon-jermadude.png",
+        "flip": false
     }
 }
