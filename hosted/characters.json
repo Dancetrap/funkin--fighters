@@ -419,10 +419,10 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/66/SammyIconIC.png",
         "flip": false
     },
-    "imposter":{
-        "name": "imposter",
+    "red imposter":{
+        "name": "red imposter",
         "origin": "Among Us",
-        "mod": "Indie Cross",
+        "mod": "Vs. Imposter",
         "quote": "There is an imposer among us - Among Us everytime a game has been started",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d9/Red_Impostor_V3.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e0/ImpostorNewIcons.png",
@@ -1473,6 +1473,94 @@
         "quote":"What, did your gramps never teach you? Prey should never trust what a hunter says! - Denji, Chainsaw Man, Chapter 37",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/ChainsawManIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/Icon-chain.png",
+        "flip": false
+    },
+    "henry stickman":{
+        "name": "henry stickman",
+        "origin": "Henry Stickman",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/SecondHenryStickminV4Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/V4HenryIcons.png",
+        "flip": false
+    },
+    "ellie":{
+        "name": "ellie",
+        "origin": "Henry Stickman",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f6/VIEllieIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cc/Icons-henryandellie.png",
+        "flip": false
+    },
+    "green imposter":{
+        "name": "green imposter",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/53/VSImpostorV4GreenImpostorIdleAltAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/86/Icon-impostor3.png",
+        "flip": false
+    },
+    "green imposter (beast form)":{
+        "name": "green imposter",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c2/ParasiteV4Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3b/Icon-parasite.png",
+        "flip": false
+    },
+    "yellow":{
+        "name": "yellow",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/71/YellowV4Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/ca/Icon-yellowmustard.png",
+        "flip": false
+    },
+    "white imposter":{
+        "name": "white imposter",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/06/WhiteImposterAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/81/VsImpostor_WhiteIcon.png",
+        "flip": false
+    },
+    "black imposter":{
+        "name": "black imposter",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/34/VIBlackV4Idle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8e/Tarposter.png",
+        "flip": false
+    },
+    "black imposter (parasite)":{
+        "name": "black imposter (parasite)",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d5/VIBlackParasiteIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/60/BlackParasiteIcon.gif",
+        "flip": false
+    },
+    "pink imposter":{
+        "name": "pink imposter",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/ca/PinkImpostorIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1c/PinkIcons.png",
+        "flip": false
+    },
+    "monotone":{
+        "name": "monotone",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3a/MonotoneIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/da/Icon-monotone.png",
+        "flip": false
+    },
+    "chefogus":{
+        "name": "chefogus",
+        "origin": "Among Us",
+        "mod": "Vs. Imposter",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d9/ChefogusAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/47/ChefMogusIcons.png",
         "flip": false
     }
 }
