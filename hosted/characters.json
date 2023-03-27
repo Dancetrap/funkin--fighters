@@ -115,7 +115,7 @@
         "origin": "Sonic.exe",
         "mod": "Vs. Sonic.exe",
         "quote": "I AM GOD! - Sonic.exe's iconic line",
-        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/SonicExeIdle2.5.gif.gif",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/24/SonicExeIdle2.5.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d2/SlowBoi.png",
         "flip": false
     },
@@ -979,10 +979,10 @@
     "red":{
         "name": "red",
         "origin": "Pokémon Series",
-        "mod": "Friday Night Funkin' Lullaby",
-        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e6/FNFLMTRedIdle.gif",
-        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/75/FrostyRedIcon.png",
-        "flip": true
+        "mod": "Vs Red",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b6/RedPokemonIDLE.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7c/Icon-red-pokemon.png",
+        "flip": false
     },
     "grey":{
         "name": "grey",
@@ -1569,6 +1569,22 @@
         "mod": "Vs. Imposter",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/5b/VIJermaIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/Icon-jermadude.png",
+        "flip": false
+    },
+    "el chavo":{
+        "name": "el chavo",
+        "origin": "El Chavo Del 8",
+        "mod": "FNF El Chavo Del 8",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ee/ChavoS2.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7b/ChavoS2Icons.png",
+        "flip": true
+    },
+    "quico":{
+        "name": "quico",
+        "origin": "El Chavo Del 8",
+        "mod": "FNF El Chavo Del 8",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/56/QuicoS2.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0e/Icon-quico_T2.png",
         "flip": false
     }
 }
